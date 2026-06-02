@@ -37,6 +37,12 @@
     html { scroll-behavior: smooth; }
     body { background-color: #ECEFE8; font-family: 'Inter', sans-serif; }
     .font-display { font-family: 'Bebas Neue', sans-serif; }
+    @keyframes kenburns {
+      0%   { transform: scale(1)    translate(0, 0); }
+      50%  { transform: scale(1.08) translate(-1%, 1%); }
+      100% { transform: scale(1)    translate(0, 0); }
+    }
+    .hero-zoom { animation: kenburns 20s ease-in-out infinite; transform-origin: center center; }
   </style>
 </head>
 <body class="bg-crema text-black">
@@ -84,10 +90,11 @@
 </script>
   <!-- HERO -->
 <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
-  <!-- Video background via YouTube IFrame API -->
-  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="hero-video-container">
-    <div id="yt-player" style="position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);"></div>
-    <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(236,239,232,0.45) 0%, rgba(236,239,232,0.55) 100%);"></div>
+  <!-- Hero background — Azteca + Colombia stripes -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <img src="assets/azteca.jpg" alt=""
+         class="absolute inset-0 w-full h-full object-cover hero-zoom" />
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(236,239,232,0.55) 0%, rgba(236,239,232,0.65) 100%);"></div>
   </div>
   <!-- Colombia stripes -->
   <div class="absolute inset-0 pointer-events-none z-10">
@@ -119,29 +126,6 @@
     </svg>
   </div>
 </section>
-<script>
-  // YouTube IFrame API — autoplay fullscreen background
-  var ytTag = document.createElement('script');
-  ytTag.src = 'https://www.youtube.com/iframe_api';
-  document.head.appendChild(ytTag);
-  var ytPlayer;
-  function onYouTubeIframeAPIReady() {
-    ytPlayer = new YT.Player('yt-player', {
-      videoId: 'WDtOczhCwzg',
-      playerVars: {
-        autoplay: 1, mute: 1, loop: 1, playlist: 'WDtOczhCwzg',
-        controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3,
-        modestbranding: 1, playsinline: 1, rel: 0, showinfo: 0
-      },
-      events: {
-        onReady: function(e) { e.target.playVideo(); },
-        onStateChange: function(e) {
-          if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
-        }
-      }
-    });
-  }
-</script>
 <!-- ITINERARIO -->
 <section id="itinerario" class="py-20 px-4">
   <div class="max-w-5xl mx-auto">
