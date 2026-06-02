@@ -37,7 +37,7 @@
   <!-- NAV -->
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-crema border-b border-black/10 transition-shadow duration-300">
   <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <img src="assets/logo-nuevo.png" alt="PITAN PITAN" class="h-10 w-auto" />
+    <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="h-10 w-auto" />
     <div class="hidden md:flex items-center gap-6 font-display text-lg tracking-wider">
       <a href="#convocados" class="hover:text-col-red transition-colors">Convocatoria</a>
       <a href="#itinerario" class="hover:text-col-red transition-colors">Agenda</a>
@@ -77,17 +77,10 @@
 </script>
   <!-- HERO -->
 <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
-  <!-- Video background Colombia -->
-  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <iframe
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-      style="width:177.78vh; min-width:100%; height:56.25vw; min-height:100%;"
-      src="https://www.youtube.com/embed/vOhmnGa6RE0?autoplay=1&mute=1&loop=1&playlist=vOhmnGa6RE0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-      allow="autoplay; encrypted-media"
-      frameborder="0"
-      title="Selección Colombia 2026">
-    </iframe>
-    <div class="absolute inset-0 bg-crema/75"></div>
+  <!-- Video background via YouTube IFrame API -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" id="hero-video-container">
+    <div id="yt-player" style="position:absolute;top:50%;left:50%;width:100vw;height:56.25vw;min-height:100vh;min-width:177.78vh;transform:translate(-50%,-50%);"></div>
+    <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(236,239,232,0.45) 0%, rgba(236,239,232,0.55) 100%);"></div>
   </div>
   <!-- Colombia stripes -->
   <div class="absolute inset-0 pointer-events-none z-10">
@@ -100,7 +93,7 @@
   </div>
   <!-- Content -->
   <div class="relative z-20 flex flex-col items-center">
-    <img src="assets/logo-nuevo.png" alt="PITAN PITAN" class="w-full max-w-xl mb-8" />
+    <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="w-full max-w-xl mb-6" />
     <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-16 md:h-20 mb-6 opacity-90" />
     <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
     <div class="flex items-center gap-3 mb-10">
@@ -119,6 +112,29 @@
     </svg>
   </div>
 </section>
+<script>
+  // YouTube IFrame API — autoplay fullscreen background
+  var ytTag = document.createElement('script');
+  ytTag.src = 'https://www.youtube.com/iframe_api';
+  document.head.appendChild(ytTag);
+  var ytPlayer;
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('yt-player', {
+      videoId: 'zXCD8u6ty5k',
+      playerVars: {
+        autoplay: 1, mute: 1, loop: 1, playlist: 'zXCD8u6ty5k',
+        controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3,
+        modestbranding: 1, playsinline: 1, rel: 0, showinfo: 0
+      },
+      events: {
+        onReady: function(e) { e.target.playVideo(); },
+        onStateChange: function(e) {
+          if (e.data === YT.PlayerState.ENDED) e.target.playVideo();
+        }
+      }
+    });
+  }
+</script>
 <!-- ITINERARIO -->
 <section id="itinerario" class="py-20 px-4">
   <div class="max-w-5xl mx-auto">
@@ -841,7 +857,7 @@ dias.forEach(d => {
 <!-- FOOTER -->
 <footer class="bg-black text-crema py-12 px-4">
   <div class="max-w-6xl mx-auto text-center">
-    <img src="assets/logo-nuevo.png" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
+    <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
     <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-12 mx-auto mb-4 opacity-60" />
     <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2025</p>
     <p class="mt-4 text-crema/30 text-xs tracking-widest">PITAN PITAN · 15–21 JUNIO · CON TODO EL AMOR 🇨🇴</p>
