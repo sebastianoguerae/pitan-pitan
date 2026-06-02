@@ -1,0 +1,217 @@
+/* iMac */
+@media screen and (min-width: 1640px) {
+	/* section.pagina {width: calc(100% - 32em); padding: 0 16em} */
+	
+	section#formula .contenedor {max-width: 100% !important;}
+}
+
+/* Macbook */
+@media screen and (min-width: 1334px) and (max-width: 1639px) {
+	/* section.pagina .contenedor{width: calc(100% - 16em); padding: 0 8em} */
+}
+
+
+
+
+/* Laptop */
+@media screen and (min-width: 1160px) and (max-width: 1440px) {
+
+
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1261px) {
+
+
+}
+
+
+
+
+/* Celulares */
+@media screen and (min-width: 231px) and (max-width: 640px) {
+
+
+}
+
+/* Tabletas */
+
+@media screen and (min-width: 641px) and (max-width: 1079px) {
+
+
+}
+
+
+
+@media screen and (min-width: 231px) and (max-width: 1079px) {
+
+
+
+	header {mix-blend-mode: difference; display: flex; height: auto;}
+	header a#menu {display: inline-flex}
+	header .logo {flex: 1 1 100%; max-width: 100vw; min-height: 50vh}
+	header .espacio {padding: 1.5rem 1rem; width: calc(100% - 2rem); max-width: inherit; flex: auto}
+	header .menu {display: flex; top: -10rem; opacity: 0; order: 3; flex: 1 1 100%; flex-direction: column; position: absolute; width: calc(100% - 4rem);
+		-webkit-transition: 600ms;
+			-moz-transition: 600ms;
+			-o-transition: 600ms;
+			-ms-transition: 600ms;
+			transition: 600ms;
+	}
+
+	
+	header.act .menu {top: 5rem;}
+	header a#menu:hover {color: var(--cremita-med);}
+	header .espacio .izq {order: 1; position: relative; top: 0; width: 100%; justify-content: space-between}
+ 	header .espacio .der {flex: auto; order: 2; position: absolute; right: 2rem; top: 2rem; display: none;}
+
+	header .espacio nav ul {position: relative; width: 100%; flex-direction: column; background-color: rgba(207,207,207,.8); backdrop-filter: blur(15px);}
+	header .menu ul,
+	header .menu ul li a {box-shadow: none; border-radius: 0; background-color: transparent;}
+	
+	header .menu a {padding: .5rem 1rem; width: 100%;}
+
+	  
+    header .espacio nav ul li:first-child a {
+       padding-top: 1rem;
+    }
+    header .espacio nav ul li:last-child a {
+  	  padding-bottom: 1rem;
+    }
+
+	/* Core */
+
+	main {margin-bottom: calc(100vh - 4rem)}
+	section .contenedor {width: calc(100% - 2rem); padding: 4rem 1rem; flex-direction: column;}
+	section .columna.dos {width: 100%; flex: auto}
+	h1 {font-size:3rem}
+	h2 {font-size: 32px}
+	h3 {font-size: 24px}
+	p {font-size: 16px}
+
+		span.boton a {padding: .75rem 1rem}
+
+	figure.thumb {max-width: 80px; height: min(4rem, 80px)}
+
+
+	/* Animaciones */
+
+		@keyframes fondoAnimated {
+			0%{background-size: 120vh ;}
+			50% {background-size: 130vh ;}
+			100% {background-size: 120vh ;}
+		}
+
+
+		section#de-dia h1.display,
+		section#de-noche h1.display {font-size: 4rem}
+	/* Portada */
+	section#portada .contenedor{width: calc(100% - 2rem); padding: 4rem 1rem}
+	section#portada a.logo {min-height: 120px;}
+	section#portada h4.display {text-align: center; width: 100%}
+
+	section .espacioscroll {bottom: inherit; top: 50%; transform: translateY(-50%);}
+	
+	section#portada .espaciovideo video {
+        width: 100vw;
+        height: 100vh !important;
+        aspect-ratio: auto !important;
+        object-fit: cover;
+    }
+
+	section#portada #countdown {font-size: 1rem; gap: 1rem !important}
+		section#portada #countdown span {font-size: 2rem;}
+			section#portada #countdown .cifra {min-width: 80px; gap: .4rem}
+
+	/* Hero */
+	section#about {min-height: 115vh}
+	section#about .contenedor {padding: 0; width: 100%; align-self: stretch; justify-content: end;}
+	section#about .contenedor .cajatexto {align-self: stretch; z-index: 88; width: calc(100% - 4rem); padding: 4rem 2rem; justify-content: end !important; flex: auto; top: -8rem;}
+	section#about figure.fotograma {top: 0; left: 0; width: calc(100% - 4rem); min-height: calc(100vh / 3); position: absolute; margin: 1rem 0 0}
+
+
+
+	/* Beneficios */
+	section#boletos ul.grid li {grid-column: span 12;}
+	section#boletos ul.grid li h3.display {height: auto;}
+
+	/* Image */
+	section.image {background-color: var(--color-contraste); color: var(--color-claro); min-height: auto; flex-direction: column; justify-content: flex-start; width: 100% !important}
+	section.image .contenedor {width: 100%; padding: 0; flex-direction: column; order: 1}
+	
+		section.image .columna.texto {width: calc(100% - 4rem); padding: 4rem 2rem; order: 2;}
+		section.image .columna.imagen {order: 1; width: 100%; min-height: 40vh; }
+
+	section.image figure.imagenfondo {background-attachment: inherit;  order: 2; min-height: 40vh; height: inherit; background-size: 75% !important}
+	section.image figure.imagenfondo .deg {opacity: 0;}
+		section.image .columna.dos figure.fotograma {width: 100%;}
+
+	section#eventos .contenedor {padding: 4rem 1rem; width: calc(100% - 2rem)}
+
+	section.calendario .encabezado {width: calc(100% - 2rem); padding: 4rem 1rem 2rem;}
+	section.calendario h1.display {font-size: 2.5rem}
+	section.calendario .contenedor {padding: 0; width: 100%; gap: 0 !important}
+
+	.calendario-mes > h2 {top: 0; padding: 1.25rem 4rem; width: calc(100% - 8rem);}
+	.calendario-columnas {grid-template-columns: 1fr; gap: 3rem;}
+	.calendario-dias {display: flex; flex-direction: column; overflow-x: visible;}
+	.calendario-dia {
+		width: 100%;
+		min-height: auto;
+		display: grid;
+		grid-template-columns: 4.5rem minmax(0, 1fr);
+		gap: .75rem;
+		border-right: 0;
+		padding: 1rem 0;
+	}
+	.calendario-fecha {align-items: center;}
+	ul.calendario-lista li.calendario-evento a,
+	ul.calendario-lista li.calendario-evento .calendario-evento-contenido {gap: .35rem; padding: .75rem 0;}
+	.calendario-info h4 {font-size: 1rem;}
+	.calendario-fecha strong {font-size: 2rem;}
+	.calendario-hora {font-size: 1rem; justify-self: start;}
+	section .slick-track {gap: 0 !important}
+	
+	section .slick-prev{left: -0.25rem !important}
+	section .slick-next{right: -0.25rem !important}
+	
+	section .slide figure.fotograma {min-height: 640px}
+	.slider .slick-dots li {width: 30px;}
+	section .slide.talento .caja.noboletos {opacity: 0;}
+	section .slide.talento .infoboletos {padding: 2rem; width: calc(100% - 4rem); height: calc(100% - 4rem); opacity: 1 !important; background-color: rgba(0,0,0,0.7);}
+	section .slide.talento .infoboletos h4 {font-size: 1rem;}
+	section .slide.talento .infoboletos .precios {gap: 1rem !important}
+
+		section#patrocinadores .contenedor {width: calc(100% - 4rem); padding: 2rem}
+		section#patrocinadores ul.grid {grid-template-columns: repeat(12,1fr); gap: 1rem}
+		section#patrocinadores ul.grid li {grid-column: span 4}
+		section#patrocinadores ul.grid li figure.logo {width: 100%; max-width: inherit}
+		section#patrocinadores ul.grid li#santander {grid-column: span 12}
+
+			section#patrocinadores #sectur {grid-column: span 4 !important;}
+
+			section#patrocinadores ul.grid li#santander figure.logo {background-size: 70%}
+			section#patrocinadores #sectur figure.logo {background-size: 100%; background-position: 50% 60%;}
+			section#patrocinadores #heineken figure.logo {background-size: 60%}
+			section#patrocinadores #tio-nacho figure.logo {background-size: 50%}
+			section#patrocinadores #jose-cuervo figure.logo {background-size: 70%}
+			section#patrocinadores #liverpool figure.logo {background-size: 80%}
+			section#patrocinadores #mas-color figure.logo {background-size: 50%}
+			section#patrocinadores #la-costena figure.logo {background-size: 50%}
+
+	footer {min-height: 100vh}
+		footer .espacio {width: calc(100% - 4rem); padding: 4rem 2rem 1rem; flex-direction: column; gap: 2rem}
+		footer .logo {width: 100%; max-width: 100%}
+	
+		footer .columna.cuatro {width: 100%; flex-direction: column;}
+			
+
+}
+
+
+
+/* iPad Pro */
+@media only screen  and (min-device-height: 1024px)  and (max-device-height: 1366px)  and (orientation: portrait)and (-webkit-min-device-pixel-ratio: 1.5) {
+
+
+
+}
