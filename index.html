@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PITAN PITAN — Sebas & Mate Fest 2026</title>
+<meta name="description" content="PITAN PITAN — Sebas & Mate Fest. 15–21 Junio 2026. CDMX · Puerto Escondido. Colombia en el Mundial 2026." />
+<meta property="og:title" content="PITAN PITAN — Sebas & Mate Fest 2026" />
+<meta property="og:description" content="15–21 Junio · CDMX + Puerto Escondido · Colombia vs Uzbekistán en el Azteca 🇨🇴" />
+<meta property="og:image" content="https://sebastianoguerae.github.io/pitan-pitan/assets/casa-seri/seri_8_2.jpeg" />
+<meta property="og:url" content="https://sebastianoguerae.github.io/pitan-pitan/" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -54,8 +61,8 @@
   </div>
   <div id="mobile-menu" class="hidden md:hidden border-t border-black/10 bg-crema">
     <div class="flex flex-col px-4 py-2 gap-3 font-display text-xl tracking-wider">
-      <a href="#convocados" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Convocados</a>
-      <a href="#itinerario" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Itinerario</a>
+      <a href="#convocados" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Convocatoria</a>
+      <a href="#itinerario" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Agenda</a>
       <a href="#barra" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Barra</a>
       <a href="#locations" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Locations</a>
       <a href="#cdmx" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">CDMX</a>
@@ -95,14 +102,15 @@
   <div class="relative z-20 flex flex-col items-center">
     <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="w-full max-w-xl mb-6" />
     <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-16 md:h-20 mb-6 opacity-90" />
-    <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
+    <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-1">15 – 21 JUNIO · 2026</p>
+<p class="font-display text-lg md:text-xl tracking-[0.15em] text-center text-col-red mb-2">COLOMBIA EN EL MUNDIAL 🇨🇴</p>
     <div class="flex items-center gap-3 mb-10">
       <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
       <span class="text-col-red font-bold text-2xl">·</span>
       <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">PUERTO ESCONDIDO</span>
     </div>
     <a href="#itinerario"
-       class="font-display text-xl tracking-widest border-2 border-black px-8 py-3 hover:bg-black hover:text-crema transition-colors duration-200">
+       class="font-display text-xl tracking-widest bg-col-yellow border-2 border-col-yellow px-10 py-4 hover:bg-black hover:text-crema hover:border-black transition-colors duration-200">
       VER AGENDA
     </a>
   </div>
@@ -139,7 +147,7 @@
 <section id="itinerario" class="py-20 px-4">
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
-      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">HOJA DE RUTA</p>
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">6 DÍAS · 2 CIUDADES · 1 MUNDIAL</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">AGENDA</h2>
     </div>
     <div id="itinerario-container" class="space-y-12"></div>
@@ -147,6 +155,15 @@
 </section>
 <script>
 const dias = [
+  {
+    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
+    foto: 'assets/cdmx-logos/cdmx-worldcup.jpg',
+    actividades: [
+      { hora: 'TODO EL DÍA', texto: 'Llegadas a CDMX ✈️', nota: 'Check-in · La Casa de la Selección, Descartes 47, Anzures' },
+      { hora: 'TARDE',       texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest oficial · Pantallas gigantes · campomarte26.com' },
+      { hora: 'NOCHE',       texto: 'Cena de bienvenida en la Casa 🥂' },
+    ]
+  },
   {
     dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
     foto: 'assets/cdmx-logos/cdmx-worldcup.jpg',
@@ -203,7 +220,7 @@ const dias = [
     dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
     foto: 'assets/casa-seri/seri_14_1.jpeg',
     actividades: [
-      { hora: 'MAÑANA',   texto: 'Brunch de Despedida 🥂' },
+      { hora: 'MAÑANA',   texto: 'Brunch Sabatino 🥂' },
       { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
       { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
       { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
@@ -237,13 +254,17 @@ dias.forEach(d => {
         <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
       </div>`;
     if (a.colombia) return `
-      <div class="border-2 border-col-yellow bg-col-yellow/10 p-4 flex items-center gap-4">
-        <span class="font-display text-xl text-col-red min-w-[80px]">${a.hora}</span>
-        <div class="flex-1">
-          <p class="font-display text-2xl md:text-3xl tracking-wider">${a.texto}</p>
-          ${a.lugar ? `<p class="text-sm tracking-widest text-black/60 uppercase mt-1">${a.lugar}</p>` : ''}
+      <div class="border-2 border-col-yellow bg-col-yellow p-5 flex items-center gap-4">
+        <div class="text-center min-w-[80px]">
+          <span class="font-display text-2xl text-col-red block">${a.hora}</span>
+          <span class="text-xs tracking-widest text-black/50 block">CDMX</span>
         </div>
-        <span class="text-3xl">🏆</span>
+        <div class="flex-1">
+          <span class="text-xs tracking-widest text-col-blue font-bold uppercase">🇨🇴 GRUPO K · MATCH 24</span>
+          <p class="font-display text-2xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
+          ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
+        </div>
+        <span class="text-4xl">🏆</span>
       </div>`;
     if (a.mundial) return `
       <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
@@ -311,6 +332,7 @@ dias.forEach(d => {
           </iframe>
         </div>
         <p class="text-xs text-crema/40 mt-2 tracking-widest">"YO TE ALIENTO" · "SÍ SÍ SÍ" · "QUÉ LINDA E'"</p>
+<p class="mt-3 text-crema/70 text-sm italic">"Tú tienes la llave de mi corazón, yo te aliento, toda mi vida seré Tricolor, cumbiambero."</p>
       </div>
     </div>
   </div>
@@ -379,9 +401,9 @@ dias.forEach(d => {
 
       <div class="group">
         <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
-          <img src="assets/casa-caravana/terraza.jpeg"
-               alt="La Casa de la Selección"
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src="assets/casa-caravana/casa-descartes.jpeg"
+               alt="La Casa de la Selección — Descartes 47, Anzures"
+               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
         </div>
         <div class="border-l-4 border-col-yellow pl-4">
           <p class="font-display text-col-yellow tracking-widest text-sm mb-1">CDMX · ANZURES</p>
@@ -404,8 +426,13 @@ dias.forEach(d => {
           <p class="font-display text-col-red tracking-widest text-sm mb-1">CDMX · MATCH 24</p>
           <h3 class="font-display text-3xl tracking-wider mb-2">ESTADIO<br>AZTECA</h3>
           <p class="text-crema/70 text-sm leading-relaxed">El templo del fútbol mundial. 87,000 almas. Sede del partido Colombia vs Uzbekistán, miércoles 17 de junio, 9:00 PM.</p>
-          <div class="mt-3 inline-flex items-center gap-2 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2">
-            🇨🇴 MIÉ 17 · 9:00 PM
+          <div class="mt-3 flex flex-wrap gap-2">
+            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2">
+              🇨🇴 MIÉ 17 · 9:00 PM
+            </div>
+            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-crema/50 border border-crema/20 px-4 py-2">
+              87,000 ALMAS
+            </div>
           </div>
         </div>
       </div>
@@ -622,6 +649,24 @@ dias.forEach(d => {
       <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover w-full" />
       <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines" class="aspect-[4/3] object-cover w-full" />
     </div>
+    <div class="grid grid-cols-4 border border-crema/20 mb-12 text-center">
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">8</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Suites</p>
+      </div>
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">16</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Huéspedes</p>
+      </div>
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">∞</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Staff</p>
+      </div>
+      <div class="py-4">
+        <p class="font-display text-3xl text-col-yellow">🌊</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Frente al Mar</p>
+      </div>
+    </div>
     <div class="space-y-12">
 
       <div>
@@ -713,7 +758,7 @@ dias.forEach(d => {
       <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">FEDERACIÓN PITAN PITAN</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">CONVOCATORIA</h2>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">OFICIAL</h2>
-      <p class="mt-4 text-sm tracking-widest text-crema/60 uppercase">Copa del Mundo · CDMX 2026 · Grupo de la Muerte</p>
+      <p class="mt-4 text-sm tracking-widest text-crema/60 uppercase">Copa del Mundo · CDMX 2026 · La Mejor Hinchada del Planeta 🇨🇴</p>
     </div>
 
     <!-- Cuerpo técnico -->
@@ -766,7 +811,7 @@ dias.forEach(d => {
         </div>
         <div class="border border-crema/20 p-4 flex flex-col items-center text-center hover:border-col-yellow transition-colors sm:col-start-2">
           <span class="text-xs tracking-widest text-crema/30 mb-1">C3</span>
-          <span class="font-display text-col-yellow text-3xl leading-none mb-2">7</span>
+          <span class="font-display text-col-yellow text-3xl leading-none mb-2">9</span>
           <p class="font-display text-base tracking-wider leading-tight mb-1">MATEO<br>CAICEDO</p>
           <p class="text-xs tracking-widest text-crema/40 uppercase">Mindfulness FC</p>
         </div>
@@ -859,7 +904,7 @@ dias.forEach(d => {
   <div class="max-w-6xl mx-auto text-center">
     <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
     <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-12 mx-auto mb-4 opacity-60" />
-    <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2025</p>
+    <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2026</p>
     <p class="mt-4 text-crema/30 text-xs tracking-widest">PITAN PITAN · 15–21 JUNIO · CON TODO EL AMOR 🇨🇴</p>
     <div class="flex mt-8 h-1 max-w-xs mx-auto">
       <div class="flex-1 bg-col-yellow"></div>
