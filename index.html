@@ -130,7 +130,16 @@
   </div>
 </section>
 <!-- ITINERARIO -->
-<section id="itinerario" class="py-20 px-4">
+<section id="itinerario" class="py-20 px-4 relative overflow-hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.1) brightness(0.4); opacity:0.13;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, #ECEFE8 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 right-3 text-right">
+      <span class="font-display text-black/20 text-6xl leading-none block">10</span>
+    </div>
+  </div>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">6 DÍAS · 2 CIUDADES · 1 MUNDIAL</p>
@@ -278,7 +287,16 @@ dias.forEach(d => {
 });
 </script>
 <!-- BARRA OFICIAL -->
-<section id="barra" class="py-20 px-4 bg-black text-crema">
+<section id="barra" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 left-3">
+      <span class="font-display text-white/15 text-6xl leading-none block">7</span>
+    </div>
+  </div>
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">CANTA CON LA TRICOLOR</p>
@@ -318,47 +336,17 @@ dias.forEach(d => {
     </div>
   </div>
 </section>
-<!-- JUGADORES STRIP -->
-<div class="grid grid-cols-4 overflow-hidden" style="height:220px">
-  <div class="relative overflow-hidden group">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
-         alt="James" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-    <div class="absolute bottom-3 left-3">
-      <span class="font-display text-col-yellow text-2xl leading-none">10</span>
-      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">JAMES</p>
-    </div>
-  </div>
-  <div class="relative overflow-hidden group">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
-         alt="Lucho" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-    <div class="absolute bottom-3 left-3">
-      <span class="font-display text-col-yellow text-2xl leading-none">7</span>
-      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">LUCHO</p>
-    </div>
-  </div>
-  <div class="relative overflow-hidden group">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
-         alt="Yerry" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-    <div class="absolute bottom-3 left-3">
-      <span class="font-display text-col-yellow text-2xl leading-none">13</span>
-      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">YERRY</p>
-    </div>
-  </div>
-  <div class="relative overflow-hidden group">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
-         alt="Richard" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-    <div class="absolute bottom-3 left-3">
-      <span class="font-display text-col-yellow text-2xl leading-none">8</span>
-      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">RICHARD</p>
-    </div>
-  </div>
-</div>
 <!-- LOCATIONS -->
-<section id="locations" class="py-20 px-4 bg-black text-crema">
+<section id="locations" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 right-3 text-right">
+      <span class="font-display text-white/15 text-6xl leading-none block">13</span>
+    </div>
+  </div>
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
       <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">BASE DE OPERACIONES</p>
@@ -594,7 +582,16 @@ dias.forEach(d => {
   </div>
 </section>
 <!-- GUIA PUERTO -->
-<section id="puerto" class="py-20 px-4 bg-black text-crema">
+<section id="puerto" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 left-3">
+      <span class="font-display text-white/15 text-6xl leading-none block">8</span>
+    </div>
+  </div>
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16">
       <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
