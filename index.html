@@ -99,6 +99,7 @@
   <!-- Content -->
   <div class="relative z-20 flex flex-col items-center">
     <img src="assets/logo.jpeg" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
+    <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-16 md:h-20 mb-6 opacity-90" />
     <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
     <div class="flex items-center gap-3 mb-10">
       <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
@@ -158,6 +159,7 @@ convocados.forEach(p => {
 const dias = [
   {
     dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
+    foto: 'assets/eventos/soho_15.jpeg',
     actividades: [
       { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest · Pantallas gigantes · Comida · Arte · campomarte26.com' },
       { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
@@ -170,6 +172,7 @@ const dias = [
   },
   {
     dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
+    foto: 'assets/azteca.jpg',
     actividades: [
       { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM' },
       { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
@@ -180,6 +183,7 @@ const dias = [
   },
   {
     dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
+    foto: 'assets/casa-seri/seri_1_9.jpeg',
     actividades: [
       { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️' },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
@@ -191,6 +195,7 @@ const dias = [
   },
   {
     dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    foto: 'assets/casa-seri/seri_8_1.jpeg',
     actividades: [
       { paralelo: [
           { texto: 'Surf 🏄',                    nota: 'Sebs Noguera' },
@@ -206,6 +211,7 @@ const dias = [
   },
   {
     dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    foto: 'assets/casa-seri/seri_14_1.jpeg',
     actividades: [
       { hora: 'MAÑANA',   texto: 'Brunch de Despedida 🥂' },
       { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
@@ -215,6 +221,7 @@ const dias = [
   },
   {
     dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    foto: 'assets/casa-seri/seri_5_1.jpeg',
     actividades: [
       { hora: '11:00 AM', texto: 'Tour en barco · Lagunas de Manialtepec 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM' },
       { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹' },
@@ -268,6 +275,7 @@ dias.forEach(d => {
 
   container.innerHTML += `
     <div>
+      ${d.foto ? `<div class="overflow-hidden aspect-[21/9] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
       <div class="flex items-baseline gap-3 mb-6 pb-4 border-b-2 border-black flex-wrap">
         <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
         <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
@@ -330,8 +338,10 @@ dias.forEach(d => {
           <h3 class="font-display text-3xl tracking-wider mb-2">CASA<br>SERI</h3>
           <p class="text-crema/70 text-sm leading-relaxed">8 suites · 16 huéspedes · Full staff · Piscina · Pabellón de yoga con vista al mar · Frente al Pacífico.</p>
           <div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga pavilion" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
             <img src="assets/casa-seri/seri_11_6.jpeg" alt="Pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_9_6.jpeg" alt="Living area" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_3_1.jpeg" alt="Suite" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
           </div>
         </div>
       </div>
@@ -345,6 +355,10 @@ dias.forEach(d => {
     <div class="text-center mb-16">
       <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">CDMX</h2>
+      <div class="mt-8 relative overflow-hidden aspect-[21/9] max-h-64">
+        <img src="assets/cdmx-logos/cdmx-worldcup.jpg" alt="CDMX World Cup 2026" class="w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-crema/80 to-transparent"></div>
+      </div>
     </div>
     <div class="space-y-12">
 
@@ -396,10 +410,13 @@ dias.forEach(d => {
             <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Juárez · Speakeasy</p>
             <p class="text-sm text-black/70">Bar subterráneo escondido. Ambiente íntimo. Reserva por Instagram.</p>
           </div>
-          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">SOHO HOUSE</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Cuauhtémoc · Members Club</p>
-            <p class="text-sm text-black/70">Piscina de 19m. Pool Sessions con DJ. Nuestra sede del martes 16.</p>
+          <div class="border border-black/20 hover:border-col-yellow transition-colors overflow-hidden">
+            <img src="assets/eventos/soho_15.jpeg" alt="Soho House Pool House" class="w-full aspect-video object-cover" />
+            <div class="p-4">
+              <p class="font-display text-xl tracking-wider">SOHO HOUSE</p>
+              <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Cuauhtémoc · Members Club</p>
+              <p class="text-sm text-black/70">Pool House con árbol centenario y piscina de 19m. Nuestra sede del martes 16.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -440,9 +457,11 @@ dias.forEach(d => {
       <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">ESCONDIDO</h2>
     </div>
     <div class="grid grid-cols-3 gap-2 mb-16">
-      <img src="assets/casa-seri/seri_5_1.jpeg" alt="Casa Seri grounds" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_1_9.jpeg" alt="Casa Seri aerial" class="aspect-[4/3] object-cover w-full col-span-2 row-span-1" />
       <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga pavilion" class="aspect-[4/3] object-cover w-full" />
-      <img src="assets/casa-seri/seri_11_6.jpeg" alt="Pool" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_9_6.jpeg" alt="Living area" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_14_1.jpeg" alt="Cena" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_3_1.jpeg" alt="Suite con pool" class="aspect-[4/3] object-cover w-full" />
     </div>
     <div class="space-y-12">
 
@@ -532,6 +551,7 @@ dias.forEach(d => {
 <footer class="bg-black text-crema py-12 px-4">
   <div class="max-w-6xl mx-auto text-center">
     <img src="assets/logo.jpeg" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
+    <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-12 mx-auto mb-4 opacity-60" />
     <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2025</p>
     <p class="mt-4 text-crema/30 text-xs tracking-widest">PITAN PITAN · 15–21 JUNIO · CON TODO EL AMOR 🇨🇴</p>
     <div class="flex mt-8 h-1 max-w-xs mx-auto">
