@@ -100,7 +100,7 @@
   </div>
   <!-- Content -->
   <div class="relative z-20 flex flex-col items-center">
-    <img src="assets/logo-nuevo.png" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
+    <img src="assets/logo-nuevo.png" alt="PITAN PITAN" class="w-full max-w-xl mb-8" />
     <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-16 md:h-20 mb-6 opacity-90" />
     <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
     <div class="flex items-center gap-3 mb-10">
@@ -121,7 +121,7 @@
 </section>
 <!-- ITINERARIO -->
 <section id="itinerario" class="py-20 px-4">
-  <div class="max-w-3xl mx-auto">
+  <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16">
       <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">HOJA DE RUTA</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">AGENDA</h2>
@@ -249,7 +249,7 @@ dias.forEach(d => {
 
   container.innerHTML += `
     <div>
-      ${d.foto ? `<div class="overflow-hidden aspect-[21/9] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
+      ${d.foto ? `<div class="overflow-hidden aspect-[16/5] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
       <div class="flex items-baseline gap-3 mb-6 pb-4 border-b-2 border-black flex-wrap">
         <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
         <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
@@ -300,7 +300,7 @@ dias.forEach(d => {
   </div>
 </section>
 <!-- LOS ELEGIDOS -->
-<section class="py-16 px-4 bg-crema overflow-hidden">
+<section class="py-20 px-4 bg-crema overflow-hidden">
   <div class="max-w-6xl mx-auto">
     <p class="font-display text-col-red text-lg tracking-[0.3em] mb-8 text-center">LOS ELEGIDOS</p>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -359,7 +359,7 @@ dias.forEach(d => {
       <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">BASE DE OPERACIONES</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">LOCATIONS</h2>
     </div>
-    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="grid md:grid-cols-3 gap-8">
 
       <div class="group">
         <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
@@ -419,97 +419,173 @@ dias.forEach(d => {
 <!-- GUIA CDMX -->
 <section id="cdmx" class="py-20 px-4">
   <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
+    <div class="text-center mb-8">
       <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">CDMX</h2>
-      <div class="mt-8 relative overflow-hidden aspect-[21/9] max-h-64">
-        <img src="assets/cdmx-logos/cdmx-worldcup.jpg" alt="CDMX World Cup 2026" class="w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-gradient-to-t from-crema/80 to-transparent"></div>
+    </div>
+
+    <!-- CDMX World Cup banner -->
+    <div class="relative overflow-hidden aspect-[21/6] mb-16">
+      <img src="assets/cdmx-logos/cdmx-worldcup.jpg" alt="CDMX World Cup 2026" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-gradient-to-t from-crema/80 to-transparent"></div>
+      <div class="absolute bottom-4 left-6">
+        <p class="font-display text-2xl tracking-widest text-black/70">LA LISTA DE MARIANA</p>
+        <p class="text-sm text-black/50 tracking-widest">Casa Caravana · Anzures, CDMX</p>
       </div>
     </div>
+
     <div class="space-y-12">
 
+      <!-- EL BARRIO -->
       <div>
         <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-red">🍽️</span> RESTAURANTES
+          <span class="text-col-yellow">📍</span> EL BARRIO — ANZURES
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TAQUERÍA SELENE</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Al Pastor</p>
+            <p class="text-sm text-black/70">El mejor al pastor de la ciudad, servido callejero. 5 minutos de Casa Caravana.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">FRUTOS PROHIBIDOS</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Desayunos</p>
+            <p class="text-sm text-black/70">Chilaquiles y jugos frescos. El desayuno del barrio.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">OTRO CAFÉ</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Café</p>
+            <p class="text-sm text-black/70">Favorito del barrio para trabajar. Si está lleno, ve al Hugo Café a media cuadra.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LAGO ALGO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Chapultepec · Desayunos</p>
+            <p class="text-sm text-black/70">Desayunos en el bosque de Chapultepec con exposiciones de arte.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LOS PANCHOS</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Mexicano</p>
+            <p class="text-sm text-black/70">Pozole y enchiladas de barrio. Clásico.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TERRAZA CHA CHA CHA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Terraza</p>
+            <p class="text-sm text-black/70">Terraza frente al Monumento a la Revolución. Para drinks con vista.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLANCO -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-red">🥩</span> POLANCO — 5 MIN
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TACOS EL TURIX</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Cochinita</p>
+            <p class="text-sm text-black/70">Tortas y cochinita. El spot de tacos de Polanco.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ENTREMAR</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Mariscos</p>
+            <p class="text-sm text-black/70">Mariscos frescos. Sin pretensiones, mucho sabor.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CAFEBRERÍA EL PÉNDULO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Café + Librería</p>
+            <p class="text-sm text-black/70">Café dentro de una librería. Ideal para una mañana tranquila.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">NIDRADO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Brunch</p>
+            <p class="text-sm text-black/70">El mejor brunch de la zona. Llega temprano o hay espera.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LING LING</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Ritz · Asian</p>
+            <p class="text-sm text-black/70">By Hakkasan, en el Ritz. Vistas de la ciudad y cocina asiática de nivel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDESA / ROMA -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-blue">🌮</span> CONDESA / ROMA — 15 MIN
         </h3>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
             <p class="font-display text-xl tracking-wider">MAIZAJO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Maíz & Tradición</p>
-            <p class="text-sm text-black/70">Alta cocina mexicana del chef Santiago Muñoz. Mesa del Chef — experiencia única. Fernando Montes de Oca 113.</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Mesa del Chef</p>
+            <p class="text-sm text-black/70">Alta cocina del maíz. Planta baja tiene tacos; arriba la experiencia completa. Nuestra sede del martes.</p>
           </div>
           <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">QUINTONIL</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Top 50 World</p>
-            <p class="text-sm text-black/70">Jorge Vallejo. Ingredientes mexicanos en técnica contemporánea. Newton 55.</p>
+            <p class="font-display text-xl tracking-wider">LALO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Clásico</p>
+            <p class="text-sm text-black/70">Institución de la Condesa. Brunches y almuerzos de toda la vida.</p>
           </div>
           <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">CONTRAMAR</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Mariscos</p>
-            <p class="text-sm text-black/70">La mesa de mariscos más icónica de la ciudad. Durango 200. Reserva con tiempo.</p>
+            <p class="font-display text-xl tracking-wider">MI COMPA CHAVA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Ambiente</p>
+            <p class="text-sm text-black/70">Casual, divertido, siempre lleno. El plan de noche perfecto.</p>
           </div>
           <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">ROSETTA</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Italiana-MX</p>
-            <p class="text-sm text-black/70">Elena Reygadas. Espacio hermoso en casona porfiriana. Orizaba 9.</p>
+            <p class="font-display text-xl tracking-wider">CARIÑITO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Fusion</p>
+            <p class="text-sm text-black/70">Tacos con influencia Thai. Raro y delicioso.</p>
           </div>
           <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">PUJOL</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · #5 World</p>
-            <p class="text-sm text-black/70">Enrique Olvera. El taco de mole madre. Tennyson 133.</p>
+            <p class="font-display text-xl tracking-wider">PANADERÍA ROSETTA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Panadería</p>
+            <p class="text-sm text-black/70">"La panadería más bonita de la ciudad." Elena Reygadas. Hay fila. Vale la pena.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ORINOCO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Varias · Venezolano</p>
+            <p class="text-sm text-black/70">Arepas venezolanas. Hay locales en toda la ciudad.</p>
           </div>
         </div>
       </div>
 
+      <!-- CULTURA & EXPERIENCIAS -->
       <div>
         <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-yellow">🍹</span> BARES
+          <span class="text-col-yellow">🏛️</span> CULTURA & EXPERIENCIAS
         </h3>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">LICORERÍA LIMANTOUR</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Cócteles</p>
-            <p class="text-sm text-black/70">El mejor bar de cócteles de LATAM. Álvaro Obregón 106.</p>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">MUSEO ANTROPOLOGÍA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Chapultepec · 2–3hrs</p>
+            <p class="text-sm text-black/70">A 10 min de la casa. Reserva online con anticipación. Imprescindible.</p>
           </div>
-          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">JULES BASEMENT</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Juárez · Speakeasy</p>
-            <p class="text-sm text-black/70">Bar subterráneo escondido. Ambiente íntimo. Reserva por Instagram.</p>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CASA FRIDA KAHLO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Coyoacán · Museo</p>
+            <p class="text-sm text-black/70">Reserva online con bastante anticipación. Coyoacán también vale el paseo.</p>
           </div>
-          <div class="border border-black/20 hover:border-col-yellow transition-colors overflow-hidden">
-            <img src="assets/eventos/soho_15.jpeg" alt="Soho House Pool House" class="w-full aspect-video object-cover" />
-            <div class="p-4">
-              <p class="font-display text-xl tracking-wider">SOHO HOUSE</p>
-              <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Cuauhtémoc · Members Club</p>
-              <p class="text-sm text-black/70">Pool House con árbol centenario y piscina de 19m. Nuestra sede del martes 16.</p>
-            </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">XOCHIMILCO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Sur · Trajineras</p>
+            <p class="text-sm text-black/70">Los canales de trajineras. El plan de domingo clásico de CDMX.</p>
           </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-blue">📍</span> ZONAS
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="border border-black/20 p-4">
-            <p class="font-display text-lg tracking-wider">ANZURES</p>
-            <p class="text-sm text-black/60 mt-1">Residencial, jardines, a pasos de Polanco. Nuestra base.</p>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">MUSEO SOUMAYA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Entrada libre</p>
+            <p class="text-sm text-black/70">El edificio de Carlos Slim. Colección ecléctica, entrada gratis.</p>
           </div>
-          <div class="border border-black/20 p-4">
-            <p class="font-display text-lg tracking-wider">ROMA NORTE</p>
-            <p class="text-sm text-black/60 mt-1">Cafés, galerías, terrazas. La zona más viva.</p>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CASTILLO CHAPULTEPEC</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Bosque · Vistas</p>
+            <p class="text-sm text-black/70">Vistas panorámicas de la ciudad desde el único castillo-palacio de América.</p>
           </div>
-          <div class="border border-black/20 p-4">
-            <p class="font-display text-lg tracking-wider">CONDESA</p>
-            <p class="text-sm text-black/60 mt-1">Parques, brunch, arquitectura art déco.</p>
-          </div>
-          <div class="border border-black/20 p-4">
-            <p class="font-display text-lg tracking-wider">POLANCO</p>
-            <p class="text-sm text-black/60 mt-1">Lujo, restaurantes top, Chapultepec.</p>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">PLAZA SAN JACINTO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">San Ángel · Sábados</p>
+            <p class="text-sm text-black/70">Mercado de artesanías los sábados. San Ángel es uno de los barrios más bonitos de CDMX.</p>
           </div>
         </div>
+        <p class="text-xs text-black/30 mt-6 tracking-widest text-right">LISTA DE MARIANA · CASA CARAVANA · casacaravana.com</p>
       </div>
 
     </div>
