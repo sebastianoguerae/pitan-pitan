@@ -128,7 +128,136 @@ convocados.forEach(p => {
     </div>`;
 });
 </script>
-  <!-- ITINERARIO -->
+<!-- ITINERARIO -->
+<section id="itinerario" class="py-20 px-4">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">HOJA DE RUTA</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">ITINERARIO</h2>
+    </div>
+    <div id="itinerario-container" class="space-y-12"></div>
+  </div>
+</section>
+<script>
+const dias = [
+  {
+    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Pantallas gigantes · Comida · Arte · campomarte26.com' },
+      { hora: '11:00 AM', texto: 'España vs Cabo Verde — Atlanta', mundial: true },
+      { hora: '2:00 PM',  texto: 'Bélgica vs Egipto — Seattle', mundial: true },
+      { hora: 'TARDE',    texto: 'FIFA Fan Fest — Zócalo 🎉', nota: 'Entrada gratuita · Hasta 100k personas · Ambiente mundialero' },
+      { hora: '5:00 PM',  texto: 'Arabia Saudita vs Uruguay — Miami', mundial: true },
+      { hora: '8:00 PM',  texto: 'Irán vs Nueva Zelanda — Los Ángeles', mundial: true },
+    ]
+  },
+  {
+    dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
+      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic' },
+      { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
+      { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
+      { hora: 'NOCHE',    texto: 'Cena en Maizajo — Mesa del Chef' },
+      { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
+    ]
+  },
+  {
+    dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM' },
+      { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
+      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌' },
+      { hora: '7:00 PM',  texto: 'Ghana vs Panamá — Toronto', mundial: true },
+      { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
+    ]
+  },
+  {
+    dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️' },
+      { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
+      { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽' },
+      { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
+      { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'Viendo México vs Corea del Sur (8pm)' },
+    ]
+  },
+  {
+    dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'AM',       texto: 'Surf 🏄', nota: 'Profesor: Sebastián Noguera' },
+      { hora: 'AM',       texto: 'Yoga 🧘', nota: 'Profesor: Alejandro Castillo' },
+      { hora: 'AM',       texto: 'Mindfulness Tántrico 🌀', nota: 'Profesor: Mateo Caicedo' },
+      { hora: 'AM',       texto: 'Actividades Camp Kajuyali 🌿', nota: 'Profesora: Mariana Leyva' },
+      { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
+      { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
+      { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
+      { hora: '8:00 PM',  texto: 'Brasil vs Haití — Filadelfia', mundial: true },
+    ]
+  },
+  {
+    dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Brunch de Despedida 🥂' },
+      { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
+      { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
+    ]
+  },
+  {
+    dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: '11:00 AM', texto: 'Tour en barco · Lagunas de Manialtepec 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM' },
+      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹' },
+      { hora: '5:00 PM',  texto: 'España vs Arabia Saudita — Atlanta', mundial: true },
+      { hora: '8:00 PM',  texto: 'Nueva Zelanda vs Egipto — Vancouver', mundial: true },
+    ]
+  },
+];
+
+const container = document.getElementById('itinerario-container');
+dias.forEach(d => {
+  const actividadesHtml = d.actividades.map(a => {
+    if (a.colombia) return `
+      <div class="border-2 border-col-yellow bg-col-yellow/10 p-4 flex items-center gap-4">
+        <span class="font-display text-xl text-col-red min-w-[80px]">${a.hora}</span>
+        <div class="flex-1">
+          <p class="font-display text-2xl md:text-3xl tracking-wider">${a.texto}</p>
+          ${a.lugar ? `<p class="text-sm tracking-widest text-black/60 uppercase mt-1">${a.lugar}</p>` : ''}
+        </div>
+        <span class="text-3xl">🏆</span>
+      </div>`;
+    if (a.mundial) return `
+      <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
+        <span class="font-display text-sm text-black/50 min-w-[70px]">${a.hora}</span>
+        <span class="text-sm">⚽</span>
+        <p class="text-sm text-black/70">${a.texto}</p>
+      </div>`;
+    return `
+      <div class="px-4 py-3 flex items-start gap-3 hover:bg-black/5 transition-colors">
+        <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
+        <div>
+          <p class="font-medium">${a.texto}</p>
+          ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
+          ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
+          ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  container.innerHTML += `
+    <div>
+      <div class="flex items-baseline gap-3 mb-6 pb-4 border-b-2 border-black flex-wrap">
+        <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
+        <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
+        <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
+      </div>
+      <div class="space-y-3">${actividadesHtml}</div>
+    </div>`;
+});
+</script>
   <!-- LOCATIONS -->
   <!-- GUIA CDMX -->
   <!-- GUIA PUERTO -->
