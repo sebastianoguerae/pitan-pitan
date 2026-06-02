@@ -320,59 +320,45 @@ dias.forEach(d => {
     </div>
   </div>
 </section>
-<!-- LOS ELEGIDOS -->
-<section class="py-20 px-4 bg-crema overflow-hidden">
-  <div class="max-w-6xl mx-auto">
-    <p class="font-display text-col-red text-lg tracking-[0.3em] mb-8 text-center">LOS ELEGIDOS</p>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-
-      <div class="relative group overflow-hidden bg-black">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
-             alt="James Rodríguez"
-             class="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
-          <span class="font-display text-col-yellow text-3xl block leading-none">10</span>
-          <p class="font-display text-white text-xl tracking-wider leading-tight">JAMES<br>RODRÍGUEZ</p>
-          <p class="text-xs tracking-widest text-white/50 uppercase mt-1">Capitán · Mediocampista</p>
-        </div>
-      </div>
-
-      <div class="relative group overflow-hidden bg-black">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
-             alt="Luis Díaz"
-             class="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
-          <span class="font-display text-col-yellow text-3xl block leading-none">7</span>
-          <p class="font-display text-white text-xl tracking-wider leading-tight">LUIS<br>DÍAZ</p>
-          <p class="text-xs tracking-widest text-white/50 uppercase mt-1">Bayern Munich · Extremo</p>
-        </div>
-      </div>
-
-      <div class="relative group overflow-hidden bg-black">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
-             alt="Yerry Mina"
-             class="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
-          <span class="font-display text-col-yellow text-3xl block leading-none">13</span>
-          <p class="font-display text-white text-xl tracking-wider leading-tight">YERRY<br>MINA</p>
-          <p class="text-xs tracking-widest text-white/50 uppercase mt-1">Defensa Central</p>
-        </div>
-      </div>
-
-      <div class="relative group overflow-hidden bg-black">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
-             alt="Richard Ríos"
-             class="w-full aspect-[3/4] object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4">
-          <span class="font-display text-col-yellow text-3xl block leading-none">8</span>
-          <p class="font-display text-white text-xl tracking-wider leading-tight">RICHARD<br>RÍOS</p>
-          <p class="text-xs tracking-widest text-white/50 uppercase mt-1">Mediocampista</p>
-        </div>
-      </div>
-
+<!-- JUGADORES STRIP -->
+<div class="grid grid-cols-4 overflow-hidden" style="height:220px">
+  <div class="relative overflow-hidden group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
+         alt="James" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    <div class="absolute bottom-3 left-3">
+      <span class="font-display text-col-yellow text-2xl leading-none">10</span>
+      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">JAMES</p>
     </div>
   </div>
-</section>
+  <div class="relative overflow-hidden group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
+         alt="Lucho" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    <div class="absolute bottom-3 left-3">
+      <span class="font-display text-col-yellow text-2xl leading-none">7</span>
+      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">LUCHO</p>
+    </div>
+  </div>
+  <div class="relative overflow-hidden group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
+         alt="Yerry" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    <div class="absolute bottom-3 left-3">
+      <span class="font-display text-col-yellow text-2xl leading-none">13</span>
+      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">YERRY</p>
+    </div>
+  </div>
+  <div class="relative overflow-hidden group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
+         alt="Richard" class="w-full h-full object-cover object-top scale-110 group-hover:scale-125 transition-transform duration-700 brightness-75" />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+    <div class="absolute bottom-3 left-3">
+      <span class="font-display text-col-yellow text-2xl leading-none">8</span>
+      <p class="font-display text-white text-base tracking-wider leading-none mt-0.5">RICHARD</p>
+    </div>
+  </div>
+</div>
 <!-- LOCATIONS -->
 <section id="locations" class="py-20 px-4 bg-black text-crema">
   <div class="max-w-6xl mx-auto">
