@@ -717,51 +717,171 @@ dias.forEach(d => {
       <p class="mt-4 text-sm tracking-widest text-crema/60 uppercase">Copa del Mundo · CDMX 2026 · La Mejor Hinchada del Planeta 🇨🇴</p>
     </div>
 
-    <!-- SCROLL JUGADORES -->
-    <div class="overflow-x-auto -mx-4 px-4 pb-4 mb-12" style="scrollbar-width:none;">
-      <div class="flex gap-4" style="width:max-content; scroll-snap-type:x mandatory;">
-        <div class="flex-shrink-0 w-48 overflow-hidden rounded relative" style="scroll-snap-align:start;">
-          <img src="assets/jugadores/sebastian.jpeg" alt="Sebastián Noguera" class="w-full h-64 object-cover object-top" />
-          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)">
-            <span class="font-display text-col-yellow text-xl leading-none">10</span>
-            <p class="font-display text-white text-sm tracking-wider leading-tight">SEBASTIÁN<br>NOGUERA</p>
-            <p class="text-xs tracking-widest text-crema/50 mt-0.5">DT · Anfitrión</p>
+    <!-- SCROLL PANINI -->
+    <div id="panini-scroll" class="mb-12 overflow-x-auto" style="scrollbar-width:none; -webkit-overflow-scrolling:touch; scroll-snap-type:x mandatory; padding: 16px calc(50% - 120px);">
+      <div class="flex gap-5" style="width:max-content;">
+
+        <!-- SEBASTIÁN NOGUERA - COLOMBIA -->
+        <div class="panini-card flex-shrink-0" style="width:220px; scroll-snap-align:center; transition: opacity 0.3s, transform 0.3s;">
+          <div style="background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.5); border:3px solid #FCD116;">
+            <div style="background:#FCD116; padding:7px 10px 5px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                <span style="font-size:8px; color:#003087; font-weight:700; letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                <span style="font-size:8px; color:#CE1126; font-weight:700;">2026</span>
+              </div>
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#003087; letter-spacing:0.2em; margin:0; line-height:1;">COLOMBIA</p>
+              <div style="display:flex; height:3px; margin-top:4px; border-radius:1px; overflow:hidden;">
+                <div style="flex:2; background:#FCD116;"></div>
+                <div style="flex:1; background:#003087;"></div>
+                <div style="flex:1; background:#CE1126;"></div>
+              </div>
+            </div>
+            <div style="height:210px; overflow:hidden; background:#111;">
+              <img src="assets/jugadores/sebastian.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+            </div>
+            <div style="background:#003087; padding:8px 10px;">
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:15px; color:white; letter-spacing:0.1em; margin:0;">SEBASTIÁN NOGUERA</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px;">
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#FCD116; line-height:1;">#10</span>
+                <span style="font-size:9px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.06em;">DT · Anfitrión</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-48 overflow-hidden rounded relative" style="scroll-snap-align:start;">
-          <img src="assets/jugadores/jose.jpeg" alt="José Calderón" class="w-full h-64 object-cover object-top" />
-          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)">
-            <span class="font-display text-col-yellow text-xl leading-none">1</span>
-            <p class="font-display text-white text-sm tracking-wider leading-tight">JOSÉ<br>CALDERÓN</p>
-            <p class="text-xs tracking-widest text-crema/50 mt-0.5">Arquero Titular</p>
+
+        <!-- JOSÉ CALDERÓN - COLOMBIA -->
+        <div class="panini-card flex-shrink-0" style="width:220px; scroll-snap-align:center; transition: opacity 0.3s, transform 0.3s;">
+          <div style="background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.5); border:3px solid #FCD116;">
+            <div style="background:#FCD116; padding:7px 10px 5px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                <span style="font-size:8px; color:#003087; font-weight:700; letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                <span style="font-size:8px; color:#CE1126; font-weight:700;">2026</span>
+              </div>
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#003087; letter-spacing:0.2em; margin:0; line-height:1;">COLOMBIA</p>
+              <div style="display:flex; height:3px; margin-top:4px; border-radius:1px; overflow:hidden;">
+                <div style="flex:2; background:#FCD116;"></div>
+                <div style="flex:1; background:#003087;"></div>
+                <div style="flex:1; background:#CE1126;"></div>
+              </div>
+            </div>
+            <div style="height:210px; overflow:hidden; background:#111;">
+              <img src="assets/jugadores/jose.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+            </div>
+            <div style="background:#003087; padding:8px 10px;">
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:15px; color:white; letter-spacing:0.1em; margin:0;">JOSÉ CALDERÓN</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px;">
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#FCD116; line-height:1;">#1</span>
+                <span style="font-size:9px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.06em;">Arquero Titular</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-48 overflow-hidden rounded relative" style="scroll-snap-align:start;">
-          <img src="assets/jugadores/carolina.jpeg" alt="Carolina Maya" class="w-full h-64 object-cover object-top" />
-          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)">
-            <span class="font-display text-col-yellow text-xl leading-none">12</span>
-            <p class="font-display text-white text-sm tracking-wider leading-tight">CAROLINA<br>MAYA</p>
-            <p class="text-xs tracking-widest text-crema/50 mt-0.5">Mediapunta</p>
+
+        <!-- CAROLINA MAYA - COLOMBIA -->
+        <div class="panini-card flex-shrink-0" style="width:220px; scroll-snap-align:center; transition: opacity 0.3s, transform 0.3s;">
+          <div style="background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.5); border:3px solid #FCD116;">
+            <div style="background:#FCD116; padding:7px 10px 5px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                <span style="font-size:8px; color:#003087; font-weight:700; letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                <span style="font-size:8px; color:#CE1126; font-weight:700;">2026</span>
+              </div>
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#003087; letter-spacing:0.2em; margin:0; line-height:1;">COLOMBIA</p>
+              <div style="display:flex; height:3px; margin-top:4px; border-radius:1px; overflow:hidden;">
+                <div style="flex:2; background:#FCD116;"></div>
+                <div style="flex:1; background:#003087;"></div>
+                <div style="flex:1; background:#CE1126;"></div>
+              </div>
+            </div>
+            <div style="height:210px; overflow:hidden; background:#111;">
+              <img src="assets/jugadores/carolina.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+            </div>
+            <div style="background:#003087; padding:8px 10px;">
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:15px; color:white; letter-spacing:0.1em; margin:0;">CAROLINA MAYA</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px;">
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#FCD116; line-height:1;">#12</span>
+                <span style="font-size:9px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.06em;">Mediapunta</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-48 overflow-hidden rounded relative" style="scroll-snap-align:start;">
-          <img src="assets/jugadores/felipe.jpeg" alt="Felipe Velásquez" class="w-full h-64 object-cover object-top" />
-          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)">
-            <span class="font-display text-col-yellow text-xl leading-none">11</span>
-            <p class="font-display text-white text-sm tracking-wider leading-tight">FELIPE<br>VELÁSQUEZ</p>
-            <p class="text-xs tracking-widest text-crema/50 mt-0.5">Extremo Izquierdo</p>
+
+        <!-- FELIPE VELÁSQUEZ - COLOMBIA -->
+        <div class="panini-card flex-shrink-0" style="width:220px; scroll-snap-align:center; transition: opacity 0.3s, transform 0.3s;">
+          <div style="background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.5); border:3px solid #FCD116;">
+            <div style="background:#FCD116; padding:7px 10px 5px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                <span style="font-size:8px; color:#003087; font-weight:700; letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                <span style="font-size:8px; color:#CE1126; font-weight:700;">2026</span>
+              </div>
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:#003087; letter-spacing:0.2em; margin:0; line-height:1;">COLOMBIA</p>
+              <div style="display:flex; height:3px; margin-top:4px; border-radius:1px; overflow:hidden;">
+                <div style="flex:2; background:#FCD116;"></div>
+                <div style="flex:1; background:#003087;"></div>
+                <div style="flex:1; background:#CE1126;"></div>
+              </div>
+            </div>
+            <div style="height:210px; overflow:hidden; background:#111;">
+              <img src="assets/jugadores/felipe.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+            </div>
+            <div style="background:#003087; padding:8px 10px;">
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:15px; color:white; letter-spacing:0.1em; margin:0;">FELIPE VELÁSQUEZ</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px;">
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#FCD116; line-height:1;">#11</span>
+                <span style="font-size:9px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.06em;">Extremo Izquierdo</span>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="flex-shrink-0 w-48 overflow-hidden rounded relative" style="scroll-snap-align:start;">
-          <img src="assets/jugadores/alejandro.jpeg" alt="Alejandro Castillo" class="w-full h-64 object-cover object-top" />
-          <div class="absolute bottom-0 left-0 right-0 p-3" style="background:linear-gradient(to top,rgba(0,0,0,0.85),transparent)">
-            <span class="font-display text-col-yellow text-xl leading-none">8</span>
-            <p class="font-display text-white text-sm tracking-wider leading-tight">ALEJANDRO<br>CASTILLO</p>
-            <p class="text-xs tracking-widest text-crema/50 mt-0.5">Extremo · Profe Yoga</p>
+
+        <!-- ALEJANDRO CASTILLO - BOLIVIA 🇧🇴 -->
+        <div class="panini-card flex-shrink-0" style="width:220px; scroll-snap-align:center; transition: opacity 0.3s, transform 0.3s;">
+          <div style="background:white; border-radius:10px; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.5); border:3px solid #D32011;">
+            <div style="background:#D32011; padding:7px 10px 5px;">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
+                <span style="font-size:8px; color:white; font-weight:700; letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                <span style="font-size:8px; color:#F5A623; font-weight:700;">2026</span>
+              </div>
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:20px; color:white; letter-spacing:0.2em; margin:0; line-height:1;">BOLIVIA 🇧🇴</p>
+              <div style="display:flex; height:3px; margin-top:4px; border-radius:1px; overflow:hidden;">
+                <div style="flex:1; background:#D32011;"></div>
+                <div style="flex:1; background:#F5A623;"></div>
+                <div style="flex:1; background:#2D7D2D;"></div>
+              </div>
+            </div>
+            <div style="height:210px; overflow:hidden; background:#111;">
+              <img src="assets/jugadores/alejandro.jpeg" style="width:100%; height:100%; object-fit:cover; object-position:center top;" />
+            </div>
+            <div style="background:#2D7D2D; padding:8px 10px;">
+              <p style="font-family:'Bebas Neue',sans-serif; font-size:15px; color:white; letter-spacing:0.1em; margin:0;">ALEJANDRO CASTILLO</p>
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-top:3px;">
+                <span style="font-family:'Bebas Neue',sans-serif; font-size:22px; color:#F5A623; line-height:1;">#8</span>
+                <span style="font-size:9px; color:rgba(255,255,255,0.7); text-transform:uppercase; letter-spacing:0.06em;">Extremo · Profe Yoga</span>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
+    <script>
+    (function() {
+      const sc = document.getElementById('panini-scroll');
+      const cards = sc.querySelectorAll('.panini-card');
+      function update() {
+        const cw = sc.getBoundingClientRect().width;
+        const cx = sc.scrollLeft + cw / 2;
+        cards.forEach(c => {
+          const cardCx = c.offsetLeft + c.offsetWidth / 2;
+          const dist = Math.abs(cx - cardCx);
+          const ratio = Math.max(0, 1 - dist / (cw * 0.55));
+          c.style.opacity = 0.35 + 0.65 * ratio;
+          c.style.transform = 'scale(' + (0.88 + 0.12 * ratio) + ')';
+        });
+      }
+      sc.addEventListener('scroll', update, {passive:true});
+      setTimeout(update, 100);
+    })();
+    </script>
 
     <!-- PISO 1 -->
     <div class="mb-10">
