@@ -1,0 +1,6 @@
+# Saved web pages
+*.htm
+*_files/
+
+# macOS
+.DS_Store
