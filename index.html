@@ -35,7 +35,71 @@
 <body class="bg-crema text-black">
 
   <!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-crema border-b border-black/10 transition-shadow duration-300">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <img src="assets/logo.jpeg" alt="PITAN PITAN" class="h-10 w-auto" />
+    <div class="hidden md:flex items-center gap-6 font-display text-lg tracking-wider">
+      <a href="#convocados" class="hover:text-col-red transition-colors">Convocados</a>
+      <a href="#itinerario" class="hover:text-col-red transition-colors">Itinerario</a>
+      <a href="#locations" class="hover:text-col-red transition-colors">Locations</a>
+      <a href="#cdmx" class="hover:text-col-red transition-colors">CDMX</a>
+      <a href="#puerto" class="hover:text-col-red transition-colors">Puerto</a>
+    </div>
+    <button id="menu-btn" class="md:hidden p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden md:hidden border-t border-black/10 bg-crema">
+    <div class="flex flex-col px-4 py-2 gap-3 font-display text-xl tracking-wider">
+      <a href="#convocados" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Convocados</a>
+      <a href="#itinerario" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Itinerario</a>
+      <a href="#locations" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Locations</a>
+      <a href="#cdmx" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">CDMX</a>
+      <a href="#puerto" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Puerto</a>
+    </div>
+  </div>
+</nav>
+<div class="h-16"></div>
+<script>
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('hidden');
+  }
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 10);
+  });
+</script>
   <!-- HERO -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 right-0 h-2 bg-col-yellow"></div>
+    <div class="absolute top-2 left-0 right-0 h-1 bg-col-blue"></div>
+    <div class="absolute top-3 left-0 right-0 h-1 bg-col-red"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-col-yellow"></div>
+    <div class="absolute bottom-2 left-0 right-0 h-1 bg-col-blue"></div>
+    <div class="absolute bottom-3 left-0 right-0 h-1 bg-col-red"></div>
+  </div>
+  <img src="assets/logo.jpeg" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
+  <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
+  <div class="flex items-center gap-3 mb-10">
+    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
+    <span class="text-col-red font-bold text-2xl">·</span>
+    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">PUERTO ESCONDIDO</span>
+  </div>
+  <a href="#itinerario"
+     class="font-display text-xl tracking-widest border-2 border-black px-8 py-3 hover:bg-black hover:text-crema transition-colors duration-200">
+    VER ITINERARIO
+  </a>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
   <!-- CONVOCADOS -->
   <!-- ITINERARIO -->
   <!-- LOCATIONS -->
