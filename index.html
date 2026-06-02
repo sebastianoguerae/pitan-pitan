@@ -100,8 +100,7 @@
   </div>
   <!-- Content -->
   <div class="relative z-20 flex flex-col items-center">
-    <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="w-full max-w-xl mb-6" />
-    <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-16 md:h-20 mb-6 opacity-90" />
+    <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="w-full max-w-xl mb-8" />
     <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-1">15 – 21 JUNIO · 2026</p>
 <p class="font-display text-lg md:text-xl tracking-[0.15em] text-center text-col-red mb-2">COLOMBIA EN EL MUNDIAL 🇨🇴</p>
     <div class="flex items-center gap-3 mb-10">
@@ -128,9 +127,9 @@
   var ytPlayer;
   function onYouTubeIframeAPIReady() {
     ytPlayer = new YT.Player('yt-player', {
-      videoId: 'zXCD8u6ty5k',
+      videoId: 'WDtOczhCwzg',
       playerVars: {
-        autoplay: 1, mute: 1, loop: 1, playlist: 'zXCD8u6ty5k',
+        autoplay: 1, mute: 1, loop: 1, playlist: 'WDtOczhCwzg',
         controls: 0, disablekb: 1, fs: 0, iv_load_policy: 3,
         modestbranding: 1, playsinline: 1, rel: 0, showinfo: 0
       },
@@ -286,12 +285,12 @@ dias.forEach(d => {
 
   container.innerHTML += `
     <div>
-      ${d.foto ? `<div class="overflow-hidden aspect-[16/5] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
-      <div class="flex items-baseline gap-3 mb-6 pb-4 border-b-2 border-black flex-wrap">
+      <div class="flex items-baseline gap-3 mb-4 pb-4 border-b-2 border-black flex-wrap">
         <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
         <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
         <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
       </div>
+      ${d.foto ? `<div class="overflow-hidden aspect-[16/5] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
       <div class="space-y-3">${actividadesHtml}</div>
     </div>`;
 });
@@ -903,7 +902,6 @@ dias.forEach(d => {
 <footer class="bg-black text-crema py-12 px-4">
   <div class="max-w-6xl mx-auto text-center">
     <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
-    <img src="assets/cdmx-logos/fifa-cdmx.png" alt="FIFA Ciudad de México 2026" class="h-12 mx-auto mb-4 opacity-60" />
     <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2026</p>
     <p class="mt-4 text-crema/30 text-xs tracking-widest">PITAN PITAN · 15–21 JUNIO · CON TODO EL AMOR 🇨🇴</p>
     <div class="flex mt-8 h-1 max-w-xs mx-auto">
