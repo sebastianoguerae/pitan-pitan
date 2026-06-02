@@ -75,7 +75,20 @@
 </script>
   <!-- HERO -->
 <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
-  <div class="absolute inset-0 pointer-events-none">
+  <!-- Video background Colombia -->
+  <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+    <iframe
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+      style="width:177.78vh; min-width:100%; height:56.25vw; min-height:100%;"
+      src="https://www.youtube.com/embed/vOhmnGa6RE0?autoplay=1&mute=1&loop=1&playlist=vOhmnGa6RE0&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+      allow="autoplay; encrypted-media"
+      frameborder="0"
+      title="Selección Colombia 2026">
+    </iframe>
+    <div class="absolute inset-0 bg-crema/75"></div>
+  </div>
+  <!-- Colombia stripes -->
+  <div class="absolute inset-0 pointer-events-none z-10">
     <div class="absolute top-0 left-0 right-0 h-2 bg-col-yellow"></div>
     <div class="absolute top-2 left-0 right-0 h-1 bg-col-blue"></div>
     <div class="absolute top-3 left-0 right-0 h-1 bg-col-red"></div>
@@ -83,18 +96,21 @@
     <div class="absolute bottom-2 left-0 right-0 h-1 bg-col-blue"></div>
     <div class="absolute bottom-3 left-0 right-0 h-1 bg-col-red"></div>
   </div>
-  <img src="assets/logo.jpeg" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
-  <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
-  <div class="flex items-center gap-3 mb-10">
-    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
-    <span class="text-col-red font-bold text-2xl">·</span>
-    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">PUERTO ESCONDIDO</span>
+  <!-- Content -->
+  <div class="relative z-20 flex flex-col items-center">
+    <img src="assets/logo.jpeg" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
+    <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">15 – 21 JUNIO</p>
+    <div class="flex items-center gap-3 mb-10">
+      <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
+      <span class="text-col-red font-bold text-2xl">·</span>
+      <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">PUERTO ESCONDIDO</span>
+    </div>
+    <a href="#itinerario"
+       class="font-display text-xl tracking-widest border-2 border-black px-8 py-3 hover:bg-black hover:text-crema transition-colors duration-200">
+      VER ITINERARIO
+    </a>
   </div>
-  <a href="#itinerario"
-     class="font-display text-xl tracking-widest border-2 border-black px-8 py-3 hover:bg-black hover:text-crema transition-colors duration-200">
-    VER ITINERARIO
-  </a>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce z-20">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
     </svg>
@@ -141,19 +157,9 @@ convocados.forEach(p => {
 <script>
 const dias = [
   {
-    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
-    actividades: [
-      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Pantallas gigantes · Comida · Arte · campomarte26.com' },
-      { hora: '11:00 AM', texto: 'España vs Cabo Verde — Atlanta', mundial: true },
-      { hora: '2:00 PM',  texto: 'Bélgica vs Egipto — Seattle', mundial: true },
-      { hora: 'TARDE',    texto: 'FIFA Fan Fest — Zócalo 🎉', nota: 'Entrada gratuita · Hasta 100k personas · Ambiente mundialero' },
-      { hora: '5:00 PM',  texto: 'Arabia Saudita vs Uruguay — Miami', mundial: true },
-      { hora: '8:00 PM',  texto: 'Irán vs Nueva Zelanda — Los Ángeles', mundial: true },
-    ]
-  },
-  {
     dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
     actividades: [
+      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest · Pantallas gigantes · Comida · Arte · campomarte26.com' },
       { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
       { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic' },
       { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
@@ -169,7 +175,6 @@ const dias = [
       { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
       { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
       { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌' },
-      { hora: '7:00 PM',  texto: 'Ghana vs Panamá — Toronto', mundial: true },
       { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
     ]
   },
@@ -187,10 +192,12 @@ const dias = [
   {
     dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
     actividades: [
-      { hora: 'AM',       texto: 'Surf 🏄', nota: 'Profesor: Sebastián Noguera' },
-      { hora: 'AM',       texto: 'Yoga 🧘', nota: 'Profesor: Alejandro Castillo' },
-      { hora: 'AM',       texto: 'Mindfulness Tántrico 🌀', nota: 'Profesor: Mateo Caicedo' },
-      { hora: 'AM',       texto: 'Actividades Camp Kajuyali 🌿', nota: 'Profesora: Mariana Leyva' },
+      { paralelo: [
+          { texto: 'Surf 🏄',                    nota: 'Sebs Noguera' },
+          { texto: 'Yoga 🧘',                    nota: 'Alejo Castillo' },
+          { texto: 'Mindfulness Tántrico 🌀',    nota: 'Mateo Caicedo' },
+          { texto: 'Camp Kajuyali 🌿',           nota: 'Mariana Leyva' },
+        ], hora: 'AM' },
       { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
       { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
       { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
@@ -220,6 +227,18 @@ const dias = [
 const container = document.getElementById('itinerario-container');
 dias.forEach(d => {
   const actividadesHtml = d.actividades.map(a => {
+    if (a.paralelo) return `
+      <div class="px-4 py-3">
+        <span class="font-display text-lg text-col-red block mb-2">${a.hora}</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          ${a.paralelo.map(p => `
+            <div class="border border-black/15 p-3 text-center bg-white/40">
+              <p class="font-medium text-sm">${p.texto}</p>
+              <p class="text-xs text-black/40 mt-1">${p.nota}</p>
+            </div>`).join('')}
+        </div>
+        <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
+      </div>`;
     if (a.colombia) return `
       <div class="border-2 border-col-yellow bg-col-yellow/10 p-4 flex items-center gap-4">
         <span class="font-display text-xl text-col-red min-w-[80px]">${a.hora}</span>
@@ -269,8 +288,7 @@ dias.forEach(d => {
 
       <div class="group">
         <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
-          <img src="https://casacaravana.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-09-27-at-11.59.48-AM.jpeg"
-               onerror="this.style.background='#1a1a1a'"
+          <img src="assets/casa-caravana/terraza.jpeg"
                alt="La Casa de la Selección"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         </div>
@@ -287,7 +305,7 @@ dias.forEach(d => {
 
       <div class="group">
         <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Estadio_Azteca_2016.jpg/1280px-Estadio_Azteca_2016.jpg"
+          <img src="assets/azteca.jpg"
                alt="Estadio Azteca"
                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         </div>

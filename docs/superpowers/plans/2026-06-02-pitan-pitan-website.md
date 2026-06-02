@@ -1,0 +1,875 @@
+# PITAN PITAN Website Implementation Plan
+
+> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+
+**Goal:** Build a single-page public birthday website for the PITAN PITAN event (Sebas & Mate Fest, June 16–21 2026) with 6 sections, Colombia/World Cup branding, and deploy to GitHub Pages.
+
+**Architecture:** Single `index.html` with Tailwind CSS via Play CDN + vanilla JS. All images served from `/assets/`. No build step — open index.html directly in browser to preview. Deploy by pushing to GitHub and enabling GitHub Pages.
+
+**Tech Stack:** HTML5 · Tailwind CSS Play CDN · Google Fonts (Bebas Neue + Inter) · Vanilla JS · GitHub Pages
+
+---
+
+## File Map
+
+```
+/leon/mate y sebas fest/
+├── index.html                        ← entire site
+├── assets/
+│   ├── logo.jpeg                     ← logo PITAN PITAN (already copied)
+│   └── casa-seri/
+│       ├── seri_1_9.jpeg             ← aerial hero (house + pool)
+│       ├── seri_5_1.jpeg             ← garden + grounds
+│       ├── seri_8_1.jpeg             ← yoga pavilion + ocean
+│       └── seri_11_6.jpeg            ← pool + pergola
+└── docs/superpowers/
+    ├── specs/2026-06-02-pitan-pitan-website-design.md
+    └── plans/2026-06-02-pitan-pitan-website.md
+```
+
+---
+
+## Task 1: HTML skeleton + Tailwind config
+
+**Files:**
+- Create: `index.html`
+
+- [ ] **Step 1: Create index.html with Tailwind Play CDN, Google Fonts, and Colombia color config**
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PITAN PITAN — Sebas & Mate Fest 2026</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            crema: '#ECEFE8',
+            'col-yellow': '#FCD116',
+            'col-blue': '#003087',
+            'col-red': '#CE1126',
+          },
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background-color: #ECEFE8; font-family: 'Inter', sans-serif; }
+    .font-display { font-family: 'Bebas Neue', sans-serif; }
+  </style>
+</head>
+<body class="bg-crema text-black">
+
+  <!-- NAV -->
+  <!-- HERO -->
+  <!-- CONVOCADOS -->
+  <!-- ITINERARIO -->
+  <!-- LOCATIONS -->
+  <!-- GUIA CDMX -->
+  <!-- GUIA PUERTO -->
+  <!-- FOOTER -->
+
+  <script src="js/main.js"></script>
+</body>
+</html>
+```
+
+- [ ] **Step 2: Open in browser and verify Tailwind loads (background should be #ECEFE8)**
+
+Open: `open "/Users/2016-tuhabi/leon/mate y sebas fest/index.html"`
+
+- [ ] **Step 3: Commit**
+
+```bash
+cd "/Users/2016-tuhabi/leon/mate y sebas fest"
+git init
+git add index.html
+git commit -m "feat: init PITAN PITAN site skeleton"
+```
+
+---
+
+## Task 2: Sticky Navigation
+
+**Files:**
+- Modify: `index.html` — replace `<!-- NAV -->` block
+
+- [ ] **Step 1: Add sticky nav with logo and section links**
+
+Replace `<!-- NAV -->` with:
+
+```html
+<!-- NAV -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-crema border-b border-black/10 transition-shadow duration-300">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <img src="assets/logo.jpeg" alt="PITAN PITAN" class="h-10 w-auto" />
+    <div class="hidden md:flex items-center gap-6 font-display text-lg tracking-wider">
+      <a href="#convocados" class="hover:text-col-red transition-colors">Convocados</a>
+      <a href="#itinerario" class="hover:text-col-red transition-colors">Itinerario</a>
+      <a href="#locations" class="hover:text-col-red transition-colors">Locations</a>
+      <a href="#cdmx" class="hover:text-col-red transition-colors">CDMX</a>
+      <a href="#puerto" class="hover:text-col-red transition-colors">Puerto</a>
+    </div>
+    <!-- Mobile hamburger -->
+    <button id="menu-btn" class="md:hidden p-2">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-black/10 bg-crema">
+    <div class="flex flex-col px-4 py-2 gap-3 font-display text-xl tracking-wider">
+      <a href="#convocados" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Convocados</a>
+      <a href="#itinerario" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Itinerario</a>
+      <a href="#locations" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Locations</a>
+      <a href="#cdmx" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">CDMX</a>
+      <a href="#puerto" class="py-2 hover:text-col-red" onclick="closeMobileMenu()">Puerto</a>
+    </div>
+  </div>
+</nav>
+<div class="h-16"></div><!-- nav spacer -->
+```
+
+- [ ] **Step 2: Add mobile menu JS at bottom of body (before </body>)**
+
+```html
+<script>
+  document.getElementById('menu-btn').addEventListener('click', () => {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  });
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').classList.add('hidden');
+  }
+  // Shadow on scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('shadow-md', window.scrollY > 10);
+  });
+</script>
+```
+
+- [ ] **Step 3: Verify nav is sticky, logo visible, links work, hamburger opens on mobile**
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: sticky nav with mobile menu"
+```
+
+---
+
+## Task 3: Hero Section
+
+**Files:**
+- Modify: `index.html` — replace `<!-- HERO -->` block
+
+- [ ] **Step 1: Add hero section**
+
+Replace `<!-- HERO -->` with:
+
+```html
+<!-- HERO -->
+<section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
+
+  <!-- Colombia stripe decoration -->
+  <div class="absolute inset-0 pointer-events-none">
+    <div class="absolute top-0 left-0 right-0 h-2 bg-col-yellow"></div>
+    <div class="absolute top-2 left-0 right-0 h-1 bg-col-blue"></div>
+    <div class="absolute top-3 left-0 right-0 h-1 bg-col-red"></div>
+    <div class="absolute bottom-0 left-0 right-0 h-2 bg-col-yellow"></div>
+    <div class="absolute bottom-2 left-0 right-0 h-1 bg-col-blue"></div>
+    <div class="absolute bottom-3 left-0 right-0 h-1 bg-col-red"></div>
+  </div>
+
+  <!-- Logo -->
+  <img src="assets/logo.jpeg" alt="PITAN PITAN" class="w-full max-w-lg mb-8" />
+
+  <!-- Tagline -->
+  <p class="font-display text-2xl md:text-4xl tracking-[0.2em] text-center mb-2">16 – 21 JUNIO</p>
+  <div class="flex items-center gap-3 mb-10">
+    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">CDMX</span>
+    <span class="text-col-red font-bold text-2xl">·</span>
+    <span class="font-display text-xl md:text-2xl tracking-widest text-col-blue">PUERTO ESCONDIDO</span>
+  </div>
+
+  <!-- CTA -->
+  <a href="#itinerario"
+     class="font-display text-xl tracking-widest border-2 border-black px-8 py-3 hover:bg-black hover:text-crema transition-colors duration-200">
+    VER ITINERARIO
+  </a>
+
+  <!-- Scroll indicator -->
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+    </svg>
+  </div>
+</section>
+```
+
+- [ ] **Step 2: Open browser, verify: logo centered, Colombia stripes top/bottom, dates visible, CTA button**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: hero section with Colombia branding"
+```
+
+---
+
+## Task 4: Lista de Convocados
+
+**Files:**
+- Modify: `index.html` — replace `<!-- CONVOCADOS -->` block
+
+- [ ] **Step 1: Add convocados section with FIFA-style cards**
+
+Replace `<!-- CONVOCADOS -->` with:
+
+```html
+<!-- CONVOCADOS -->
+<section id="convocados" class="py-20 px-4 bg-black text-crema">
+  <div class="max-w-6xl mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">FEDERACIÓN PITAN PITAN</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">LISTA DE</h2>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">CONVOCADOS</h2>
+      <p class="mt-4 text-sm tracking-widest text-crema/60 uppercase">Copa del Mundo · CDMX 2025 · Grupo de la Muerte</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="convocados-grid">
+      <!-- Cards injected by JS -->
+    </div>
+  </div>
+</section>
+
+<script>
+const convocados = [
+  { numero: 10, nombre: 'SEBASTIÁN\nNOGUERA', posicion: 'Técnico en Jefe', pais: '🇨🇴' },
+  { numero: 7,  nombre: 'MATEO\nCAICEDO',    posicion: 'Técnico Asistente', pais: '🇨🇴' },
+  // AÑADIR INVITADOS AQUÍ:
+  // { numero: N, nombre: 'NOMBRE\nAPELLIDO', posicion: 'Delantero', pais: '🇨🇴' },
+];
+
+const grid = document.getElementById('convocados-grid');
+convocados.forEach(p => {
+  grid.innerHTML += `
+    <div class="border border-crema/20 p-4 flex flex-col items-center text-center hover:border-col-yellow transition-colors">
+      <span class="font-display text-col-yellow text-4xl leading-none mb-2">${p.numero}</span>
+      <span class="text-2xl mb-1">${p.pais}</span>
+      <p class="font-display text-lg tracking-wider leading-tight mb-1 whitespace-pre-line">${p.nombre}</p>
+      <p class="text-xs tracking-widest text-crema/50 uppercase">${p.posicion}</p>
+    </div>`;
+});
+</script>
+```
+
+- [ ] **Step 2: Añadir todos los invitados reales al array `convocados` (Sebas completa los nombres)**
+
+- [ ] **Step 3: Verify cards render, section has black background, yellow accents**
+
+- [ ] **Step 4: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: lista de convocados FIFA-style"
+```
+
+---
+
+## Task 5: Itinerario
+
+**Files:**
+- Modify: `index.html` — replace `<!-- ITINERARIO -->` block
+
+- [ ] **Step 1: Add itinerario data and rendering**
+
+Replace `<!-- ITINERARIO -->` with:
+
+```html
+<!-- ITINERARIO -->
+<section id="itinerario" class="py-20 px-4">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">HOJA DE RUTA</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">ITINERARIO</h2>
+    </div>
+
+    <div id="itinerario-container" class="space-y-12"></div>
+  </div>
+</section>
+
+<script>
+const dias = [
+  {
+    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Pantallas gigantes · Comida · Arte · campomarte26.com' },
+      { hora: '11:00 AM', texto: 'España vs Cabo Verde — Atlanta', mundial: true },
+      { hora: '2:00 PM',  texto: 'Bélgica vs Egipto — Seattle', mundial: true },
+      { hora: 'TARDE',    texto: 'FIFA Fan Fest — Zócalo 🎉', nota: 'Entrada gratuita · Hasta 100k personas · Ambiente mundialero' },
+      { hora: '5:00 PM',  texto: 'Arabia Saudita vs Uruguay — Miami', mundial: true },
+      { hora: '8:00 PM',  texto: 'Irán vs Nueva Zelanda — Los Ángeles', mundial: true },
+    ]
+  },
+  {
+    dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
+      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic' },
+      { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
+      { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
+      { hora: 'NOCHE',    texto: 'Cena en Maizajo — Mesa del Chef' },
+      { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
+    ]
+  },
+  {
+    dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
+    highlight: true,
+    actividades: [
+      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM' },
+      { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
+      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌' },
+      { hora: '7:00 PM',  texto: 'Ghana vs Panamá — Toronto', mundial: true },
+      { hora: '9:00 PM',  texto: '🇨🇴  COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
+    ]
+  },
+  {
+    dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️' },
+      { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
+      { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽' },
+      { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
+      { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'Viendo México vs Corea del Sur (8pm)' },
+    ]
+  },
+  {
+    dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'AM',       texto: 'Surf 🏄', nota: 'Profesor: Sebastián Noguera' },
+      { hora: 'AM',       texto: 'Yoga 🧘', nota: 'Profesor: Alejandro Castillo' },
+      { hora: 'AM',       texto: 'Mindfulness Tántrico 🌀', nota: 'Profesor: Mateo Caicedo' },
+      { hora: 'AM',       texto: 'Actividades Camp Kajuyali 🌿', nota: 'Profesora: Mariana Leyva' },
+      { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
+      { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
+      { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
+      { hora: '8:00 PM',  texto: 'Brasil vs Haití — Filadelfia', mundial: true },
+    ]
+  },
+  {
+    dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Brunch de Despedida 🥂' },
+      { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
+      { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
+    ]
+  },
+  {
+    dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: '11:00 AM', texto: 'Tour en barco · Lagunas de Manialtepec 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM' },
+      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹' },
+      { hora: '5:00 PM',  texto: 'España vs Arabia Saudita — Atlanta', mundial: true },
+      { hora: '8:00 PM',  texto: 'Nueva Zelanda vs Egipto — Vancouver', mundial: true },
+    ]
+  },
+];
+
+const container = document.getElementById('itinerario-container');
+
+dias.forEach(d => {
+  const dayHtml = `
+    <div>
+      <!-- Day header -->
+      <div class="flex items-baseline gap-3 mb-6 pb-4 border-b-2 border-black">
+        <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
+        <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
+        <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
+      </div>
+      <!-- Activities -->
+      <div class="space-y-3">
+        ${d.actividades.map(a => {
+          if (a.colombia) return `
+            <div class="border-2 border-col-yellow bg-col-yellow/10 p-4 flex items-center gap-4">
+              <div class="text-center min-w-[70px]">
+                <span class="font-display text-xl text-col-red">${a.hora}</span>
+              </div>
+              <div>
+                <p class="font-display text-2xl md:text-3xl tracking-wider">${a.texto}</p>
+                ${a.lugar ? `<p class="text-sm tracking-widest text-black/60 uppercase mt-1">${a.lugar}</p>` : ''}
+              </div>
+              <span class="ml-auto text-3xl">🏆</span>
+            </div>`;
+
+          if (a.mundial) return `
+            <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
+              <span class="font-display text-sm text-black/50 min-w-[70px]">${a.hora}</span>
+              <span class="text-sm">⚽</span>
+              <p class="text-sm text-black/70">${a.texto}</p>
+            </div>`;
+
+          return `
+            <div class="px-4 py-3 flex items-start gap-3 hover:bg-black/5 transition-colors">
+              <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
+              <div>
+                <p class="font-medium">${a.texto}</p>
+                ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
+                ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
+                ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
+              </div>
+            </div>`;
+        }).join('')}
+      </div>
+    </div>`;
+  container.innerHTML += dayHtml;
+});
+</script>
+```
+
+- [ ] **Step 2: Verify: each day renders, Mundial cards are yellow/subtle, Colombia match is prominent, attire tags show in blue**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: itinerario completo con partidos del mundial"
+```
+
+---
+
+## Task 6: Locations
+
+**Files:**
+- Modify: `index.html` — replace `<!-- LOCATIONS -->` block
+
+- [ ] **Step 1: Add locations section with 3 property cards**
+
+Replace `<!-- LOCATIONS -->` with:
+
+```html
+<!-- LOCATIONS -->
+<section id="locations" class="py-20 px-4 bg-black text-crema">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">BASE DE OPERACIONES</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">LOCATIONS</h2>
+    </div>
+
+    <div class="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+
+      <!-- Casa de la Selección -->
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3]">
+          <img src="https://casacaravana.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-09-27-at-11.59.48-AM.jpeg"
+               onerror="this.style.background='#1a1a1a'; this.removeAttribute('src')"
+               alt="La Casa de la Selección"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-yellow pl-4">
+          <p class="font-display text-col-yellow tracking-widest text-sm mb-1">CDMX · ANZURES</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">LA CASA DE<br>LA SELECCIÓN</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">Descartes 47, Anzures. El cuartel general del PITAN PITAN. 4 residencias, hasta 18 huéspedes, jardín, a pasos de Polanco.</p>
+          <a href="https://casacaravana.com" target="_blank"
+             class="inline-block mt-3 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2 hover:bg-col-yellow hover:text-black transition-colors">
+            VER CASA →
+          </a>
+        </div>
+      </div>
+
+      <!-- Estadio Azteca -->
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900 flex items-center justify-center">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Estadio_Azteca_2016.jpg/1280px-Estadio_Azteca_2016.jpg"
+               alt="Estadio Azteca"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-red pl-4">
+          <p class="font-display text-col-red tracking-widest text-sm mb-1">CDMX · MATCH 24</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">ESTADIO<br>AZTECA</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">El templo del fútbol mundial. 87,000 almas. Sede del partido Colombia vs Uzbekistán, miércoles 17 de junio, 9:00 PM.</p>
+          <div class="mt-3 inline-flex items-center gap-2 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2">
+            🇨🇴 MIÉ 17 · 9:00 PM
+          </div>
+        </div>
+      </div>
+
+      <!-- Casa Seri -->
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3]">
+          <img src="assets/casa-seri/seri_1_9.jpeg"
+               alt="Casa Seri"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-blue pl-4">
+          <p class="font-display text-col-blue tracking-widest text-sm mb-1">PUERTO ESCONDIDO · OAXACA</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">CASA<br>SERI</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">8 suites · 16 huéspedes · Full staff · Piscina · Pabellón de yoga con vista al mar · Frente al Pacífico.</p>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_11_6.jpeg" alt="Pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+```
+
+- [ ] **Step 2: Verify 3 location cards render, images load, hover zoom works**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: locations section con Casa Seleccion, Azteca, Casa Seri"
+```
+
+---
+
+## Task 7: Guía CDMX
+
+**Files:**
+- Modify: `index.html` — replace `<!-- GUIA CDMX -->` block
+
+- [ ] **Step 1: Add CDMX recommendations grid**
+
+Replace `<!-- GUIA CDMX -->` with:
+
+```html
+<!-- GUIA CDMX -->
+<section id="cdmx" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">CDMX</h2>
+    </div>
+
+    <!-- Categories -->
+    <div class="space-y-12">
+
+      <!-- Restaurantes -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-red">🍽️</span> RESTAURANTES
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">MAIZAJO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Maíz & Tradición</p>
+            <p class="text-sm text-black/70">Alta cocina mexicana del chef Santiago Muñoz. Mesa del Chef — experiencia única. Fernando Montes de Oca 113.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">QUINTONIL</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Top 50 World</p>
+            <p class="text-sm text-black/70">Jorge Vallejo. Ingredientes mexicanos en técnica contemporánea. Newton 55.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CONTRAMAR</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Mariscos</p>
+            <p class="text-sm text-black/70">La mesa de mariscos más icónica de la ciudad. Durango 200. Reserva con tiempo.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ROSETTA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Italiana-MX</p>
+            <p class="text-sm text-black/70">Elena Reygadas. Espacio hermoso en casona porfiriana. Orizaba 9.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">PUJOL</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · #5 World</p>
+            <p class="text-sm text-black/70">Enrique Olvera. El taco de mole madre. Tennyson 133.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bares -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-yellow">🍹</span> BARES
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LICORERÍA LIMANTOUR</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Cócteles</p>
+            <p class="text-sm text-black/70">El mejor bar de cócteles de LATAM. Álvaro Obregón 106.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">JULES BASEMENT</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Juárez · Speakeasy</p>
+            <p class="text-sm text-black/70">Bar subterráneo escondido. Ambiente íntimo. Reserva por Instagram.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">SOHO HOUSE</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Cuauhtémoc · Members Club</p>
+            <p class="text-sm text-black/70">Piscina de 19m. Pool Sessions con DJ. Nuestra sede del martes 16.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zonas -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-blue">📍</span> ZONAS
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+          ${['ANZURES · Residencial, jardines, a pasos de Polanco. Nuestra base.',
+             'ROMA NORTE · Cafés, galerías, terrazas. La zona más viva.',
+             'CONDESA · Parques, brunch, arquitectura art déco.',
+             'POLANCO · Lujo, restaurantes top, Chapultepec.']
+            .map(z => {
+              const [n, d] = z.split(' · ');
+              return `<div class="border border-black/20 p-4"><p class="font-display text-lg tracking-wider">${n}</p><p class="text-sm text-black/60 mt-1">${d}</p></div>`;
+            }).join('')}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+```
+
+- [ ] **Step 2: Verify categories render, cards have hover color, grid is responsive**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: guia CDMX con restaurantes, bares y zonas"
+```
+
+---
+
+## Task 8: Guía Puerto Escondido
+
+**Files:**
+- Modify: `index.html` — replace `<!-- GUIA PUERTO -->` block
+
+- [ ] **Step 1: Add Puerto Escondido guide**
+
+Replace `<!-- GUIA PUERTO -->` with:
+
+```html
+<!-- GUIA PUERTO -->
+<section id="puerto" class="py-20 px-4 bg-black text-crema">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">PUERTO</h2>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">ESCONDIDO</h2>
+    </div>
+
+    <!-- Photo strip -->
+    <div class="grid grid-cols-3 gap-2 mb-16">
+      <img src="assets/casa-seri/seri_5_1.jpeg" alt="Casa Seri grounds" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga pavilion" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_11_6.jpeg" alt="Pool" class="aspect-[4/3] object-cover w-full" />
+    </div>
+
+    <div class="space-y-12">
+
+      <!-- Playas -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🌊</span> PLAYAS
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ZICATELA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Pipeline Mexicano</p>
+            <p class="text-sm text-crema/70">Las olas más grandes y bravas. Para surfistas o espectadores con cerveza.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LA PUNTA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Chill · Surf suave</p>
+            <p class="text-sm text-crema/70">El barrio más relajado. Hamacas, restaurantes de playa, olas amigables.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">CARRIZALILLO</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Bahía protegida</p>
+            <p class="text-sm text-crema/70">Agua turquesa, olas pequeñas. Ideal para snorkel y familias.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ZIPOLITE</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">45 min · Playa libre</p>
+            <p class="text-sm text-crema/70">La playa nudista más famosa de México. Ambiente hippie y bohemio.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurantes -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🦐</span> DÓNDE COMER
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">EL CAFECITO</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Zicatela · Desayunos</p>
+            <p class="text-sm text-crema/70">Clásico de Puerto. Huevos, fruta, smoothies con vista a las olas.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ALMORADUZ</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">La Punta · Mediterráneo</p>
+            <p class="text-sm text-crema/70">Cocina de autor con ingredientes locales. Probablemente el mejor de Puerto.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LA HOSTERÍA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Centro · Mariscos</p>
+            <p class="text-sm text-crema/70">Mariscos frescos a buen precio. La ceviche de camarón es la estrella.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiencias -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🛥️</span> EXPERIENCIAS
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LAGUNAS DE MANIALTEPEC</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">20 min · Manglar + Bioluminiscencia</p>
+            <p class="text-sm text-crema/70">Tour en barco por el manglar, aves exóticas, snorkel. De noche: bioluminiscencia que te cambia la vida.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">SURF EN ZICATELA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Clases · Todos los niveles</p>
+            <p class="text-sm text-crema/70">Puerto tiene las mejores escuelas de surf de México. Clases desde principiantes hasta barrels.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">MAZUNTE</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">1hr · Tortugas + Mezcal</p>
+            <p class="text-sm text-crema/70">Santuario de tortugas, snorkel, y Punta Cometa — el punto más al sur de México. Mercado de mezcal artesanal.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">TEMAZCAL</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Experiencia ancestral</p>
+            <p class="text-sm text-crema/70">Ceremonia prehispánica de purificación. Hay varios operadores locales. Imprescindible.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+```
+
+- [ ] **Step 2: Verify: black background, yellow accents on hover, photo strip visible, grid responsive**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: guia Puerto Escondido con playas, restaurantes y experiencias"
+```
+
+---
+
+## Task 9: Footer
+
+**Files:**
+- Modify: `index.html` — replace `<!-- FOOTER -->` block
+
+- [ ] **Step 1: Add footer**
+
+Replace `<!-- FOOTER -->` with:
+
+```html
+<!-- FOOTER -->
+<footer class="bg-black text-crema py-12 px-4">
+  <div class="max-w-6xl mx-auto text-center">
+    <img src="assets/logo.jpeg" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
+    <p class="font-display text-col-yellow tracking-[0.3em] text-sm">SEBAS & MATE FEST · CDMX 2025</p>
+    <p class="mt-4 text-crema/30 text-xs tracking-widest">PITAN PITAN · 16–21 JUNIO · CON TODO EL AMOR 🇨🇴</p>
+    <!-- Colombia stripe -->
+    <div class="flex mt-8 h-1 max-w-xs mx-auto">
+      <div class="flex-1 bg-col-yellow"></div>
+      <div class="flex-1 bg-col-blue"></div>
+      <div class="flex-1 bg-col-red"></div>
+    </div>
+  </div>
+</footer>
+```
+
+- [ ] **Step 2: Verify footer renders**
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add index.html
+git commit -m "feat: footer con branding Colombia"
+```
+
+---
+
+## Task 10: GitHub Repo + Deploy
+
+- [ ] **Step 1: Crear repo en GitHub**
+
+```bash
+gh repo create sebastianoguerae/pitan-pitan --public --description "PITAN PITAN — Sebas & Mate Fest 2026"
+```
+
+- [ ] **Step 2: Push al repo**
+
+```bash
+cd "/Users/2016-tuhabi/leon/mate y sebas fest"
+git remote add origin git@github.com:sebastianoguerae/pitan-pitan.git
+git push -u origin main
+```
+
+- [ ] **Step 3: Activar GitHub Pages**
+
+```bash
+gh api repos/sebastianoguerae/pitan-pitan/pages \
+  --method POST \
+  -f source[branch]=main \
+  -f source[path]=/
+```
+
+- [ ] **Step 4: Verificar URL**
+
+URL final: `https://sebastianoguerae.github.io/pitan-pitan`
+
+Esperar ~60s y abrir en browser.
+
+- [ ] **Step 5: Confirmar sitio live**
+
+```bash
+open https://sebastianoguerae.github.io/pitan-pitan
+```
+
+---
+
+## Pendientes post-deploy
+
+- [ ] Completar array `convocados` con todos los invitados reales (nombres, dorsales, posiciones)
+- [ ] Agregar foto de Casa Caravana real (tomar de casacaravana.com o subir directamente)
+- [ ] Revisar y completar guías CDMX y Puerto con recomendaciones personales de Sebas
+- [ ] Agregar Google Analytics si se quiere tracking de visitas
