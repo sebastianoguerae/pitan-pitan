@@ -143,59 +143,54 @@
 const dias = [
   {
     dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
-    foto: 'assets/eventos/zocalo.jpg',
     actividades: [
-      { hora: 'TODO EL DÍA', texto: 'Llegadas a CDMX ✈️', nota: 'Check-in · La Casa de la Selección, Descartes 47, Anzures' },
-      { hora: 'TARDE',       texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest oficial · Pantallas gigantes · campomarte26.com' },
+      { hora: 'TODO EL DÍA', texto: 'Llegadas a CDMX ✈️', nota: 'Check-in · La Casa de la Selección, Descartes 47, Anzures', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
+      { hora: 'TARDE',       texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest oficial · Pantallas gigantes · campomarte26.com', foto: 'assets/eventos/campo-marte.jpg' },
       { hora: 'NOCHE',       texto: 'Cena de bienvenida en la Casa 🥂' },
     ]
   },
   {
     dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
-    foto: 'assets/eventos/soho-pool.jpg',
     actividades: [
       { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest · Pantallas gigantes · Comida · Arte · campomarte26.com' },
       { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
-      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic' },
+      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic', foto: 'assets/eventos/soho-pool.jpg' },
       { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
       { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
-      { hora: 'NOCHE',    texto: 'Cena en Maizajo — Mesa del Chef' },
+      { hora: 'NOCHE',    texto: 'Cena en Maizajo — Mesa del Chef', foto: 'assets/eventos/maizajo-culinary.jpg' },
       { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
     ]
   },
   {
     dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
-    foto: 'assets/eventos/estadio-colombia.jpeg',
     actividades: [
-      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM' },
+      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
       { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
       { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
-      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌' },
+      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌', foto: 'assets/azteca.jpg' },
       { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
     ]
   },
   {
     dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
-    foto: 'assets/casa-seri/seri_8_2.jpeg',
     actividades: [
-      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️' },
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/casa-seri/seri_8_2.jpeg' },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
-      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽' },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/casa-seri/seri_5_1.jpeg' },
       { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
       { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'Viendo México vs Corea del Sur (8pm)' },
     ]
   },
   {
     dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    foto: 'assets/casa-seri/seri_8_1.jpeg',
     actividades: [
       { paralelo: [
           { texto: 'Surf 🏄',                    nota: 'Sebs Noguera' },
           { texto: 'Yoga 🧘',                    nota: 'Alejo Castillo' },
           { texto: 'Mindfulness Tántrico 🌀',    nota: 'Mateo Caicedo' },
           { texto: 'Camp Kajuyali 🌿',           nota: 'Mariana Leyva' },
-        ], hora: 'AM' },
+        ], hora: 'AM', foto: 'assets/casa-seri/seri_8_1.jpeg' },
       { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
       { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
       { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
@@ -204,9 +199,8 @@ const dias = [
   },
   {
     dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    foto: 'assets/casa-seri/seri_6_1.jpeg',
     actividades: [
-      { hora: 'MAÑANA',   texto: 'Brunch Sabatino 🥂' },
+      { hora: 'MAÑANA',   texto: 'Brunch Sabatino 🥂', foto: 'assets/casa-seri/seri_6_1.jpeg' },
       { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
       { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
       { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
@@ -214,10 +208,9 @@ const dias = [
   },
   {
     dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    foto: 'assets/casa-seri/seri_1_9.jpeg',
     actividades: [
-      { hora: '11:00 AM', texto: 'Tour en barco · Lagunas de Manialtepec 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM' },
-      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹' },
+      { hora: '11:00 AM', texto: 'Tour en barco · Lagunas de Manialtepec 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/casa-seri/seri_8_2.jpeg' },
+      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹', foto: 'assets/casa-seri/seri_11_6.jpeg' },
       { hora: '5:00 PM',  texto: 'España vs Arabia Saudita — Atlanta', mundial: true },
       { hora: '8:00 PM',  texto: 'Nueva Zelanda vs Egipto — Vancouver', mundial: true },
     ]
@@ -238,6 +231,7 @@ dias.forEach(d => {
             </div>`).join('')}
         </div>
         <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
+        ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover;" />` : ''}
       </div>`;
     if (a.colombia) return `
       <div class="border-2 border-col-yellow bg-col-yellow p-5 flex items-center gap-4">
@@ -267,6 +261,7 @@ dias.forEach(d => {
           ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
           ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
+          ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
         </div>
       </div>`;
   }).join('');
@@ -278,7 +273,6 @@ dias.forEach(d => {
         <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
         <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
       </div>
-      ${d.foto ? `<div class="overflow-hidden aspect-[16/5] mb-6"><img src="${d.foto}" alt="${d.dia}" class="w-full h-full object-cover" /></div>` : ''}
       <div class="space-y-3">${actividadesHtml}</div>
     </div>`;
 });
