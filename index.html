@@ -100,7 +100,34 @@
     </svg>
   </div>
 </section>
-  <!-- CONVOCADOS -->
+<!-- CONVOCADOS -->
+<section id="convocados" class="py-20 px-4 bg-black text-crema">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">FEDERACIÓN PITAN PITAN</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">LISTA DE</h2>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">CONVOCADOS</h2>
+      <p class="mt-4 text-sm tracking-widest text-crema/60 uppercase">Copa del Mundo · CDMX 2025 · Grupo de la Muerte</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4" id="convocados-grid"></div>
+  </div>
+</section>
+<script>
+const convocados = [
+  { numero: 10, nombre: 'SEBASTIÁN\nNOGUERA', posicion: 'Técnico en Jefe', pais: '🇨🇴' },
+  { numero: 7,  nombre: 'MATEO\nCAICEDO',    posicion: 'Técnico Asistente', pais: '🇨🇴' },
+];
+const grid = document.getElementById('convocados-grid');
+convocados.forEach(p => {
+  grid.innerHTML += `
+    <div class="border border-crema/20 p-4 flex flex-col items-center text-center hover:border-col-yellow transition-colors">
+      <span class="font-display text-col-yellow text-4xl leading-none mb-2">${p.numero}</span>
+      <span class="text-2xl mb-1">${p.pais}</span>
+      <p class="font-display text-lg tracking-wider leading-tight mb-1 whitespace-pre-line">${p.nombre}</p>
+      <p class="text-xs tracking-widest text-crema/50 uppercase">${p.posicion}</p>
+    </div>`;
+});
+</script>
   <!-- ITINERARIO -->
   <!-- LOCATIONS -->
   <!-- GUIA CDMX -->
