@@ -47,6 +47,11 @@
       100% { transform: scale(1)    translate(0, 0); }
     }
     .hero-zoom { animation: kenburns 20s ease-in-out infinite; transform-origin: center center; }
+    .flip-card { perspective: 1000px; cursor: pointer; }
+    .flip-card-inner { position: relative; width: 100%; height: 260px; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1); transform-style: preserve-3d; }
+    .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; overflow: hidden; }
+    .flip-card-back { transform: rotateY(180deg); }
   </style>
 </head>
 <body class="bg-crema text-black">
@@ -741,156 +746,270 @@ dias.forEach(d => {
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- ALEJANDRO CASTILLO · BOLIVIA -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #D32011;">
-              <div style="background:#D32011;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:white;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#F5A623;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:white;letter-spacing:0.2em;margin:0;line-height:1;">BOLIVIA 🇧🇴</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:1;background:#D32011;"></div><div style="flex:1;background:#F5A623;"></div><div style="flex:1;background:#2D7D2D;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #D32011;height:260px;">
+                  <div style="background:#D32011;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:white;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#F5A623;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:white;letter-spacing:0.2em;margin:0;line-height:1;">BOLIVIA 🇧🇴</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:1;background:#D32011;"></div><div style="flex:1;background:#F5A623;"></div><div style="flex:1;background:#2D7D2D;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;overflow:hidden;background:#111;">
+                    <img src="assets/jugadores/alejandro.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+                  </div>
+                  <div style="background:#2D7D2D;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">ALEJANDRO CASTILLO</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#F5A623;line-height:1;">#8</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Extremo · Profe Yoga</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;overflow:hidden;background:#111;">
-                <img src="assets/jugadores/alejandro.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
-              </div>
-              <div style="background:#2D7D2D;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">ALEJANDRO CASTILLO</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#F5A623;line-height:1;">#8</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Extremo · Profe Yoga</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- JUAN CAMILO BARRIOS · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">JUAN CAMILO BARRIOS</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#5</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Volante Contención</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">JUAN CAMILO BARRIOS</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#5</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Volante Contención</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- FRANCISCO GONZÁLEZ · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">FRANCISCO GONZÁLEZ</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#9</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Lateral Derecho</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">FRANCISCO GONZÁLEZ</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#9</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Lateral Derecho</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- ALEJANDRO ORDÓÑEZ · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">ALEJANDRO ORDÓÑEZ</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#15</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Defensa Central</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">ALEJANDRO ORDÓÑEZ</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#15</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Defensa Central</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- MATEO CAICEDO · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">MATEO CAICEDO</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#6</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C3 · Mindfulness FC</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">MATEO CAICEDO</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#6</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C3 · Mindfulness FC</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- MARÍA PAULA BOHÓRQUEZ · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">MARÍA PAULA BOHÓRQUEZ</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#8</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C3 · Primera Dama</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">MARÍA PAULA BOHÓRQUEZ</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#8</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C3 · Primera Dama</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -911,104 +1030,180 @@ dias.forEach(d => {
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- FELIPE VELÁSQUEZ · photo -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;overflow:hidden;background:#111;">
+                    <img src="assets/jugadores/felipe.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">FELIPE VELÁSQUEZ</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#11</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Extremo Izquierdo</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;overflow:hidden;background:#111;">
-                <img src="assets/jugadores/felipe.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">FELIPE VELÁSQUEZ</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#11</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Extremo Izquierdo</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- CAROLINA MAYA · photo -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;overflow:hidden;background:#111;">
+                    <img src="assets/jugadores/carolina.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">CAROLINA MAYA</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#3</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Mediapunta</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;overflow:hidden;background:#111;">
-                <img src="assets/jugadores/carolina.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">CAROLINA MAYA</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#3</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Mediapunta</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- JOSÉ CALDERÓN · photo -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;overflow:hidden;background:#111;">
+                    <img src="assets/jugadores/jose.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">JOSÉ CALDERÓN</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#1</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Arquero Titular</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;overflow:hidden;background:#111;">
-                <img src="assets/jugadores/jose.jpeg" style="width:100%;height:100%;object-fit:cover;object-position:center top;" />
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">JOSÉ CALDERÓN</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#1</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Arquero Titular</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- NATALIA PERDOMO · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">NATALIA PERDOMO</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#14</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Lateral Derecha</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">NATALIA PERDOMO</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#14</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Lateral Derecha</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1029,104 +1224,180 @@ dias.forEach(d => {
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- HUMBERTO MARTÍNEZ · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">HUMBERTO MARTÍNEZ</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#2</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Defensa Libre</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">HUMBERTO MARTÍNEZ</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#2</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Defensa Libre</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- CRISTINA OBREGÓN · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">CRISTINA OBREGÓN</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#16</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Creativa Ofensiva</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">CRISTINA OBREGÓN</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#16</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C1 · Creativa Ofensiva</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- SANTIAGO BOTERO · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">SANTIAGO BOTERO</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#12</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Arquero Suplente</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">SANTIAGO BOTERO</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#12</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Arquero Suplente</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- PEDRO GROOT · placeholder -->
-          <div class="panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
-            <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;">
-              <div style="background:#FCD116;padding:5px 8px 4px;">
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
-                  <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
-                  <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
-                </div>
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
-                <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
-                  <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+          <div class="flip-card panini-card flex-shrink-0" style="width:180px; scroll-snap-align:center; transition:opacity 0.3s,transform 0.3s;">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <div style="background:white;border-radius:8px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:2px solid #FCD116;height:260px;">
+                  <div style="background:#FCD116;padding:5px 8px 4px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+                      <span style="font-size:7px;color:#003087;font-weight:700;letter-spacing:0.08em;">FIFA WORLD CUP™</span>
+                      <span style="font-size:7px;color:#CE1126;font-weight:700;">2026</span>
+                    </div>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#003087;letter-spacing:0.2em;margin:0;line-height:1;">COLOMBIA</p>
+                    <div style="display:flex;height:2px;margin-top:3px;border-radius:1px;overflow:hidden;">
+                      <div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div>
+                    </div>
+                  </div>
+                  <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
+                    <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
+                  </div>
+                  <div style="background:#003087;padding:6px 8px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">PEDRO GROOT</p>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
+                      <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#18</span>
+                      <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Nueve de Referencia</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div style="height:170px;background:linear-gradient(135deg,#003087 0%,#001540 100%);display:flex;align-items:center;justify-content:center;">
-                <span style="font-family:'Bebas Neue',sans-serif;font-size:60px;color:rgba(252,209,22,0.15);">⚽</span>
-              </div>
-              <div style="background:#003087;padding:6px 8px;">
-                <p style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:white;letter-spacing:0.08em;margin:0;">PEDRO GROOT</p>
-                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:2px;">
-                  <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#FCD116;line-height:1;">#18</span>
-                  <span style="font-size:8px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:0.05em;">C2 · Nueve de Referencia</span>
+              <div class="flip-card-back">
+                <div style="background:#003087;height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;border:2px solid #FCD116;box-shadow:0 6px 20px rgba(0,0,0,0.5);">
+                  <div style="position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(252,209,22,0.06) 12px,rgba(252,209,22,0.06) 24px);"></div>
+                  <div style="position:absolute;top:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:5px;display:flex;"><div style="flex:2;background:#FCD116;"></div><div style="flex:1;background:#003087;"></div><div style="flex:1;background:#CE1126;"></div></div>
+                  <div style="text-align:center;position:relative;z-index:1;padding:12px;">
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#FCD116;letter-spacing:0.15em;margin:0;line-height:1.1;">PITAN</p>
+                    <p style="font-size:9px;color:rgba(255,255,255,0.7);letter-spacing:0.12em;margin:8px 0 4px;text-transform:uppercase;">Sebas & Mate Fest</p>
+                    <p style="font-family:'Bebas Neue',sans-serif;font-size:13px;color:white;letter-spacing:0.18em;margin:0;">MUNDIAL CDMX 2026</p>
+                    <p style="font-size:22px;margin:8px 0 0;">🏆</p>
+                    <p style="font-size:8px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;margin:5px 0 0;text-transform:uppercase;">FIFA World Cup™ Official Sticker</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1177,5 +1448,12 @@ dias.forEach(d => {
   </div>
 </footer>
 
+<script>
+document.querySelectorAll('.flip-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    this.classList.toggle('flipped');
+  });
+});
+</script>
 </body>
 </html>
