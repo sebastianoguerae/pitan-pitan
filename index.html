@@ -42,117 +42,71 @@
     body { background-color: #ECEFE8; font-family: 'Inter', sans-serif; }
     .font-display { font-family: 'Bebas Neue', sans-serif; }
 
-    /* ── INVITATION OVERLAY ── */
+    /* ── INVITATION ── */
     #inv-overlay {
-      position: fixed; inset: 0; z-index: 9999;
-      background: linear-gradient(135deg, #1a0a00 0%, #2d1500 50%, #1a0a00 100%);
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 24px;
-      transition: opacity 0.8s ease;
+      position:fixed;inset:0;z-index:9999;
+      background:linear-gradient(135deg,#1a0800,#2d1200,#1a0800);
+      display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;
+      transition:opacity 0.7s;
     }
-    #inv-overlay.fade-out { opacity: 0; pointer-events: none; }
-
-    /* Envelope */
-    #env-scene { position: relative; }
-    #envelope {
-      width: 320px; position: relative;
-      filter: drop-shadow(0 24px 48px rgba(0,0,0,0.8));
-      cursor: pointer;
+    #inv-overlay.fade-out{opacity:0;pointer-events:none;}
+    /* Envelope card */
+    #envelope{
+      width:300px;background:#f0e6c8;border-radius:4px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.8);
+      padding:20px 20px 16px;cursor:pointer;
+      border:1px solid #c8a850;
+      transition:transform 0.15s;
+      user-select:none;
     }
-    /* Body */
-    #env-body {
-      width: 320px; height: 210px;
-      background: linear-gradient(170deg, #f0e8d0 0%, #e4d4a8 100%);
-      border: 1px solid #b8a060;
-      position: relative; overflow: hidden;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
-      border-radius: 0 0 6px 6px;
+    #envelope:active{transform:scale(0.97);}
+    .env-top{
+      width:100%;display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px;
     }
-    #env-body::before {
-      content: ''; position: absolute; inset: 0;
-      background: repeating-linear-gradient(45deg, transparent, transparent 16px, rgba(139,110,66,0.05) 16px, rgba(139,110,66,0.05) 17px);
+    .stamp{
+      width:58px;height:72px;border:2px solid;border-radius:2px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;
+      font-size:8px;font-weight:700;letter-spacing:0.05em;text-align:center;
+      position:relative;box-shadow:inset 0 0 0 3px rgba(255,255,255,0.6);
     }
-    /* Side crease lines */
-    #env-body::after {
-      content: ''; position: absolute; inset: 0;
-      background:
-        linear-gradient(135deg, transparent calc(50% - 0.5px), rgba(139,110,66,0.2) calc(50% - 0.5px), rgba(139,110,66,0.2) calc(50% + 0.5px), transparent calc(50% + 0.5px)),
-        linear-gradient(225deg, transparent calc(50% - 0.5px), rgba(139,110,66,0.2) calc(50% - 0.5px), rgba(139,110,66,0.2) calc(50% + 0.5px), transparent calc(50% + 0.5px));
+    .stamp::after{content:'';position:absolute;inset:-5px;border:2.5px dotted rgba(0,0,0,0.2);border-radius:3px;}
+    .stamp-co{background:#FCD116;border-color:#003087;color:#003087;}
+    .stamp-mx{background:#006847;border-color:#fff;color:#fff;}
+    .stamp-icon{font-size:24px;line-height:1;}
+    .stamp-val{font-size:9px;font-weight:900;}
+    .env-lines{margin:0 0 14px;border-top:1px dashed #b8a060;}
+    .env-logo{width:100%;text-align:center;margin-bottom:10px;}
+    .env-logo img{height:60px;opacity:0.85;}
+    .env-to{font-family:'Bebas Neue',sans-serif;font-size:10px;color:#6b5038;letter-spacing:0.1em;line-height:1.5;}
+    .env-hint{
+      font-family:'Bebas Neue',sans-serif;color:rgba(255,255,255,0.45);
+      letter-spacing:0.2em;font-size:13px;
+      animation:ph 2s ease-in-out infinite;
     }
-    /* Flap — triangle shape via overflow trick */
-    #env-flap-wrap {
-      width: 320px; height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-top: 130px solid #d4c080;
-      position: relative; z-index: 4;
-      transition: transform 1s cubic-bezier(0.4,0,0.2,1), opacity 0.8s ease;
-      transform-origin: top center;
-      filter: drop-shadow(0 4px 4px rgba(0,0,0,0.15));
-    }
-    #env-flap-wrap::before {
-      content: ''; position: absolute;
-      top: -130px; left: -160px; right: -160px; bottom: 0;
-      background: linear-gradient(160deg, rgba(255,255,255,0.2) 0%, transparent 50%);
-    }
-    #env-flap-wrap.open {
-      transform: rotateX(-170deg) translateY(-20px);
-      opacity: 0;
-    }
-    /* Flap top (closing the envelope top) */
-    #env-top {
-      width: 320px; height: 0;
-      border-left: 160px solid transparent;
-      border-right: 160px solid transparent;
-      border-bottom: 110px solid #c8b068;
-      position: relative; z-index: 1;
-    }
-    #env-address {
-      position: absolute; bottom: 18px; left: 14px;
-      font-family: 'Bebas Neue', sans-serif; font-size: 10px;
-      color: #6b5a38; letter-spacing: 0.08em; z-index: 5;
-      text-align: left; line-height: 1.5;
-    }
-
-    /* Click hint */
-    #env-hint {
-      font-family: 'Bebas Neue', sans-serif;
-      color: rgba(255,255,255,0.5); letter-spacing: 0.2em; font-size: 13px;
-      animation: pulse-hint 2s ease-in-out infinite;
-    }
-    @keyframes pulse-hint { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
-
+    @keyframes ph{0%,100%{opacity:0.3}50%{opacity:0.9}}
     /* Password */
-    #pw-screen {
-      display: none; flex-direction: column; align-items: center; gap: 14px;
-      animation: fadeIn 0.5s ease;
+    #pw-screen{
+      display:none;flex-direction:column;align-items:center;gap:14px;
+      animation:fi 0.4s ease;
     }
-    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
-    #pw-screen p { font-family:'Bebas Neue',sans-serif; color:#FCD116; letter-spacing:0.2em; font-size:15px; }
-    #pw-input {
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(252,209,22,0.4);
-      color: white; font-family:'Bebas Neue',sans-serif; font-size:22px;
-      letter-spacing: 0.3em; text-align: center; padding: 10px 20px;
-      border-radius: 4px; width: 220px; outline: none;
+    @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    #pw-screen p{font-family:'Bebas Neue',sans-serif;color:#FCD116;letter-spacing:0.2em;font-size:14px;}
+    #pw-input{
+      background:rgba(255,255,255,0.08);border:1px solid rgba(252,209,22,0.4);
+      color:white;font-family:'Bebas Neue',sans-serif;font-size:22px;
+      letter-spacing:0.3em;text-align:center;padding:10px 20px;
+      border-radius:4px;width:200px;outline:none;
     }
-    #pw-input::placeholder { color: rgba(255,255,255,0.2); font-size:14px; letter-spacing:0.1em; }
-    #pw-input:focus { border-color: #FCD116; }
-    #pw-btn {
-      font-family:'Bebas Neue',sans-serif; letter-spacing:0.2em; font-size:16px;
-      background: #FCD116; color: #003087; border: none; padding: 10px 32px;
-      cursor: pointer; border-radius: 2px;
-      transition: background 0.2s, transform 0.1s;
+    #pw-input:focus{border-color:#FCD116;}
+    #pw-btn{
+      font-family:'Bebas Neue',sans-serif;letter-spacing:0.2em;font-size:15px;
+      background:#FCD116;color:#003087;border:none;padding:10px 28px;
+      cursor:pointer;border-radius:2px;transition:background 0.2s;
     }
-    #pw-btn:hover { background: #ffdc3a; }
-    #pw-btn:active { transform: scale(0.97); }
-    #pw-error {
-      color: #CE1126; font-size: 12px; letter-spacing: 0.1em;
-      display: none; font-family:'Bebas Neue',sans-serif;
-    }
-    .shake { animation: shake 0.4s ease; }
-    @keyframes shake {
-      0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-8px)} 40%,80%{transform:translateX(8px)}
-    }
+    #pw-btn:hover{background:#ffdc3a;}
+    #pw-error{color:#CE1126;font-size:11px;letter-spacing:0.1em;display:none;font-family:'Bebas Neue',sans-serif;}
+    .shake{animation:sk 0.4s ease;}
+    @keyframes sk{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(-8px)}50%{transform:translateX(8px)}}
     @keyframes kenburns {
       0%   { transform: scale(1)    translate(0, 0); }
       50%  { transform: scale(1.08) translate(-1%, 1%); }
@@ -170,83 +124,61 @@
 
 <!-- INVITATION OVERLAY -->
 <div id="inv-overlay">
-  <div id="env-scene">
-    <div id="envelope">
-      <!-- Flap (triangle pointing down, CSS border trick) -->
-      <div id="env-flap-wrap" onclick="openEnvelope()"></div>
-      <!-- Top triangle (static, shows envelope top edge) -->
-      <div id="env-top"></div>
-      <!-- Body -->
-      <div id="env-body">
-        <!-- Stamps -->
-        <div class="stamp stamp-co">
-          <span class="stamp-flag">🐯</span>
-          <span>COLOMBIA</span>
-          <span class="stamp-value">2026</span>
-        </div>
-        <div class="stamp stamp-mx">
-          <span class="stamp-flag">🇲🇽</span>
-          <span>MÉXICO</span>
-          <span class="stamp-value">2026</span>
-        </div>
-        <!-- Logo -->
-        <img id="env-logo" src="assets/logo-transparente.png" alt="PITAN PITAN" />
-        <!-- Wax seal -->
-        <div id="env-seal">🏆</div>
-        <!-- Address -->
-        <div id="env-address">
-          PARA: LOS CONVOCADOS<br>
-          CDMX · PUERTO ESCONDIDO<br>
-          15–21 JUNIO 2026
-        </div>
+  <div id="envelope" onclick="openEnv()">
+    <div class="env-top">
+      <div class="stamp stamp-co">
+        <span class="stamp-icon">🐯</span>
+        <span>COLOMBIA</span>
+        <span class="stamp-val">2026</span>
+      </div>
+      <div class="stamp stamp-mx">
+        <span class="stamp-icon">🦅</span>
+        <span>MÉXICO</span>
+        <span class="stamp-val">2026</span>
       </div>
     </div>
+    <div class="env-lines"></div>
+    <div class="env-logo"><img src="assets/logo-transparente.png" alt="PITAN PITAN"/></div>
+    <div class="env-to">
+      PARA: LOS CONVOCADOS<br>
+      CDMX · PUERTO ESCONDIDO · 15–21 JUN 2026
+    </div>
   </div>
-  <div id="env-hint">TOCA EL SOBRE PARA ABRIR</div>
-  <!-- Password -->
+  <div class="env-hint">TOCA PARA ABRIR</div>
   <div id="pw-screen">
-    <p>INGRESA LA CLAVE DE ACCESO</p>
-    <input id="pw-input" type="text" placeholder="contraseña..." maxlength="20"
-           onkeydown="if(event.key==='Enter') checkPw()" autocomplete="off" />
+    <p>INGRESA LA CLAVE</p>
+    <input id="pw-input" type="text" placeholder="contraseña..."
+           maxlength="20" autocomplete="off"
+           onkeydown="if(event.key==='Enter')checkPw()"/>
     <button id="pw-btn" onclick="checkPw()">ENTRAR AL PITAN PITAN</button>
-    <span id="pw-error">CLAVE INCORRECTA · VUELVE A INTENTAR</span>
+    <span id="pw-error">CLAVE INCORRECTA · INTENTA DE NUEVO</span>
   </div>
 </div>
-
 <script>
-  // Skip if already unlocked
-  if (sessionStorage.getItem('pitan_v2_unlocked') === 'true') {
-    document.getElementById('inv-overlay').style.display = 'none';
+  if(sessionStorage.getItem('pitan_v2_unlocked')==='true'){
+    document.getElementById('inv-overlay').style.display='none';
   }
-
-  var envelopeOpened = false;
-
-  function openEnvelope() {
-    if (envelopeOpened) return;
-    envelopeOpened = true;
-    document.getElementById('env-flap-wrap').classList.add('open');
-    document.getElementById('env-hint').style.display = 'none';
-    setTimeout(function() {
-      document.getElementById('pw-screen').style.display = 'flex';
-      document.getElementById('pw-input').focus();
-    }, 1000);
+  function openEnv(){
+    document.getElementById('envelope').style.display='none';
+    document.querySelector('.env-hint').style.display='none';
+    var ps=document.getElementById('pw-screen');
+    ps.style.display='flex';
+    document.getElementById('pw-input').focus();
   }
-
-  function checkPw() {
-    var val = document.getElementById('pw-input').value.trim().toUpperCase();
-    if (val === 'COLOMBIA') {
-      sessionStorage.setItem('pitan_v2_unlocked', 'true');
-      var overlay = document.getElementById('inv-overlay');
-      overlay.classList.add('fade-out');
-      setTimeout(function() { overlay.style.display = 'none'; }, 850);
+  function checkPw(){
+    var v=document.getElementById('pw-input').value.trim().toUpperCase();
+    if(v==='COLOMBIA'){
+      sessionStorage.setItem('pitan_v2_unlocked','true');
+      var o=document.getElementById('inv-overlay');
+      o.classList.add('fade-out');
+      setTimeout(function(){o.style.display='none';},750);
     } else {
-      var input = document.getElementById('pw-input');
-      var err = document.getElementById('pw-error');
-      input.classList.remove('shake');
-      void input.offsetWidth; // reflow
-      input.classList.add('shake');
-      err.style.display = 'block';
-      input.value = '';
+      var inp=document.getElementById('pw-input');
+      inp.classList.remove('shake');
+      void inp.offsetWidth;
+      inp.classList.add('shake');
+      document.getElementById('pw-error').style.display='block';
+      inp.value='';
     }
   }
 </script>
