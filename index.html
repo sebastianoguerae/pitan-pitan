@@ -1231,7 +1231,7 @@ const dias = [
       { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic', foto: 'assets/eventos/soho-pool.jpg' },
       { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
       { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
-      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo.jpeg' },
+      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo.jpeg', fotoNatural: true },
       { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
     ]
   },
@@ -1239,7 +1239,7 @@ const dias = [
     dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
     actividades: [
       { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'La camiseta del Tigre', hasta: '5:00 PM', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
-      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌', foto: 'assets/azteca.jpg' },
+      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌', foto: 'assets/azteca.jpg', fotoTall: true },
       { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
     ]
   },
@@ -1249,7 +1249,7 @@ const dias = [
       { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg' },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
-      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg' },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg', fotoGrande: true },
       { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
       { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'En restaurante local', mexico: true },
     ]
@@ -1342,13 +1342,19 @@ dias.forEach(d => {
           <p class="font-display text-xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
           <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
-                    ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
+                    ${a.fotoNatural ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="width:100%; height:auto; display:block; border-radius:4px;" />` : ''}
+          ${a.fotoTall && !a.foto2 ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:280px; object-fit:cover; object-position:center;" />` : ''}
+          ${a.fotoGrande && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:200px; object-fit:cover; object-position:center;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:200px; object-fit:cover; object-position:center;" />
+          </div>` : ''}
+          ${!a.fotoNatural && !a.fotoTall && !a.fotoGrande && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
             <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
           </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
             <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          </div>` : a.foto && !a.fotoNatural && !a.fotoTall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
           ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
@@ -1391,7 +1397,7 @@ dias.forEach(d => {
           </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
             <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          </div>` : a.foto && !a.fotoNatural && !a.fotoTall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
           ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
       </div>`;
