@@ -1170,7 +1170,7 @@ dias.forEach(d => {
         </div>
         <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
         ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover;" />` : ''}
-        ${a.video ? `<video muted autoplay loop playsinline class="mt-3 rounded mx-auto block" style="max-height:240px;max-width:135px;object-fit:cover;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
+        ${a.video ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
       </div>`;
     if (a.mexico) return `
       <div class="border-2 p-5 flex items-center gap-4" style="border-color:#006847; background:#006847;">
