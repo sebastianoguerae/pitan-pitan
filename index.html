@@ -157,6 +157,9 @@
 <script>
   if(sessionStorage.getItem('pitan_v2_unlocked')==='true'){
     document.getElementById('inv-overlay').style.display='none';
+    window.addEventListener('load', function(){
+      var v=document.getElementById('hero-vid');if(v){v.currentTime=0;v.play();}
+    });
   }
   window.scrollTo(0,0);
   function openEnv(){
@@ -1303,8 +1306,8 @@ dias.forEach(d => {
             <p class="text-xs text-black/40 mt-1">Sonora style · Condesa</p>
           </div>
         </div>
-      </div>\`;
-    if (a.paralelo) return \`
+      </div>`;
+    if (a.paralelo) return `
       <div class="px-4 py-3">
         <span class="font-display text-lg text-col-red block mb-2">${a.hora}</span>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
