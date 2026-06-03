@@ -1117,7 +1117,10 @@ dias.forEach(d => {
           <span class="text-xs tracking-widest text-col-blue font-bold uppercase">🇨🇴 GRUPO K · MATCH 24</span>
           <p class="font-display text-2xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
           ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
-          <img src="assets/eventos/foto-partido-grupo.jpeg" alt="Hinchada Colombia" class="mt-3 rounded opacity-90" style="width:160px;" />
+          <div class="mt-3 flex gap-2">
+            <img src="assets/eventos/foto-partido-grupo.jpeg" alt="" class="rounded opacity-90" style="width:150px;height:110px;object-fit:cover;" />
+            <img src="assets/eventos/partido-copa-america.jpeg" alt="" class="rounded opacity-90" style="width:150px;height:110px;object-fit:cover;" />
+          </div>
         </div>
         <span class="text-4xl">🏆</span>
       </div>`;
