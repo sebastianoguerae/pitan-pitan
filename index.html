@@ -52,7 +52,7 @@
     #inv-overlay.fade-out{opacity:0;pointer-events:none;}
     /* Envelope card */
     #envelope{
-      width:300px;background:#f0e6c8;border-radius:4px;
+      width:min(300px, 90vw);background:#f0e6c8;border-radius:4px;
       box-shadow:0 20px 60px rgba(0,0,0,0.8);
       padding:20px 20px 16px;cursor:pointer;
       border:1px solid #c8a850;
@@ -95,7 +95,7 @@
       background:rgba(255,255,255,0.08);border:1px solid rgba(252,209,22,0.4);
       color:white;font-family:'Bebas Neue',sans-serif;font-size:22px;
       letter-spacing:0.3em;text-align:center;padding:10px 20px;
-      border-radius:4px;width:200px;outline:none;
+      border-radius:4px;width:min(200px, 75vw);outline:none;
     }
     #pw-input:focus{border-color:#FCD116;}
     #pw-btn{
@@ -118,6 +118,14 @@
     .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(0deg); }
     .flip-card-front, .flip-card-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; overflow: hidden; }
     .flip-card-back { transform: rotateY(180deg); }
+
+    /* ── MOBILE SCROLL ── */
+    .piso-scroll { -webkit-overflow-scrolling: touch; touch-action: pan-x; }
+
+    /* ── MOBILE HERO LOGO ── */
+    @media (max-width: 430px) {
+      .hero-logo { max-width: 280px; }
+    }
   </style>
 </head>
 <body class="bg-crema text-black">
@@ -305,7 +313,7 @@
         <span class="font-display text-col-red tracking-[0.3em] text-sm">PISO 1</span>
         <div class="h-px flex-1 bg-crema/20"></div>
       </div>
-      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;scroll-snap-type:x mandatory;">
+      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;">
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- JUAN CAMILO BARRIOS -->
@@ -591,7 +599,7 @@
         <span class="font-display text-col-red tracking-[0.3em] text-sm">PISO 2</span>
         <div class="h-px flex-1 bg-crema/20"></div>
       </div>
-      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;scroll-snap-type:x mandatory;">
+      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;">
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- FELIPE VELÁSQUEZ · photo -->
@@ -785,7 +793,7 @@
         <span class="font-display text-col-red tracking-[0.3em] text-sm">PISO 3</span>
         <div class="h-px flex-1 bg-crema/20"></div>
       </div>
-      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;scroll-snap-type:x mandatory;">
+      <div class="piso-scroll overflow-x-auto -mx-4 px-4 pb-3" style="scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;">
         <div class="flex gap-3" style="width:max-content;">
 
           <!-- HUMBERTO MARTÍNEZ -->
@@ -1289,10 +1297,10 @@ dias.forEach(d => {
     if (a.tacos) return `
       <div class="px-4 py-3">
         <div class="flex items-start gap-3 mb-3">
-          <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
-          <p class="font-medium">${a.texto}</p>
+          <span class="font-display text-base text-col-red min-w-[70px] flex-shrink-0 pt-0.5">${a.hora}</span>
+          <p class="font-medium min-w-0">${a.texto}</p>
         </div>
-        <div class="grid grid-cols-3 gap-2 ml-[80px]">
+        <div class="grid grid-cols-3 gap-2 sm:ml-[80px]">
           <div class="bg-black/5 border border-black/10 p-3 text-center rounded">
             <p class="font-display text-sm tracking-wider leading-tight">TACOS<br>DOMINGO</p>
             <p class="text-xs text-black/40 mt-1">@tacosdomingo</p>
@@ -1322,51 +1330,51 @@ dias.forEach(d => {
         ${a.video ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
       </div>`;
     if (a.mexico) return `
-      <div class="border-2 p-5 flex items-center gap-4" style="border-color:#006847; background:#006847;">
-        <div class="text-center min-w-[80px]">
-          <span class="font-display text-2xl block" style="color:white;">${a.hora}</span>
+      <div class="border-2 p-4 flex items-start gap-3" style="border-color:#006847; background:#006847;">
+        <div class="text-center min-w-[60px] flex-shrink-0">
+          <span class="font-display text-xl block" style="color:white;">${a.hora}</span>
           <span class="text-xs tracking-widest block" style="color:rgba(255,255,255,0.5);">CDMX</span>
         </div>
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
           <span class="text-xs tracking-widest font-bold uppercase" style="color:rgba(255,255,255,0.7);">🇲🇽 ESTADIO AKRON · GUADALAJARA</span>
-          <p class="font-display text-2xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
+          <p class="font-display text-xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
           <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:130px; object-fit:cover;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:130px; object-fit:cover;" />
           </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
         </div>
-        <span class="text-4xl">🦅</span>
+        <span class="text-3xl flex-shrink-0">🦅</span>
       </div>`;
     if (a.colombia) return `
-      <div class="border-2 border-col-yellow bg-col-yellow p-5 flex items-center gap-4">
-        <div class="text-center min-w-[80px]">
-          <span class="font-display text-2xl text-col-red block">${a.hora}</span>
+      <div class="border-2 border-col-yellow bg-col-yellow p-4 flex items-start gap-3">
+        <div class="text-center min-w-[60px] flex-shrink-0">
+          <span class="font-display text-xl text-col-red block">${a.hora}</span>
           <span class="text-xs tracking-widest text-black/50 block">CDMX</span>
         </div>
-        <div class="flex-1">
+        <div class="flex-1 min-w-0">
           <span class="text-xs tracking-widest text-col-blue font-bold uppercase">🇨🇴 GRUPO K · MATCH 24</span>
-          <p class="font-display text-2xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
+          <p class="font-display text-xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
           ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
           <div class="mt-3 grid grid-cols-3 gap-1">
-            <img src="assets/eventos/partido-amigos.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
-            <img src="assets/eventos/partido-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
-            <img src="assets/eventos/foto-final-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
+            <img src="assets/eventos/partido-amigos.jpeg" alt="" class="rounded opacity-90 w-full" style="height:70px;object-fit:cover;" />
+            <img src="assets/eventos/partido-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:70px;object-fit:cover;" />
+            <img src="assets/eventos/foto-final-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:70px;object-fit:cover;" />
           </div>
         </div>
-        <span class="text-4xl">🏆</span>
+        <span class="text-3xl flex-shrink-0">🏆</span>
       </div>`;
     if (a.mundial) return `
       <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
-        <span class="font-display text-sm text-black/50 min-w-[70px]">${a.hora}</span>
-        <span class="text-sm">⚽</span>
-        <p class="text-sm text-black/70">${a.texto}</p>
+        <span class="font-display text-sm text-black/50 min-w-[60px] flex-shrink-0">${a.hora}</span>
+        <span class="text-sm flex-shrink-0">⚽</span>
+        <p class="text-sm text-black/70 min-w-0">${a.texto}</p>
       </div>`;
     return `
       <div class="px-4 py-3 flex items-start gap-3 hover:bg-black/5 transition-colors">
-        <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
-        <div>
+        <span class="font-display text-base text-col-red min-w-[70px] flex-shrink-0 pt-0.5">${a.hora}</span>
+        <div class="min-w-0 flex-1">
           <p class="font-medium">${a.texto}</p>
           ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
@@ -1656,25 +1664,25 @@ dias.forEach(d => {
       <h2 class="font-display text-6xl md:text-8xl tracking-wider">PUERTO</h2>
       <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">ESCONDIDO</h2>
     </div>
-    <div class="grid grid-cols-3 gap-2 mb-16">
-      <img src="assets/casa-seri/seri_8_2.jpeg" alt="Casa Seri piscina y mar" class="aspect-[4/3] object-cover w-full col-span-2" />
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 mb-16">
+      <img src="assets/casa-seri/seri_8_2.jpeg" alt="Casa Seri piscina y mar" class="aspect-[4/3] object-cover w-full md:col-span-2" />
       <img src="assets/casa-seri/seri_1_9.jpeg" alt="Casa Seri aérea" class="aspect-[4/3] object-cover w-full" />
       <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga y océano" class="aspect-[4/3] object-cover w-full" />
       <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover w-full" />
       <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines" class="aspect-[4/3] object-cover w-full" />
     </div>
-    <div class="grid grid-cols-4 border border-crema/20 mb-12 text-center">
-      <div class="py-4 border-r border-crema/20">
+    <div class="grid grid-cols-2 sm:grid-cols-4 border border-crema/20 mb-12 text-center">
+      <div class="py-4 border-r border-crema/20 border-b sm:border-b-0">
         <p class="font-display text-3xl text-col-yellow">8</p>
         <p class="text-xs tracking-widest text-crema/40 uppercase">Suites</p>
       </div>
-      <div class="py-4 border-r border-crema/20">
+      <div class="py-4 sm:border-r border-crema/20 border-b sm:border-b-0">
         <p class="font-display text-3xl text-col-yellow">16</p>
         <p class="text-xs tracking-widest text-crema/40 uppercase">Huéspedes</p>
       </div>
       <div class="py-4 border-r border-crema/20">
         <p class="font-display text-3xl text-col-yellow">🍺</p>
-        <p class="text-xs tracking-widest text-crema/40 uppercase">Tequila, Cerveza y Fútbol</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Tequila &amp; Fútbol</p>
       </div>
       <div class="py-4">
         <p class="font-display text-3xl text-col-yellow">🌊</p>
