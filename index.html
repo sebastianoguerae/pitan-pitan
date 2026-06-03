@@ -106,6 +106,8 @@
     #pw-btn:hover{background:#ffdc3a;}
     #pw-error{color:#CE1126;font-size:11px;letter-spacing:0.1em;display:none;font-family:'Bebas Neue',sans-serif;}
     .shake{animation:sk 0.4s ease;}
+    @keyframes hint-pulse { 0%,100%{transform:rotateY(0deg)} 30%{transform:rotateY(-15deg)} 60%{transform:rotateY(8deg)} }
+    .flip-card-inner.hint { animation: hint-pulse 1.2s ease 0.8s both; }
     @keyframes sk{0%,100%{transform:translateX(0)}25%,75%{transform:translateX(-8px)}50%{transform:translateX(8px)}}
     @keyframes kenburns {
       0%   { transform: scale(1)    translate(0, 0); }
@@ -305,6 +307,9 @@
       <p class="font-display text-2xl tracking-wider text-crema">CASA DE LA SELECCIÓN · ANZURES</p>
       <p class="text-xs tracking-widest text-crema/40 mt-1">Descartes 47 · Col. Anzures · CDMX</p>
     </div>
+
+    <!-- Hint mobile -->
+    <p class="text-center text-xs text-crema/40 tracking-widest mb-6 md:hidden">👆 TOCA LAS LÁMINAS PARA VER AL JUGADOR</p>
 
     <!-- PISO 1 -->
     <div class="mb-10">
@@ -1282,7 +1287,6 @@ const dias = [
     dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
     actividades: [
       { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg' },
-      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹', foto: 'assets/casa-seri/seri_11_6.jpeg' },
       { hora: '11:00 AM', texto: 'España vs Arabia Saudita — Mercedes-Benz, Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Bélgica vs Irán — SoFi Stadium, LA', mundial: true },
       { hora: '5:00 PM',  texto: 'Uruguay vs Cabo Verde — Hard Rock Stadium, Miami', mundial: true },
@@ -1787,6 +1791,21 @@ dias.forEach(d => {
 </footer>
 
 <script>
+// Auto-hint: pulse first card of each piso when visible
+(function(){
+  var firstCards = [];
+  document.querySelectorAll('.piso-scroll').forEach(function(sc){
+    var first = sc.querySelector('.flip-card-inner');
+    if(first) firstCards.push(first);
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('hint'); obs.unobserve(e.target); }
+    });
+  }, {threshold:0.5});
+  firstCards.forEach(function(c){ obs.observe(c); });
+})();
+
 document.querySelectorAll('.flip-card').forEach(function(card) {
   card.addEventListener('click', function() {
     this.classList.toggle('flipped');
