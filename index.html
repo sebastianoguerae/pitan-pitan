@@ -1206,7 +1206,7 @@ const dias = [
       { hora: '2:00 PM',   texto: 'Bélgica vs Egipto — Lumen Field, Seattle', mundial: true },
       { hora: '5:00 PM',   texto: 'Arabia Saudita vs Uruguay — Hard Rock Stadium, Miami', mundial: true },
       { hora: '8:00 PM',   texto: 'Irán vs Nueva Zelanda — SoFi Stadium, LA', mundial: true },
-      { hora: 'NOCHE',       texto: 'Cena de bienvenida en la Casa 🥂' },
+      { hora: 'NOCHE', texto: 'Taco Hopping 🌮', tacos: true },
     ]
   },
   {
@@ -1283,7 +1283,28 @@ const dias = [
 const container = document.getElementById('itinerario-container');
 dias.forEach(d => {
   const actividadesHtml = d.actividades.map(a => {
-    if (a.paralelo) return `
+    if (a.tacos) return `
+      <div class="px-4 py-3">
+        <div class="flex items-start gap-3 mb-3">
+          <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
+          <p class="font-medium">${a.texto}</p>
+        </div>
+        <div class="grid grid-cols-3 gap-2 ml-[80px]">
+          <div class="bg-black/5 border border-black/10 p-3 text-center rounded">
+            <p class="font-display text-sm tracking-wider leading-tight">TACOS<br>DOMINGO</p>
+            <p class="text-xs text-black/40 mt-1">@tacosdomingo</p>
+          </div>
+          <div class="bg-black/5 border border-black/10 p-3 text-center rounded">
+            <p class="font-display text-sm tracking-wider leading-tight">TACOS<br>ATARANTADOS</p>
+            <p class="text-xs text-black/40 mt-1">Tacos y cumbias 🎶</p>
+          </div>
+          <div class="bg-black/5 border border-black/10 p-3 text-center rounded">
+            <p class="font-display text-sm tracking-wider leading-tight">LOS<br>CARAMELOS</p>
+            <p class="text-xs text-black/40 mt-1">Sonora style · Condesa</p>
+          </div>
+        </div>
+      </div>\`;
+    if (a.paralelo) return \`
       <div class="px-4 py-3">
         <span class="font-display text-lg text-col-red block mb-2">${a.hora}</span>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
