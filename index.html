@@ -1231,7 +1231,7 @@ const dias = [
       { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic', foto: 'assets/eventos/soho-pool.jpg' },
       { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
       { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
-      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo.jpeg' },
+      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo-culinary.jpg' },
       { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
     ]
   },
@@ -1343,9 +1343,9 @@ dias.forEach(d => {
           <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;" />
-          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="width:100%; height:auto; display:block;" />` : ''}
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
       </div>`;
@@ -1360,9 +1360,9 @@ dias.forEach(d => {
           <p class="font-display text-xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
           ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
           <div class="mt-3 grid grid-cols-3 gap-1">
-            <img src="assets/eventos/partido-amigos.jpeg" alt="" class="rounded opacity-90 w-full" style="width:100%; height:auto; max-height:150px; object-fit:cover; display:block;" />
-            <img src="assets/eventos/partido-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="width:100%; height:auto; max-height:150px; object-fit:cover; display:block;" />
-            <img src="assets/eventos/foto-final-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="width:100%; height:auto; max-height:150px; object-fit:cover; display:block;" />
+            <img src="assets/eventos/partido-amigos.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
+            <img src="assets/eventos/partido-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
+            <img src="assets/eventos/foto-final-copa-america.jpeg" alt="" class="rounded opacity-90 w-full" style="height:90px;object-fit:cover;" />
           </div>
         </div>
         <span class="text-3xl flex-shrink-0">🏆</span>
@@ -1382,12 +1382,12 @@ dias.forEach(d => {
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
           ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;" />
-          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="width:100%; height:auto; display:block;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;" />
-            <video controls playsinline class="w-full rounded" style="width:100%; height:auto; max-height:220px; object-fit:cover; display:block;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="width:100%; height:auto; display:block;" />` : ''}
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
+            <video controls playsinline class="w-full rounded" style="height:150px; object-fit:cover;"><source src="${a.video}" type="video/mp4"/></video>
+          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
           ${!a.foto && a.video ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
       </div>`;
