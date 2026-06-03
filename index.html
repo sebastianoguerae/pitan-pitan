@@ -1347,7 +1347,7 @@ dias.forEach(d => {
           ${!a.fotoAlt && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
             <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
             <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}
+          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
       </div>`;
@@ -1384,12 +1384,12 @@ dias.forEach(d => {
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
           ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
-          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
-            <video controls playsinline class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
+          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
+            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
+            <video controls playsinline class="w-full rounded" style="width:100%; height:auto; max-height:300px;"><source src="${a.video}" type="video/mp4"/></video>
+          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}
           ${!a.foto && a.video ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
       </div>`;
