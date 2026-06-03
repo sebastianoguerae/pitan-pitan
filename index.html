@@ -1284,7 +1284,7 @@ const dias = [
   {
     dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
     actividades: [
-      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg' },
+      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg', fotoSmall: true },
       { hora: '11:00 AM', texto: 'España vs Arabia Saudita — Mercedes-Benz, Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Bélgica vs Irán — SoFi Stadium, LA', mundial: true },
       { hora: '5:00 PM',  texto: 'Uruguay vs Cabo Verde — Hard Rock Stadium, Miami', mundial: true },
@@ -1342,7 +1342,8 @@ dias.forEach(d => {
           <p class="font-display text-xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
           <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
-                    ${a.fotoNatural ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="width:100%; height:auto; display:block; border-radius:4px;" />` : ''}
+                    ${a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-2 rounded" style="max-width:115px; height:auto; display:block; border-radius:4px;" />` : ''}
+          ${a.fotoNatural ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="width:100%; height:auto; display:block; border-radius:4px;" />` : ''}
           ${a.fotoTall && !a.foto2 ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:280px; object-fit:cover; object-position:center;" />` : ''}
           ${a.fotoGrande && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
             <img src="${a.foto2}" alt="" class="w-full rounded" style="height:200px; object-fit:cover; object-position:center;" />
@@ -1354,7 +1355,7 @@ dias.forEach(d => {
           </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
             <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto && !a.fotoNatural && !a.fotoTall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          </div>` : a.foto && !a.fotoNatural && !a.fotoTall && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
           ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
@@ -1397,7 +1398,7 @@ dias.forEach(d => {
           </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
             <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto && !a.fotoNatural && !a.fotoTall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          </div>` : a.foto && !a.fotoNatural && !a.fotoTall && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
           ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
       </div>`;
