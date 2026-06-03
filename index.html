@@ -48,8 +48,8 @@
     }
     .hero-zoom { animation: kenburns 20s ease-in-out infinite; transform-origin: center center; }
     .flip-card { perspective: 1000px; cursor: pointer; }
-    .flip-card-inner { position: relative; width: 100%; height: 260px; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1); transform-style: preserve-3d; }
-    .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-inner { position: relative; width: 100%; height: 260px; transition: transform 0.65s cubic-bezier(0.4,0.2,0.2,1); transform-style: preserve-3d; transform: rotateY(180deg); }
+    .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner { transform: rotateY(0deg); }
     .flip-card-front, .flip-card-back { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 8px; overflow: hidden; }
     .flip-card-back { transform: rotateY(180deg); }
   </style>
@@ -147,599 +147,7 @@
     </svg>
   </div>
 </section>
-<!-- ITINERARIO -->
-<section id="itinerario" class="py-20 px-4 relative overflow-hidden">
-  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
-         alt="" class="h-full w-full object-cover object-top"
-         style="filter: grayscale(1) contrast(1.1) brightness(0.4); opacity:0.13;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, #ECEFE8 10%, transparent 80%);"></div>
-    <div class="absolute bottom-12 right-3 text-right">
-      <span class="font-display text-black/20 text-6xl leading-none block">10</span>
-    </div>
-  </div>
-  <div class="max-w-5xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">6 DÍAS · 2 CIUDADES · 1 MUNDIAL</p>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider">AGENDA</h2>
-    </div>
-    <div id="itinerario-container" class="space-y-12"></div>
-  </div>
-</section>
-<script>
-const dias = [
-  {
-    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
-    actividades: [
-      { hora: 'TODO EL DÍA', texto: 'Llegadas a CDMX ✈️', nota: 'Check-in · La Casa de la Selección, Descartes 47, Anzures', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
-      { hora: 'TARDE',       texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest oficial · Pantallas gigantes · campomarte26.com', foto: 'assets/eventos/campo-marte-fanfest.jpeg' },
-      { hora: 'NOCHE',       texto: 'Cena de bienvenida en la Casa 🥂' },
-    ]
-  },
-  {
-    dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
-    actividades: [
-      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest · Pantallas gigantes · Comida · Arte · campomarte26.com' },
-      { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
-      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic', foto: 'assets/eventos/soho-pool.jpg' },
-      { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
-      { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
-      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo.jpeg' },
-      { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
-    ]
-  },
-  {
-    dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
-    actividades: [
-      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
-      { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
-      { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
-      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌', foto: 'assets/azteca.jpg' },
-      { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
-    ]
-  },
-  {
-    dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
-    actividades: [
-      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/playa-puerto-escondido.jpg' },
-      { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
-      { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
-      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg' },
-      { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
-      { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'En restaurante local', mexico: true },
-    ]
-  },
-  {
-    dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    actividades: [
-      { paralelo: [
-          { texto: 'Surf 🏄',                    nota: 'Profesor: Sebas Noguera' },
-          { texto: 'Yoga 🧘',                    nota: 'Profesor: Alejo Castillo' },
-          { texto: 'Mindfulness Tántrico 🌀',    nota: 'Profesor: Mateo Caicedo' },
-          { texto: 'Camp Kajuyali 🌿',           nota: 'Profesora: Mariana Leyva' },
-        ], hora: 'AM', foto: 'assets/casa-seri/seri_8_1.jpeg' },
-      { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
-      { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
-      { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
-      { hora: '8:00 PM',  texto: 'Brasil vs Haití — Filadelfia', mundial: true },
-    ]
-  },
-  {
-    dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    actividades: [
-      { hora: 'MAÑANA',   texto: 'Brunch Pre Elecciones 🥂', foto: 'assets/casa-seri/seri_8_2.jpeg' },
-      { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
-      { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
-      { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
-    ]
-  },
-  {
-    dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
-    actividades: [
-      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg' },
-      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹', foto: 'assets/casa-seri/seri_11_6.jpeg' },
-      { hora: '5:00 PM',  texto: 'España vs Arabia Saudita — Atlanta', mundial: true },
-      { hora: '8:00 PM',  texto: 'Nueva Zelanda vs Egipto — Vancouver', mundial: true },
-    ]
-  },
-];
 
-const container = document.getElementById('itinerario-container');
-dias.forEach(d => {
-  const actividadesHtml = d.actividades.map(a => {
-    if (a.paralelo) return `
-      <div class="px-4 py-3">
-        <span class="font-display text-lg text-col-red block mb-2">${a.hora}</span>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-          ${a.paralelo.map(p => `
-            <div class="border border-black/15 p-3 text-center bg-white/40">
-              <p class="font-medium text-sm">${p.texto}</p>
-              <p class="text-xs text-black/40 mt-1">${p.nota}</p>
-            </div>`).join('')}
-        </div>
-        <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
-        ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover;" />` : ''}
-      </div>`;
-    if (a.mexico) return `
-      <div class="border-2 p-5 flex items-center gap-4" style="border-color:#006847; background:#006847;">
-        <div class="text-center min-w-[80px]">
-          <span class="font-display text-2xl block" style="color:white;">${a.hora}</span>
-          <span class="text-xs tracking-widest block" style="color:rgba(255,255,255,0.5);">CDMX</span>
-        </div>
-        <div class="flex-1">
-          <span class="text-xs tracking-widest font-bold uppercase" style="color:rgba(255,255,255,0.7);">🇲🇽 ESTADIO AKRON · GUADALAJARA</span>
-          <p class="font-display text-2xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
-          <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
-          ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
-          ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
-        </div>
-        <span class="text-4xl">🦅</span>
-      </div>`;
-    if (a.colombia) return `
-      <div class="border-2 border-col-yellow bg-col-yellow p-5 flex items-center gap-4">
-        <div class="text-center min-w-[80px]">
-          <span class="font-display text-2xl text-col-red block">${a.hora}</span>
-          <span class="text-xs tracking-widest text-black/50 block">CDMX</span>
-        </div>
-        <div class="flex-1">
-          <span class="text-xs tracking-widest text-col-blue font-bold uppercase">🇨🇴 GRUPO K · MATCH 24</span>
-          <p class="font-display text-2xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
-          ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
-          <img src="assets/eventos/foto-partido-grupo.jpeg" alt="Hinchada Colombia" class="mt-3 rounded opacity-90" style="width:160px;" />
-        </div>
-        <span class="text-4xl">🏆</span>
-      </div>`;
-    if (a.mundial) return `
-      <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
-        <span class="font-display text-sm text-black/50 min-w-[70px]">${a.hora}</span>
-        <span class="text-sm">⚽</span>
-        <p class="text-sm text-black/70">${a.texto}</p>
-      </div>`;
-    return `
-      <div class="px-4 py-3 flex items-start gap-3 hover:bg-black/5 transition-colors">
-        <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
-        <div>
-          <p class="font-medium">${a.texto}</p>
-          ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
-          ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
-          ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
-          ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
-        </div>
-      </div>`;
-  }).join('');
-
-  container.innerHTML += `
-    <div>
-      <div class="flex items-baseline gap-3 mb-4 pb-4 border-b-2 border-black flex-wrap">
-        <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
-        <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
-        <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
-      </div>
-      <div class="space-y-3">${actividadesHtml}</div>
-    </div>`;
-});
-</script>
-<!-- BARRA OFICIAL -->
-<section id="barra" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
-  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
-         alt="" class="h-full w-full object-cover object-top"
-         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
-    <div class="absolute bottom-12 left-3">
-      <span class="font-display text-white/15 text-6xl leading-none block">7</span>
-    </div>
-  </div>
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">CANTA CON LA TRICOLOR</p>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider">BARRA</h2>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">OFICIAL</h2>
-      <p class="mt-4 text-sm tracking-widest text-crema/60 max-w-xl mx-auto">Carlos Vives + La Fiebre Amarilla + Gaira Música Local × FCF. Los cánticos oficiales de Colombia para el Mundial 2026. Apréndetelos antes del partido.</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div>
-        <p class="font-display text-col-yellow tracking-widest text-sm mb-3">PREPARANDO LAS BARRAS</p>
-        <div class="aspect-video w-full">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/czbkMUMLdSI?rel=0&modestbranding=1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            frameborder="0"
-            title="Carlos Vives preparando barras Selección Colombia">
-          </iframe>
-        </div>
-      </div>
-      <div>
-        <p class="font-display text-col-yellow tracking-widest text-sm mb-3">LA BARRA INCONDICIONAL</p>
-        <div class="aspect-video w-full">
-          <iframe
-            class="w-full h-full"
-            src="https://www.youtube.com/embed/41s8tmcwn1s?rel=0&modestbranding=1"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-            frameborder="0"
-            title="La Barra Incondicional - Yo Te Aliento - Sí Sí Sí - Que Linda E">
-          </iframe>
-        </div>
-        <p class="text-xs text-crema/40 mt-2 tracking-widest">"YO TE ALIENTO" · "SÍ SÍ SÍ" · "QUÉ LINDA E'"</p>
-<p class="mt-3 text-crema/70 text-sm italic">"Tú tienes la llave de mi corazón, yo te aliento, toda mi vida seré Tricolor, cumbiambero."</p>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- LOCATIONS -->
-<section id="locations" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
-  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
-         alt="" class="h-full w-full object-cover object-top"
-         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to right, #000 10%, transparent 80%);"></div>
-    <div class="absolute bottom-12 right-3 text-right">
-      <span class="font-display text-white/15 text-6xl leading-none block">13</span>
-    </div>
-  </div>
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">BASE DE OPERACIONES</p>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider">LOCATIONS</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <div class="group">
-        <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
-          <img src="assets/casa-caravana/casa-descartes.jpeg"
-               alt="La Casa de la Selección — Descartes 47, Anzures"
-               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-        </div>
-        <div class="border-l-4 border-col-yellow pl-4">
-          <p class="font-display text-col-yellow tracking-widest text-sm mb-1">CDMX · ANZURES</p>
-          <h3 class="font-display text-3xl tracking-wider mb-2">LA CASA DE<br>LA SELECCIÓN</h3>
-          <p class="text-crema/70 text-sm leading-relaxed">Descartes 47, Anzures. El cuartel general del PITAN PITAN. 4 residencias, hasta 18 huéspedes, jardín, a pasos de Polanco.</p>
-          <a href="https://casacaravana.com" target="_blank"
-             class="inline-block mt-3 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2 hover:bg-col-yellow hover:text-black transition-colors">
-            VER CASA →
-          </a>
-        </div>
-      </div>
-
-      <div class="group">
-        <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
-          <img src="assets/azteca.jpg"
-               alt="Estadio Azteca"
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        </div>
-        <div class="border-l-4 border-col-red pl-4">
-          <p class="font-display text-col-red tracking-widest text-sm mb-1">CDMX · MATCH 24</p>
-          <h3 class="font-display text-3xl tracking-wider mb-2">ESTADIO<br>AZTECA</h3>
-          <p class="text-crema/70 text-sm leading-relaxed">El templo del fútbol mundial. 87,000 almas. Sede del partido Colombia vs Uzbekistán, miércoles 17 de junio, 9:00 PM.</p>
-          <div class="mt-3 flex flex-wrap gap-2">
-            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2">
-              🇨🇴 MIÉ 17 · 9:00 PM
-            </div>
-            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-crema/50 border border-crema/20 px-4 py-2">
-              87,000 ALMAS
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="group">
-        <div class="overflow-hidden mb-4 aspect-[4/3]">
-          <img src="assets/casa-seri/seri_8_2.jpeg"
-               alt="Casa Seri"
-               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-        </div>
-        <div class="border-l-4 border-col-blue pl-4">
-          <p class="font-display text-col-blue tracking-widest text-sm mb-1">PUERTO ESCONDIDO · OAXACA</p>
-          <h3 class="font-display text-3xl tracking-wider mb-2">CASA<br>SERI</h3>
-          <p class="text-crema/70 text-sm leading-relaxed">8 suites · 16 huéspedes · Full staff · Piscina · Pabellón de yoga con vista al mar · Frente al Pacífico.</p>
-          <div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga y océano" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
-            <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
-            <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines y pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
-            <img src="assets/casa-seri/seri_3_1.jpeg" alt="Suite con pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- GUIA CDMX -->
-<section id="cdmx" class="py-20 px-4">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-8">
-      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider">CDMX</h2>
-    </div>
-
-    <p class="text-center text-sm tracking-widest text-black/40 mb-12 uppercase">Lista de Mariana · Casa Caravana · Anzures, CDMX</p>
-
-    <div class="space-y-12">
-
-      <!-- EL BARRIO -->
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-yellow">📍</span> EL BARRIO — ANZURES
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">TAQUERÍA SELENE</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Al Pastor</p>
-            <p class="text-sm text-black/70">El mejor al pastor de la ciudad, servido callejero. 5 minutos de Casa Caravana.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">FRUTOS PROHIBIDOS</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Desayunos</p>
-            <p class="text-sm text-black/70">Chilaquiles y jugos frescos. El desayuno del barrio.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">OTRO CAFÉ</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Café</p>
-            <p class="text-sm text-black/70">Favorito del barrio para trabajar. Si está lleno, ve al Hugo Café a media cuadra.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">LAGO ALGO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Chapultepec · Desayunos</p>
-            <p class="text-sm text-black/70">Desayunos en el bosque de Chapultepec con exposiciones de arte.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">LOS PANCHOS</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Mexicano</p>
-            <p class="text-sm text-black/70">Pozole y enchiladas de barrio. Clásico.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">TERRAZA CHA CHA CHA</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Terraza</p>
-            <p class="text-sm text-black/70">Terraza frente al Monumento a la Revolución. Para drinks con vista.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- POLANCO -->
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-red">🥩</span> POLANCO — 5 MIN
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">TACOS EL TURIX</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Cochinita</p>
-            <p class="text-sm text-black/70">Tortas y cochinita. El spot de tacos de Polanco.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">ENTREMAR</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Mariscos</p>
-            <p class="text-sm text-black/70">Mariscos frescos. Sin pretensiones, mucho sabor.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">CAFEBRERÍA EL PÉNDULO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Café + Librería</p>
-            <p class="text-sm text-black/70">Café dentro de una librería. Ideal para una mañana tranquila.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">NIDRADO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Brunch</p>
-            <p class="text-sm text-black/70">El mejor brunch de la zona. Llega temprano o hay espera.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">LING LING</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Ritz · Asian</p>
-            <p class="text-sm text-black/70">By Hakkasan, en el Ritz. Vistas de la ciudad y cocina asiática de nivel.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONDESA / ROMA -->
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-blue">🌮</span> CONDESA / ROMA — 15 MIN
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">MAIZAJO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Mesa del Chef</p>
-            <p class="text-sm text-black/70">Alta cocina del maíz. Planta baja tiene tacos; arriba la experiencia completa. Nuestra sede del martes.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">LALO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Clásico</p>
-            <p class="text-sm text-black/70">Institución de la Condesa. Brunches y almuerzos de toda la vida.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">MI COMPA CHAVA</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Ambiente</p>
-            <p class="text-sm text-black/70">Casual, divertido, siempre lleno. El plan de noche perfecto.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">CARIÑITO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Fusion</p>
-            <p class="text-sm text-black/70">Tacos con influencia Thai. Raro y delicioso.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">PANADERÍA ROSETTA</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Panadería</p>
-            <p class="text-sm text-black/70">"La panadería más bonita de la ciudad." Elena Reygadas. Hay fila. Vale la pena.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">ORINOCO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Varias · Venezolano</p>
-            <p class="text-sm text-black/70">Arepas venezolanas. Hay locales en toda la ciudad.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CULTURA & EXPERIENCIAS MUNDIALISTAS -->
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
-          <span class="text-col-yellow">🏆</span> EXPERIENCIAS MUNDIALISTAS CDMX
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border-2 border-col-yellow p-4 hover:bg-col-yellow/5 transition-colors">
-            <p class="font-display text-xl tracking-wider">FIFA FAN FEST — ZÓCALO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">11 Jun–19 Jul · Entrada libre · 55k personas</p>
-            <p class="text-sm text-black/70">El epicentro latinoamericano del Mundial. Mega pantalla de 510m², zona gastronómica, conciertos, activaciones. Hasta 100k personas en partidos de México. Gratis.</p>
-          </div>
-          <div class="border-2 border-col-yellow p-4 hover:bg-col-yellow/5 transition-colors">
-            <p class="font-display text-xl tracking-wider">CAMPO MARTE 26</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">11 Jun–19 Jul · Desde $400 MXN</p>
-            <p class="text-sm text-black/70">Fan fest premium junto al Bosque de Chapultepec. Pantallas gigantes, dos bares, jardín escultórico de Marc Quinn. Noches con Diplo, Claptone, Purple Disco Machine.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">ALDEA GLOBAL</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">10–21 Jun · Chapultepec · Gratis</p>
-            <p class="text-sm text-black/70">48 pabellones nacionales en el corredor del Bosque de Chapultepec. Gastronomía, culturas y actuaciones en vivo de los 48 países del Mundial.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">GIGANTES DEL FÚTBOL</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Desde Mar 28 · CDMX · Corredor cultural</p>
-            <p class="text-sm text-black/70">23 esculturas monumentales de 6–8 metros de altura de futbolistas legendarios, distribuidas por puntos clave de la ciudad. Hechas por artesanos de Iztapalapa.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">TORRE LATINO</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Jun–Jul · Centro Histórico · Vista nocturna</p>
-            <p class="text-sm text-black/70">La Torre Latinoamericana proyecta marcadores en tiempo real y contenido especial del Mundial visible desde toda la ciudad. El marcador del partido de Colombia en vivo.</p>
-          </div>
-          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
-            <p class="font-display text-xl tracking-wider">ESTADIO AZTECA</p>
-            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Sede · Único 3 Mundiales · 87,000 almas</p>
-            <p class="text-sm text-black/70">El templo. Primer estadio en albergar 3 Copas del Mundo (1970, 1986, 2026). Sede del partido inaugural y de Colombia vs Uzbekistán el 17 de junio.</p>
-          </div>
-        </div>
-        <p class="text-xs text-black/30 mt-6 tracking-widest text-right">Fuente: mexicocityfwc26.com.mx</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-<!-- GUIA PUERTO -->
-<section id="puerto" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
-  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
-         alt="" class="h-full w-full object-cover object-top"
-         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
-    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
-    <div class="absolute bottom-12 left-3">
-      <span class="font-display text-white/15 text-6xl leading-none block">8</span>
-    </div>
-  </div>
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider">PUERTO</h2>
-      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">ESCONDIDO</h2>
-    </div>
-    <div class="grid grid-cols-3 gap-2 mb-16">
-      <img src="assets/casa-seri/seri_8_2.jpeg" alt="Casa Seri piscina y mar" class="aspect-[4/3] object-cover w-full col-span-2" />
-      <img src="assets/casa-seri/seri_1_9.jpeg" alt="Casa Seri aérea" class="aspect-[4/3] object-cover w-full" />
-      <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga y océano" class="aspect-[4/3] object-cover w-full" />
-      <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover w-full" />
-      <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines" class="aspect-[4/3] object-cover w-full" />
-    </div>
-    <div class="grid grid-cols-4 border border-crema/20 mb-12 text-center">
-      <div class="py-4 border-r border-crema/20">
-        <p class="font-display text-3xl text-col-yellow">8</p>
-        <p class="text-xs tracking-widest text-crema/40 uppercase">Suites</p>
-      </div>
-      <div class="py-4 border-r border-crema/20">
-        <p class="font-display text-3xl text-col-yellow">16</p>
-        <p class="text-xs tracking-widest text-crema/40 uppercase">Huéspedes</p>
-      </div>
-      <div class="py-4 border-r border-crema/20">
-        <p class="font-display text-3xl text-col-yellow">🍺</p>
-        <p class="text-xs tracking-widest text-crema/40 uppercase">Tequila, Cerveza y Fútbol</p>
-      </div>
-      <div class="py-4">
-        <p class="font-display text-3xl text-col-yellow">🌊</p>
-        <p class="text-xs tracking-widest text-crema/40 uppercase">Frente al Mar</p>
-      </div>
-    </div>
-    <div class="space-y-12">
-
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
-          <span>🌊</span> PLAYAS
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">ZICATELA</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Pipeline Mexicano</p>
-            <p class="text-sm text-crema/70">Las olas más grandes y bravas. Para surfistas o espectadores con cerveza.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">LA PUNTA</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Chill · Surf suave</p>
-            <p class="text-sm text-crema/70">El barrio más relajado. Hamacas, restaurantes de playa, olas amigables.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">CARRIZALILLO</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Bahía protegida</p>
-            <p class="text-sm text-crema/70">Agua turquesa, olas pequeñas. Ideal para snorkel y familias.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">ZIPOLITE</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">45 min · Playa libre</p>
-            <p class="text-sm text-crema/70">La playa nudista más famosa de México. Ambiente hippie y bohemio.</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
-          <span>🦐</span> DÓNDE COMER
-        </h3>
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">EL CAFECITO</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Zicatela · Desayunos</p>
-            <p class="text-sm text-crema/70">Clásico de Puerto. Huevos, fruta, smoothies con vista a las olas.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">ALMORADUZ</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">La Punta · Mediterráneo</p>
-            <p class="text-sm text-crema/70">Cocina de autor con ingredientes locales. Probablemente el mejor de Puerto.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">LA HOSTERÍA</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Centro · Mariscos</p>
-            <p class="text-sm text-crema/70">Mariscos frescos a buen precio. La ceviche de camarón es la estrella.</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
-          <span>🛥️</span> EXPERIENCIAS
-        </h3>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">LAGUNAS DE MANIALTEPEC</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">20 min · Manglar + Bioluminiscencia</p>
-            <p class="text-sm text-crema/70">Tour en barco por el manglar, aves exóticas, snorkel. De noche: bioluminiscencia que te cambia la vida.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">SURF EN ZICATELA</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Clases · Todos los niveles</p>
-            <p class="text-sm text-crema/70">Puerto tiene las mejores escuelas de surf de México. Clases desde principiantes hasta barrels.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">MAZUNTE</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">1hr · Tortugas + Mezcal</p>
-            <p class="text-sm text-crema/70">Santuario de tortugas, snorkel, y Punta Cometa. Mercado de mezcal artesanal.</p>
-          </div>
-          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
-            <p class="font-display text-xl tracking-wider">TEMAZCAL</p>
-            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Experiencia ancestral</p>
-            <p class="text-sm text-crema/70">Ceremonia prehispánica de purificación. Hay varios operadores locales. Imprescindible.</p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 <!-- CONVOCADOS -->
 <section id="convocados" class="py-20 px-4 bg-black text-crema">
   <div class="max-w-6xl mx-auto">
@@ -1450,6 +858,600 @@ dias.forEach(d => {
 // Convocados rendered inline above
 </script>
 <!-- FOOTER -->
+
+<!-- ITINERARIO -->
+<section id="itinerario" class="py-20 px-4 relative overflow-hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/320px-James_Rodriguez_2018.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.1) brightness(0.4); opacity:0.13;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, #ECEFE8 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 right-3 text-right">
+      <span class="font-display text-black/20 text-6xl leading-none block">10</span>
+    </div>
+  </div>
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">6 DÍAS · 2 CIUDADES · 1 MUNDIAL</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">AGENDA</h2>
+    </div>
+    <div id="itinerario-container" class="space-y-12"></div>
+  </div>
+</section>
+<script>
+const dias = [
+  {
+    dia: 'LUNES', fecha: '15 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: 'TODO EL DÍA', texto: 'Llegadas a CDMX ✈️', nota: 'Check-in · La Casa de la Selección, Descartes 47, Anzures', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
+      { hora: 'TARDE',       texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest oficial · Pantallas gigantes · campomarte26.com', foto: 'assets/eventos/campo-marte-fanfest.jpeg' },
+      { hora: 'NOCHE',       texto: 'Cena de bienvenida en la Casa 🥂' },
+    ]
+  },
+  {
+    dia: 'MARTES', fecha: '16 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Campo Marte 26 🏟️', nota: 'Fan Fest · Pantallas gigantes · Comida · Arte · campomarte26.com' },
+      { hora: '2:00 PM',  texto: 'Francia vs Senegal — MetLife, NJ', mundial: true },
+      { hora: '4:00 PM',  texto: 'Tarde de Pool & Dinks — Soho House', attire: 'Casual chic', foto: 'assets/eventos/soho-pool.jpg' },
+      { hora: '5:00 PM',  texto: 'Irak vs Noruega — Gillette, Boston', mundial: true },
+      { hora: '8:00 PM',  texto: 'Argentina vs Argelia — Kansas City', mundial: true },
+      { hora: 'NOCHE',    texto: 'Tequila y Tacos en Maizajo 🌮', foto: 'assets/eventos/maizajo.jpeg' },
+      { hora: '11:00 PM', texto: 'Austria vs Jordania — Santa Clara', mundial: true },
+    ]
+  },
+  {
+    dia: 'MIÉRCOLES', fecha: '17 JUNIO', lugar: 'CDMX',
+    actividades: [
+      { hora: '11:00 AM', texto: 'PITAN PITAN FEST — La Casa del Mundial, Anzures', attire: 'Colombia tu papá', hasta: '5:00 PM', foto: 'assets/casa-caravana/casa-descartes.jpeg' },
+      { hora: '12:00 PM', texto: 'Portugal vs RD Congo — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Inglaterra vs Croacia — Arlington TX', mundial: true },
+      { hora: '5:00 PM',  texto: 'Party Bus al Azteca 🚌', foto: 'assets/azteca.jpg' },
+      { hora: '9:00 PM',  texto: '🇨🇴 COLOMBIA vs UZBEKISTÁN', lugar: 'Estadio Azteca', colombia: true },
+    ]
+  },
+  {
+    dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/playa-puerto-escondido.jpg' },
+      { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
+      { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg' },
+      { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
+      { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'En restaurante local', mexico: true },
+    ]
+  },
+  {
+    dia: 'VIERNES', fecha: '19 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { paralelo: [
+          { texto: 'Surf 🏄',                    nota: 'Profesor: Sebas Noguera' },
+          { texto: 'Yoga 🧘',                    nota: 'Profesor: Alejo Castillo' },
+          { texto: 'Mindfulness Tántrico 🌀',    nota: 'Profesor: Mateo Caicedo' },
+          { texto: 'Camp Kajuyali 🌿',           nota: 'Profesora: Mariana Leyva' },
+        ], hora: 'AM', foto: 'assets/casa-seri/seri_8_1.jpeg' },
+      { hora: '1:30 PM',  texto: 'Almuerzo en casa 🍽️' },
+      { hora: 'TARDE',    texto: 'Tarde libre 🌊' },
+      { hora: '5:00 PM',  texto: 'GUAYABERA NIGHT 🌺', nota: 'Fiesta Vallenata & Ranchera' },
+      { hora: '8:00 PM',  texto: 'Brasil vs Haití — Filadelfia', mundial: true },
+    ]
+  },
+  {
+    dia: 'SÁBADO', fecha: '20 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: 'MAÑANA',   texto: 'Brunch Pre Elecciones 🥂', foto: 'assets/casa-seri/seri_8_2.jpeg' },
+      { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
+      { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
+      { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
+    ]
+  },
+  {
+    dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
+    actividades: [
+      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg' },
+      { hora: 'TARDE',    texto: 'Pool · Cervezas · Ceviche · Bloody Marys 🍹', foto: 'assets/casa-seri/seri_11_6.jpeg' },
+      { hora: '5:00 PM',  texto: 'España vs Arabia Saudita — Atlanta', mundial: true },
+      { hora: '8:00 PM',  texto: 'Nueva Zelanda vs Egipto — Vancouver', mundial: true },
+    ]
+  },
+];
+
+const container = document.getElementById('itinerario-container');
+dias.forEach(d => {
+  const actividadesHtml = d.actividades.map(a => {
+    if (a.paralelo) return `
+      <div class="px-4 py-3">
+        <span class="font-display text-lg text-col-red block mb-2">${a.hora}</span>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          ${a.paralelo.map(p => `
+            <div class="border border-black/15 p-3 text-center bg-white/40">
+              <p class="font-medium text-sm">${p.texto}</p>
+              <p class="text-xs text-black/40 mt-1">${p.nota}</p>
+            </div>`).join('')}
+        </div>
+        <p class="text-xs text-black/30 mt-2 tracking-widest">SIMULTÁNEAS · CADA QUIÉN ELIGE</p>
+        ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover;" />` : ''}
+      </div>`;
+    if (a.mexico) return `
+      <div class="border-2 p-5 flex items-center gap-4" style="border-color:#006847; background:#006847;">
+        <div class="text-center min-w-[80px]">
+          <span class="font-display text-2xl block" style="color:white;">${a.hora}</span>
+          <span class="text-xs tracking-widest block" style="color:rgba(255,255,255,0.5);">CDMX</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-xs tracking-widest font-bold uppercase" style="color:rgba(255,255,255,0.7);">🇲🇽 ESTADIO AKRON · GUADALAJARA</span>
+          <p class="font-display text-2xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
+          <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
+          ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
+          ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+        </div>
+        <span class="text-4xl">🦅</span>
+      </div>`;
+    if (a.colombia) return `
+      <div class="border-2 border-col-yellow bg-col-yellow p-5 flex items-center gap-4">
+        <div class="text-center min-w-[80px]">
+          <span class="font-display text-2xl text-col-red block">${a.hora}</span>
+          <span class="text-xs tracking-widest text-black/50 block">CDMX</span>
+        </div>
+        <div class="flex-1">
+          <span class="text-xs tracking-widest text-col-blue font-bold uppercase">🇨🇴 GRUPO K · MATCH 24</span>
+          <p class="font-display text-2xl md:text-4xl tracking-wider mt-1">${a.texto}</p>
+          ${a.lugar ? `<p class="text-sm tracking-widest text-black/70 uppercase mt-1">📍 ${a.lugar}</p>` : ''}
+          <img src="assets/eventos/foto-partido-grupo.jpeg" alt="Hinchada Colombia" class="mt-3 rounded opacity-90" style="width:160px;" />
+        </div>
+        <span class="text-4xl">🏆</span>
+      </div>`;
+    if (a.mundial) return `
+      <div class="bg-col-yellow/20 border border-col-yellow/40 px-4 py-2 flex items-center gap-3">
+        <span class="font-display text-sm text-black/50 min-w-[70px]">${a.hora}</span>
+        <span class="text-sm">⚽</span>
+        <p class="text-sm text-black/70">${a.texto}</p>
+      </div>`;
+    return `
+      <div class="px-4 py-3 flex items-start gap-3 hover:bg-black/5 transition-colors">
+        <span class="font-display text-lg text-col-red min-w-[80px] pt-0.5">${a.hora}</span>
+        <div>
+          <p class="font-medium">${a.texto}</p>
+          ${a.hasta ? `<p class="text-xs text-black/40 mt-0.5">hasta las ${a.hasta}</p>` : ''}
+          ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
+          ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
+          ${a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+        </div>
+      </div>`;
+  }).join('');
+
+  container.innerHTML += `
+    <div>
+      <div class="flex items-baseline gap-3 mb-4 pb-4 border-b-2 border-black flex-wrap">
+        <span class="font-display text-4xl md:text-5xl tracking-wider">${d.dia}</span>
+        <span class="font-display text-2xl text-col-red tracking-wider">${d.fecha}</span>
+        <span class="ml-auto font-display text-sm tracking-widest text-black/40 uppercase">${d.lugar}</span>
+      </div>
+      <div class="space-y-3">${actividadesHtml}</div>
+    </div>`;
+});
+</script>
+<!-- BARRA OFICIAL -->
+<section id="barra" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg/320px-FC_RB_Salzburg_gegen_FC_Bayern_M%C3%BCnchen_%282026-01-06_Testspiel%29_40_%28Luiz_D%C3%ADaz%29.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 left-3">
+      <span class="font-display text-white/15 text-6xl leading-none block">7</span>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">CANTA CON LA TRICOLOR</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">BARRA</h2>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">OFICIAL</h2>
+      <p class="mt-4 text-sm tracking-widest text-crema/60 max-w-xl mx-auto">Carlos Vives + La Fiebre Amarilla + Gaira Música Local × FCF. Los cánticos oficiales de Colombia para el Mundial 2026. Apréndetelos antes del partido.</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <p class="font-display text-col-yellow tracking-widest text-sm mb-3">PREPARANDO LAS BARRAS</p>
+        <div class="aspect-video w-full">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/czbkMUMLdSI?rel=0&modestbranding=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            title="Carlos Vives preparando barras Selección Colombia">
+          </iframe>
+        </div>
+      </div>
+      <div>
+        <p class="font-display text-col-yellow tracking-widest text-sm mb-3">LA BARRA INCONDICIONAL</p>
+        <div class="aspect-video w-full">
+          <iframe
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/41s8tmcwn1s?rel=0&modestbranding=1"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            frameborder="0"
+            title="La Barra Incondicional - Yo Te Aliento - Sí Sí Sí - Que Linda E">
+          </iframe>
+        </div>
+        <p class="text-xs text-crema/40 mt-2 tracking-widest">"YO TE ALIENTO" · "SÍ SÍ SÍ" · "QUÉ LINDA E'"</p>
+<p class="mt-3 text-crema/70 text-sm italic">"Tú tienes la llave de mi corazón, yo te aliento, toda mi vida seré Tricolor, cumbiambero."</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- LOCATIONS -->
+<section id="locations" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute right-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg/320px-FWC_2018_-_Round_of_16_-_COL_v_ENG_-_Photo_103_%28cropped%29.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 right-3 text-right">
+      <span class="font-display text-white/15 text-6xl leading-none block">13</span>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">BASE DE OPERACIONES</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">LOCATIONS</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
+          <img src="assets/casa-caravana/casa-descartes.jpeg"
+               alt="La Casa de la Selección — Descartes 47, Anzures"
+               class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-yellow pl-4">
+          <p class="font-display text-col-yellow tracking-widest text-sm mb-1">CDMX · ANZURES</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">LA CASA DE<br>LA SELECCIÓN</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">Descartes 47, Anzures. El cuartel general del PITAN PITAN. 4 residencias, hasta 18 huéspedes, jardín, a pasos de Polanco.</p>
+          <a href="https://casacaravana.com" target="_blank"
+             class="inline-block mt-3 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2 hover:bg-col-yellow hover:text-black transition-colors">
+            VER CASA →
+          </a>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3] bg-gray-900">
+          <img src="assets/azteca.jpg"
+               alt="Estadio Azteca"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-red pl-4">
+          <p class="font-display text-col-red tracking-widest text-sm mb-1">CDMX · MATCH 24</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">ESTADIO<br>AZTECA</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">El templo del fútbol mundial. 87,000 almas. Sede del partido Colombia vs Uzbekistán, miércoles 17 de junio, 9:00 PM.</p>
+          <div class="mt-3 flex flex-wrap gap-2">
+            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-col-yellow border border-col-yellow px-4 py-2">
+              🇨🇴 MIÉ 17 · 9:00 PM
+            </div>
+            <div class="inline-flex items-center gap-2 font-display tracking-widest text-sm text-crema/50 border border-crema/20 px-4 py-2">
+              87,000 ALMAS
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="overflow-hidden mb-4 aspect-[4/3]">
+          <img src="assets/casa-seri/seri_8_2.jpeg"
+               alt="Casa Seri"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="border-l-4 border-col-blue pl-4">
+          <p class="font-display text-col-blue tracking-widest text-sm mb-1">PUERTO ESCONDIDO · OAXACA</p>
+          <h3 class="font-display text-3xl tracking-wider mb-2">CASA<br>SERI</h3>
+          <p class="text-crema/70 text-sm leading-relaxed">8 suites · 16 huéspedes · Full staff · Piscina · Pabellón de yoga con vista al mar · Frente al Pacífico.</p>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga y océano" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines y pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+            <img src="assets/casa-seri/seri_3_1.jpeg" alt="Suite con pool" class="aspect-[4/3] object-cover opacity-70 hover:opacity-100 transition-opacity" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- GUIA CDMX -->
+<section id="cdmx" class="py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-8">
+      <p class="font-display text-col-red text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">CDMX</h2>
+    </div>
+
+    <p class="text-center text-sm tracking-widest text-black/40 mb-12 uppercase">Lista de Mariana · Casa Caravana · Anzures, CDMX</p>
+
+    <div class="space-y-12">
+
+      <!-- EL BARRIO -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-yellow">📍</span> EL BARRIO — ANZURES
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TAQUERÍA SELENE</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Al Pastor</p>
+            <p class="text-sm text-black/70">El mejor al pastor de la ciudad, servido callejero. 5 minutos de Casa Caravana.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">FRUTOS PROHIBIDOS</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Desayunos</p>
+            <p class="text-sm text-black/70">Chilaquiles y jugos frescos. El desayuno del barrio.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">OTRO CAFÉ</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Café</p>
+            <p class="text-sm text-black/70">Favorito del barrio para trabajar. Si está lleno, ve al Hugo Café a media cuadra.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LAGO ALGO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Chapultepec · Desayunos</p>
+            <p class="text-sm text-black/70">Desayunos en el bosque de Chapultepec con exposiciones de arte.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LOS PANCHOS</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Anzures · Mexicano</p>
+            <p class="text-sm text-black/70">Pozole y enchiladas de barrio. Clásico.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TERRAZA CHA CHA CHA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Terraza</p>
+            <p class="text-sm text-black/70">Terraza frente al Monumento a la Revolución. Para drinks con vista.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- POLANCO -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-red">🥩</span> POLANCO — 5 MIN
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TACOS EL TURIX</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Cochinita</p>
+            <p class="text-sm text-black/70">Tortas y cochinita. El spot de tacos de Polanco.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ENTREMAR</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Mariscos</p>
+            <p class="text-sm text-black/70">Mariscos frescos. Sin pretensiones, mucho sabor.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CAFEBRERÍA EL PÉNDULO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Café + Librería</p>
+            <p class="text-sm text-black/70">Café dentro de una librería. Ideal para una mañana tranquila.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">NIDRADO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Reforma · Brunch</p>
+            <p class="text-sm text-black/70">El mejor brunch de la zona. Llega temprano o hay espera.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LING LING</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Polanco · Ritz · Asian</p>
+            <p class="text-sm text-black/70">By Hakkasan, en el Ritz. Vistas de la ciudad y cocina asiática de nivel.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONDESA / ROMA -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-blue">🌮</span> CONDESA / ROMA — 15 MIN
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">MAIZAJO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Mesa del Chef</p>
+            <p class="text-sm text-black/70">Alta cocina del maíz. Planta baja tiene tacos; arriba la experiencia completa. Nuestra sede del martes.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">LALO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Clásico</p>
+            <p class="text-sm text-black/70">Institución de la Condesa. Brunches y almuerzos de toda la vida.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">MI COMPA CHAVA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Condesa · Ambiente</p>
+            <p class="text-sm text-black/70">Casual, divertido, siempre lleno. El plan de noche perfecto.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">CARIÑITO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Fusion</p>
+            <p class="text-sm text-black/70">Tacos con influencia Thai. Raro y delicioso.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">PANADERÍA ROSETTA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Roma Norte · Panadería</p>
+            <p class="text-sm text-black/70">"La panadería más bonita de la ciudad." Elena Reygadas. Hay fila. Vale la pena.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ORINOCO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Varias · Venezolano</p>
+            <p class="text-sm text-black/70">Arepas venezolanas. Hay locales en toda la ciudad.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CULTURA & EXPERIENCIAS MUNDIALISTAS -->
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b-2 border-black flex items-center gap-3">
+          <span class="text-col-yellow">🏆</span> EXPERIENCIAS MUNDIALISTAS CDMX
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border-2 border-col-yellow p-4 hover:bg-col-yellow/5 transition-colors">
+            <p class="font-display text-xl tracking-wider">FIFA FAN FEST — ZÓCALO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">11 Jun–19 Jul · Entrada libre · 55k personas</p>
+            <p class="text-sm text-black/70">El epicentro latinoamericano del Mundial. Mega pantalla de 510m², zona gastronómica, conciertos, activaciones. Hasta 100k personas en partidos de México. Gratis.</p>
+          </div>
+          <div class="border-2 border-col-yellow p-4 hover:bg-col-yellow/5 transition-colors">
+            <p class="font-display text-xl tracking-wider">CAMPO MARTE 26</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">11 Jun–19 Jul · Desde $400 MXN</p>
+            <p class="text-sm text-black/70">Fan fest premium junto al Bosque de Chapultepec. Pantallas gigantes, dos bares, jardín escultórico de Marc Quinn. Noches con Diplo, Claptone, Purple Disco Machine.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ALDEA GLOBAL</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">10–21 Jun · Chapultepec · Gratis</p>
+            <p class="text-sm text-black/70">48 pabellones nacionales en el corredor del Bosque de Chapultepec. Gastronomía, culturas y actuaciones en vivo de los 48 países del Mundial.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">GIGANTES DEL FÚTBOL</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Desde Mar 28 · CDMX · Corredor cultural</p>
+            <p class="text-sm text-black/70">23 esculturas monumentales de 6–8 metros de altura de futbolistas legendarios, distribuidas por puntos clave de la ciudad. Hechas por artesanos de Iztapalapa.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">TORRE LATINO</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Jun–Jul · Centro Histórico · Vista nocturna</p>
+            <p class="text-sm text-black/70">La Torre Latinoamericana proyecta marcadores en tiempo real y contenido especial del Mundial visible desde toda la ciudad. El marcador del partido de Colombia en vivo.</p>
+          </div>
+          <div class="border border-black/20 p-4 hover:border-col-red transition-colors">
+            <p class="font-display text-xl tracking-wider">ESTADIO AZTECA</p>
+            <p class="text-xs tracking-widest text-black/40 uppercase mb-2">Sede · Único 3 Mundiales · 87,000 almas</p>
+            <p class="text-sm text-black/70">El templo. Primer estadio en albergar 3 Copas del Mundo (1970, 1986, 2026). Sede del partido inaugural y de Colombia vs Uzbekistán el 17 de junio.</p>
+          </div>
+        </div>
+        <p class="text-xs text-black/30 mt-6 tracking-widest text-right">Fuente: mexicocityfwc26.com.mx</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- GUIA PUERTO -->
+<section id="puerto" class="py-20 px-4 bg-black text-crema relative overflow-hidden">
+  <div class="absolute left-0 top-0 bottom-0 w-40 pointer-events-none select-none hidden lg:block" style="z-index:0;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Richard-Rios-Palmeiras-Liverpool-abr24.jpg/320px-Richard-Rios-Palmeiras-Liverpool-abr24.jpg"
+         alt="" class="h-full w-full object-cover object-top"
+         style="filter: grayscale(1) contrast(1.2) brightness(1.4); opacity:0.1;" />
+    <div class="absolute inset-0" style="background: linear-gradient(to left, #000 10%, transparent 80%);"></div>
+    <div class="absolute bottom-12 left-3">
+      <span class="font-display text-white/15 text-6xl leading-none block">8</span>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="font-display text-col-yellow text-lg tracking-[0.3em] mb-2">GUÍA DE CAMPO</p>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider">PUERTO</h2>
+      <h2 class="font-display text-6xl md:text-8xl tracking-wider text-col-yellow">ESCONDIDO</h2>
+    </div>
+    <div class="grid grid-cols-3 gap-2 mb-16">
+      <img src="assets/casa-seri/seri_8_2.jpeg" alt="Casa Seri piscina y mar" class="aspect-[4/3] object-cover w-full col-span-2" />
+      <img src="assets/casa-seri/seri_1_9.jpeg" alt="Casa Seri aérea" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_8_1.jpeg" alt="Yoga y océano" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_11_6.jpeg" alt="Piscina" class="aspect-[4/3] object-cover w-full" />
+      <img src="assets/casa-seri/seri_5_1.jpeg" alt="Jardines" class="aspect-[4/3] object-cover w-full" />
+    </div>
+    <div class="grid grid-cols-4 border border-crema/20 mb-12 text-center">
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">8</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Suites</p>
+      </div>
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">16</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Huéspedes</p>
+      </div>
+      <div class="py-4 border-r border-crema/20">
+        <p class="font-display text-3xl text-col-yellow">🍺</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Tequila, Cerveza y Fútbol</p>
+      </div>
+      <div class="py-4">
+        <p class="font-display text-3xl text-col-yellow">🌊</p>
+        <p class="text-xs tracking-widest text-crema/40 uppercase">Frente al Mar</p>
+      </div>
+    </div>
+    <div class="space-y-12">
+
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🌊</span> PLAYAS
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ZICATELA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Pipeline Mexicano</p>
+            <p class="text-sm text-crema/70">Las olas más grandes y bravas. Para surfistas o espectadores con cerveza.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LA PUNTA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Chill · Surf suave</p>
+            <p class="text-sm text-crema/70">El barrio más relajado. Hamacas, restaurantes de playa, olas amigables.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">CARRIZALILLO</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Bahía protegida</p>
+            <p class="text-sm text-crema/70">Agua turquesa, olas pequeñas. Ideal para snorkel y familias.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ZIPOLITE</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">45 min · Playa libre</p>
+            <p class="text-sm text-crema/70">La playa nudista más famosa de México. Ambiente hippie y bohemio.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🦐</span> DÓNDE COMER
+        </h3>
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">EL CAFECITO</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Zicatela · Desayunos</p>
+            <p class="text-sm text-crema/70">Clásico de Puerto. Huevos, fruta, smoothies con vista a las olas.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">ALMORADUZ</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">La Punta · Mediterráneo</p>
+            <p class="text-sm text-crema/70">Cocina de autor con ingredientes locales. Probablemente el mejor de Puerto.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LA HOSTERÍA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Centro · Mariscos</p>
+            <p class="text-sm text-crema/70">Mariscos frescos a buen precio. La ceviche de camarón es la estrella.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="font-display text-3xl tracking-wider mb-6 pb-3 border-b border-crema/20 flex items-center gap-3">
+          <span>🛥️</span> EXPERIENCIAS
+        </h3>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">LAGUNAS DE MANIALTEPEC</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">20 min · Manglar + Bioluminiscencia</p>
+            <p class="text-sm text-crema/70">Tour en barco por el manglar, aves exóticas, snorkel. De noche: bioluminiscencia que te cambia la vida.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">SURF EN ZICATELA</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Clases · Todos los niveles</p>
+            <p class="text-sm text-crema/70">Puerto tiene las mejores escuelas de surf de México. Clases desde principiantes hasta barrels.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">MAZUNTE</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">1hr · Tortugas + Mezcal</p>
+            <p class="text-sm text-crema/70">Santuario de tortugas, snorkel, y Punta Cometa. Mercado de mezcal artesanal.</p>
+          </div>
+          <div class="border border-crema/20 p-4 hover:border-col-yellow transition-colors">
+            <p class="font-display text-xl tracking-wider">TEMAZCAL</p>
+            <p class="text-xs tracking-widest text-crema/40 uppercase mb-2">Experiencia ancestral</p>
+            <p class="text-sm text-crema/70">Ceremonia prehispánica de purificación. Hay varios operadores locales. Imprescindible.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 <footer class="bg-black text-crema py-12 px-4">
   <div class="max-w-6xl mx-auto text-center">
     <img src="assets/logo-transparente.png" alt="PITAN PITAN" class="h-20 mx-auto mb-6 opacity-80" />
