@@ -1275,7 +1275,7 @@ const dias = [
     actividades: [
       { hora: 'MAÑANA',   texto: 'Brunch Pre Elecciones 🥂', foto: 'assets/casa-seri/seri_8_2.jpeg' },
       { hora: '12:00 PM', texto: 'Países Bajos vs Suecia — Houston', mundial: true },
-      { hora: 'TARDE',    texto: 'BBQ Piscinero 🔥🏊⚽', foto: 'assets/eventos/bbq-piscinero.jpeg', fotoAlt: true },
+      { hora: 'TARDE',    texto: 'BBQ Piscinero 🔥🏊⚽', foto: 'assets/eventos/bbq-piscinero.jpeg' },
       { hora: '3:00 PM',  texto: 'Alemania vs Costa de Marfil — Toronto', mundial: true },
       { hora: '7:00 PM',  texto: 'Ecuador vs Curaçao — Kansas City', mundial: true },
       { hora: '11:00 PM', texto: 'Túnez vs Japón — Estadio Akron, Guadalajara', mundial: true },
@@ -1284,7 +1284,7 @@ const dias = [
   {
     dia: 'DOMINGO', fecha: '21 JUNIO', lugar: 'PUERTO ESCONDIDO',
     actividades: [
-      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg', fotoSmall: true },
+      { hora: '11:00 AM', texto: 'Barco por Bahía de Huatulco 🛥️', nota: 'Manglar · Aves · Snorkel · Ceviche · Cervezas', hasta: '5:00 PM', foto: 'assets/eventos/maliantepec.jpeg' },
       { hora: '11:00 AM', texto: 'España vs Arabia Saudita — Mercedes-Benz, Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Bélgica vs Irán — SoFi Stadium, LA', mundial: true },
       { hora: '5:00 PM',  texto: 'Uruguay vs Cabo Verde — Hard Rock Stadium, Miami', mundial: true },
@@ -1342,12 +1342,14 @@ dias.forEach(d => {
           <p class="font-display text-xl md:text-3xl tracking-wider mt-1" style="color:white;">${a.texto}</p>
           <p class="text-sm tracking-widest uppercase mt-1" style="color:rgba(255,255,255,0.7);">📍 Viendo México vs Corea del Sur — 8:00 PM</p>
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
-          ${a.fotoAlt ? `<img src="${a.foto}" alt="" class="mt-2 rounded" style="width:100%;max-width:360px;height:auto;display:block;border-radius:6px;" />` : ''}
-          ${a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-2 rounded" style="max-width:160px;height:auto;display:block;border-radius:6px;" />` : ''}
-          ${!a.fotoAlt && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}
+                    ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
+          </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
+            <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
+          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
       </div>`;
@@ -1384,13 +1386,13 @@ dias.forEach(d => {
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
           ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
-            <img src="${a.foto}" alt="" class="w-full rounded" style="width:100%; height:auto; display:block; border-radius:6px;" />
-            <video controls playsinline class="w-full rounded" style="width:100%; height:auto; max-height:300px;"><source src="${a.video}" type="video/mp4"/></video>
-          </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-width:260px; width:100%; height:auto; border-radius:6px; display:block; margin-top:8px;" />` : ''}
-          ${!a.foto && a.video ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover; object-position:center;" />
+          </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover; object-position:center;" />
+            <video controls playsinline class="w-full rounded" style="max-height:160px;"><source src="${a.video}" type="video/mp4"/></video>
+          </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
+          ${a.video && !a.foto ? `<video controls playsinline class="mt-3 w-full rounded" style="max-height:240px;"><source src="${a.video}" type="video/mp4"/></video>` : ''}
         </div>
       </div>`;
   }).join('');
