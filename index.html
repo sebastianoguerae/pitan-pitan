@@ -1101,7 +1101,7 @@ const dias = [
   {
     dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
     actividades: [
-      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg' },
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg', foto3: 'assets/eventos/playa-puerto-escondido.jpg' },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
       { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg' },
@@ -1219,7 +1219,7 @@ dias.forEach(d => {
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
             <img src="${a.foto2}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:150px; object-fit:cover;" />
-          </div>` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
+          </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-height:180px; object-fit:cover;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:160px; object-fit:cover;" />
             <video controls playsinline class="w-full rounded" style="height:160px; object-fit:cover;"><source src="${a.video}" type="video/mp4"/></video>
           </div>` : a.foto ? `<img src="${a.foto}" alt="" class="mt-3 w-full rounded" style="max-height:200px; object-fit:cover; object-position:center;" />` : ''}
