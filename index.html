@@ -1249,7 +1249,7 @@ const dias = [
       { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg', fotoTall: true },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
-      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg' },
+      { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg', fotoPos: 'bottom' },
       { hora: '5:00 PM',  texto: 'Canadá vs Qatar — Vancouver', mundial: true },
       { hora: '7:00 PM',  texto: 'Cena mexicana + Cata de Mezcales del Oaxaca Profundo 🥃', nota: 'En restaurante local', mexico: true },
     ]
@@ -1349,8 +1349,8 @@ dias.forEach(d => {
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:220px; object-fit:cover; object-position:top;" />
           </div>` : ''}
           ${!a.fotoAlt && !a.fotoTall && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
           </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}
         </div>
         <span class="text-3xl flex-shrink-0">🦅</span>
@@ -1388,8 +1388,8 @@ dias.forEach(d => {
           ${a.attire ? `<p class="text-xs text-col-blue tracking-widest uppercase mt-1">👔 Attire: ${a.attire}</p>` : ''}
           ${a.nota ? `<p class="text-xs text-black/50 mt-1">${a.nota}</p>` : ''}
           ${a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
+            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
+            <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
           </div>${a.foto3 ? `<img src="${a.foto3}" alt="" class="mt-2 w-full rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}` : a.foto && a.video ? `<div class="mt-3 grid grid-cols-2 gap-2 items-start">
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;" />
             <video controls playsinline class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:top; border-radius:6px;"><source src="${a.video}" type="video/mp4"/></video>
