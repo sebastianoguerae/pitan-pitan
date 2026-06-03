@@ -1246,7 +1246,7 @@ const dias = [
   {
     dia: 'JUEVES', fecha: '18 JUNIO', lugar: 'CDMX → PUERTO ESCONDIDO',
     actividades: [
-      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg', fotoTall: true },
+      { hora: 'AM',       texto: 'Vuelos a Puerto Escondido ✈️', foto: 'assets/eventos/vuelo.jpeg', foto2: 'assets/eventos/vuelo-mateo.jpeg' },
       { hora: '11:00 AM', texto: 'Chequia vs Sudáfrica — Atlanta', mundial: true },
       { hora: '2:00 PM',  texto: 'Suiza vs Bosnia — Los Ángeles', mundial: true },
       { hora: '4:00 PM',  texto: 'Partido de Fútbol Playa ⚽', foto: 'assets/eventos/futbol-playa.jpeg', foto2: 'assets/eventos/futbol-playa-2.jpeg', fotoPos: 'bottom' },
@@ -1344,11 +1344,7 @@ dias.forEach(d => {
           ${a.nota ? `<p class="text-xs mt-1" style="color:rgba(255,255,255,0.5);">${a.nota}</p>` : ''}
           ${a.fotoAlt ? `<img src="${a.foto}" alt="" class="mt-2 rounded" style="width:100%;max-width:360px;height:auto;display:block;border-radius:6px;" />` : ''}
           ${a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-2 rounded" style="max-width:160px;height:auto;display:block;border-radius:6px;" />` : ''}
-          ${a.fotoTall && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
-            <img src="${a.foto2}" alt="" class="w-full rounded" style="height:220px; object-fit:cover; object-position:top;" />
-            <img src="${a.foto}" alt="" class="w-full rounded" style="height:220px; object-fit:cover; object-position:top;" />
-          </div>` : ''}
-          ${!a.fotoAlt && !a.fotoTall && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
+          ${!a.fotoAlt && a.foto && a.foto2 ? `<div class="mt-3 grid grid-cols-2 gap-2">
             <img src="${a.foto2}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
             <img src="${a.foto}" alt="" class="w-full rounded" style="height:180px; width:100%; object-fit:cover; object-position:${a.fotoPos||'top'}; border-radius:6px;" />
           </div>` : a.foto && !a.fotoAlt && !a.fotoSmall ? `<img src="${a.foto}" alt="" class="mt-3 rounded" style="max-height:160px; max-width:260px; width:100%; object-fit:cover; object-position:center; border-radius:6px; display:block; margin-top:8px;" />` : ''}
