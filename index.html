@@ -172,6 +172,7 @@
       sessionStorage.setItem('pitan_v2_unlocked','true');
       var o=document.getElementById('inv-overlay');
       window.scrollTo(0,0);
+      var v=document.getElementById('hero-vid');if(v){v.currentTime=0;v.play();}
       o.classList.add('fade-out');
       setTimeout(function(){o.style.display='none';},750);
     } else {
@@ -233,7 +234,7 @@
 <section class="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
   <!-- Hero background — video estadio Colombia, congela al final -->
   <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-    <video id="hero-vid" autoplay muted playsinline
+    <video id="hero-vid" muted playsinline preload="none"
            style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;">
       <source src="assets/video-estadio.mp4" type="video/mp4" />
     </video>
