@@ -255,7 +255,7 @@
 
 <script>
   // Skip if already unlocked
-  if (localStorage.getItem('pitan_unlocked') === 'true') {
+  if (localStorage.getItem('pitan_v2_unlocked') === 'true') {
     document.getElementById('inv-overlay').style.display = 'none';
   }
 
@@ -275,7 +275,7 @@
   function checkPw() {
     var val = document.getElementById('pw-input').value.trim().toUpperCase();
     if (val === 'COLOMBIA') {
-      localStorage.setItem('pitan_unlocked', 'true');
+      localStorage.setItem('pitan_v2_unlocked', 'true');
       var overlay = document.getElementById('inv-overlay');
       overlay.classList.add('fade-out');
       setTimeout(function() { overlay.style.display = 'none'; }, 850);
